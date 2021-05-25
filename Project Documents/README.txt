@@ -1,0 +1,1 @@
+This directory will contain all wireframe docs, high-level architecture diagrams, calss diagrams, etc
