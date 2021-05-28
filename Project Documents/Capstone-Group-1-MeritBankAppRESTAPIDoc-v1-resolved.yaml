@@ -1,0 +1,587 @@
+---
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v1
+servers:
+- url: http://localhost:8080/
+  description: Generated server url
+paths:
+  /api/me/savingsaccounts:
+    get:
+      tags:
+      - user-controller
+      operationId: getSavingsAccount
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SavingsAccount'
+    post:
+      tags:
+      - user-controller
+      operationId: addSavingsAccount
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SavingsAccount'
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/SavingsAccount'
+  /api/me/checkingaccounts:
+    get:
+      tags:
+      - user-controller
+      operationId: getCheckingAccount
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CheckingAccount'
+    post:
+      tags:
+      - user-controller
+      operationId: addCheckingAccount
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CheckingAccount'
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CheckingAccount'
+  /api/me/cdaccounts:
+    get:
+      tags:
+      - user-controller
+      operationId: getCDAccount
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CDAccount'
+    post:
+      tags:
+      - user-controller
+      operationId: addCDAccount
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CDAccount'
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CDAccount'
+  /api/cdofferings/:
+    get:
+      tags:
+      - cd-offerings-controller
+      operationId: getCDOfferings
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CDOffering'
+    post:
+      tags:
+      - cd-offerings-controller
+      operationId: addCDOffering
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CDOffering'
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CDOffering'
+  /api/auth/signin:
+    post:
+      tags:
+      - auth-controller
+      operationId: createAuthenticationToken
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthenticationRequest'
+        required: true
+      responses:
+        "202":
+          description: Accepted
+          content:
+            '*/*':
+              schema:
+                type: object
+  /api/auth/registerUser:
+    post:
+      tags:
+      - auth-controller
+      operationId: registerUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/User'
+  /api/accountholders/{id}/savingsaccounts:
+    get:
+      tags:
+      - accounts-controller
+      operationId: getSavingsAccounts
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SavingsAccount'
+    post:
+      tags:
+      - accounts-controller
+      operationId: addSavingsAccount_1
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SavingsAccount'
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/SavingsAccount'
+  /api/accountholders/{id}/checkingaccounts:
+    get:
+      tags:
+      - accounts-controller
+      operationId: getCheckingAccounts
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CheckingAccount'
+    post:
+      tags:
+      - accounts-controller
+      operationId: addCheckingAccount_1
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CheckingAccount'
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CheckingAccount'
+  /api/accountholders/{id}/cdaccounts:
+    get:
+      tags:
+      - accounts-controller
+      operationId: getCDAccountsById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CDAccount'
+    post:
+      tags:
+      - accounts-controller
+      operationId: addCDAccount_1
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CDAccount'
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CDAccount'
+  /api/accountholders/:
+    get:
+      tags:
+      - account-holder-controller
+      operationId: getAccountHolders
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AccountHolder'
+    post:
+      tags:
+      - account-holder-controller
+      operationId: addAccountHolder
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountHolder'
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AccountHolder'
+  /api/me/:
+    get:
+      tags:
+      - user-controller
+      operationId: getAccountHolderById
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AccountHolder'
+  /api/accountholders/{id}:
+    get:
+      tags:
+      - account-holder-controller
+      operationId: getAccountHolderById_1
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AccountHolder'
+  /api/accountholders/{id}/contactDetails:
+    get:
+      tags:
+      - account-holder-controller
+      operationId: addContactDetails
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int32
+      - name: accountHolderContactDetails
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          $ref: '#/components/schemas/AccountHolderContactDetails'
+      responses:
+        "201":
+          description: Created
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AccountHolderContactDetails'
+components:
+  schemas:
+    SavingsAccount:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        accountNumber:
+          type: integer
+          format: int64
+        balance:
+          type: number
+          format: double
+        openedOn:
+          type: string
+          format: date-time
+        interestRate:
+          type: number
+          format: double
+    CheckingAccount:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        accountNumber:
+          type: integer
+          format: int64
+        balance:
+          type: number
+          format: double
+        openedOn:
+          type: string
+          format: date-time
+        interestRate:
+          type: number
+          format: double
+    CDAccount:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        accountNumber:
+          type: integer
+          format: int64
+        balance:
+          type: number
+          format: double
+        openedOn:
+          type: string
+          format: date-time
+        interestRate:
+          type: number
+          format: double
+        cdOffering:
+          $ref: '#/components/schemas/CDOffering'
+    CDOffering:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        term:
+          type: integer
+          format: int32
+        interestRate:
+          type: number
+          format: double
+        cdAccountList:
+          type: array
+          items:
+            $ref: '#/components/schemas/CDAccount'
+    AuthenticationRequest:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+    Role:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+          enum:
+          - AccountHolder
+          - admin
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        roles:
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/Role'
+        username:
+          type: string
+        password:
+          type: string
+        active:
+          type: boolean
+    AccountHolder:
+      required:
+      - firstName
+      - lastName
+      - ssn
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        firstName:
+          type: string
+        middleName:
+          type: string
+        lastName:
+          type: string
+        ssn:
+          type: string
+        checkingAccountList:
+          type: array
+          items:
+            $ref: '#/components/schemas/CheckingAccount'
+        savingsAccountsList:
+          type: array
+          items:
+            $ref: '#/components/schemas/SavingsAccount'
+        cdAccountList:
+          type: array
+          items:
+            $ref: '#/components/schemas/CDAccount'
+        accountHolderContactDetails:
+          $ref: '#/components/schemas/AccountHolderContactDetails'
+        user:
+          $ref: '#/components/schemas/User'
+        combinedBal:
+          type: number
+          format: double
+        checkingBalance:
+          type: number
+          format: double
+        cdbalance:
+          type: number
+          format: double
+        savingsBalance:
+          type: number
+          format: double
+        numberOfCheckingAccounts:
+          type: number
+          format: double
+        numberOfCDAccounts:
+          type: number
+          format: double
+        numberOfSavingsAccounts:
+          type: number
+          format: double
+        combinedAccountBalance:
+          type: number
+          format: double
+    AccountHolderContactDetails:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        phoneNumber:
+          type: string
+        email:
+          type: string
+        address:
+          type: string
