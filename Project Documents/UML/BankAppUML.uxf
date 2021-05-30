@@ -1,0 +1,1755 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>5</zoom_level>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>2415</x>
+      <y>1480</y>
+      <w>135</w>
+      <h>95</h>
+    </coordinates>
+    <panel_attributes>                        MySQL DB
+customelement=
+// AccountHolder DB
+// DB Symbol
+drawArc(0,0,width,height*2/5,0,180,true) fg=black bg=#222222 //Parameters (x, y, width, height, start, extent, open)
+drawArc(0,0,width,height*2/5,180,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)
+drawRectangle(0,(height+0.5)/5,width,(height)*3/5-1) fg=#929292 bg=#222222 //Parameters (x, y, width, height)
+drawLine(0,height/5,0,height*4/5)fg=black //Parameters (x1, y1, x2, y2) 
+drawLine(width,height/5,width,height*4/5)fg=black //Parameters (x1, y1, x2, y2) 
+drawArc(0,height*1/5,width,height*2/5,180,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)
+drawArc(0,height*2/5,width,height*2/5,180,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)
+drawArc(0,height*3/5,width,height*2/5,180,180,true) fg=black bg=#222222 //Parameters (x, y, width, height, start, extent, open)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1805</x>
+      <y>1260</y>
+      <w>145</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+AccountHolderRepository
+
+--
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2005</x>
+      <y>540</y>
+      <w>265</w>
+      <h>145</h>
+    </coordinates>
+    <panel_attributes>UserController
+
+--
+
+-userService: UserService
+-jwtUtil: JwtUtil
+-accountsService: AccountsService
+
+--
+
++getAccountHolderById (): AccountHolder
++addCheckingAccount (checkingAccount : CheckingAccount): CheckingAccount
++getCheckingAccount (): List&lt;CheckingAccount&gt;
++addSavingsAccount (savingsAccount : SavingsAccount): SavingsAccount
++getSavingsAccount (): List&lt;SavingsAccount&gt;
++addCDAccount (cdAccount : CDAccount): CDAccount
++getCDAccount (): List&lt;CDAccount&gt;
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2465</x>
+      <y>585</y>
+      <w>230</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>JwtUtil
+
+--
+
+-SECRET_KEY: String (read only)
+
+--
+
++extractUsername (token : String): String
++extractExpiration (token : String): Date
++extractClaim  (token : String, Function&lt;Claims, T&gt;): T
+-extractAllClaims (token : String): Claims
+-isTokenExpired (token : String): Boolean
++generateToken (userDetails : UserDetails): String
+-createToken (claims : Map&lt;String, Object&gt;, username : String): String
++validateToken (token : String, userDetails : UserDetails): Boolean
++getCurrentUserName (): String
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2045</x>
+      <y>745</y>
+      <w>230</w>
+      <h>75</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+AccountsService
+
+--
+
++addCheckingAccount(id : int, checkingAccount : CheckingAccount)
++addSavingsAccount(id : int, savingsAccount : SavingsAccount)
++addCDAccount(id : int, cdAccount : CDAccount)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2300</x>
+      <y>495</y>
+      <w>165</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+UserService
+
+--
+
++getUser (user: User): User
++getUserByUserName (username: String): User</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3205</x>
+      <y>395</y>
+      <w>220</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>CDOfferingsController
+
+--
+
+-cdOfferingsService: CDOfferingsService
+
+--
+
++addCDOffering (cdOffering : CDOffering): CDOffering
++getCDOfferings (): List&lt;CDOffering&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3240</x>
+      <y>1265</y>
+      <w>145</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+CDOfferingRepository
+
+--
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1965</x>
+      <y>1260</y>
+      <w>145</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+CDAccountRepository
+
+--
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1395</x>
+      <y>1255</y>
+      <w>145</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+AccountHolderContactDetailsRepository
+
+--
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2125</x>
+      <y>1260</y>
+      <w>145</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+CheckingAccountRepository
+
+--
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2605</x>
+      <y>1260</y>
+      <w>145</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+UserRepository
+
+--
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2285</x>
+      <y>1260</y>
+      <w>145</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+SavingsAccountRepository
+
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2655</x>
+      <y>400</y>
+      <w>320</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>AuthController
+
+--
+
+~logger: Logger
+-userService: UserService
+-jwtTokenUtil: JwtUtil
+-authenticationManager: AuthenticationManager
+-myUserDetailsService: MyUserDetailsService
+
+--
+
++createAuthenticationToken (authenticationRequest : AuthenticationRequest): ResponseEntity&lt;?&gt;
++registerUser (user : User): User
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLActor</id>
+    <coordinates>
+      <x>2700</x>
+      <y>0</y>
+      <w>30</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>Client</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2710</x>
+      <y>30</y>
+      <w>75</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;130.0;260.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2735</x>
+      <y>915</y>
+      <w>220</w>
+      <h>75</h>
+    </coordinates>
+    <panel_attributes>MyUserDetailsService
+
+--
+
+-userRepository: UserRepository
+
+--
+
++loadUserByUsername (username : String): UserDetails
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>785</x>
+      <y>1210</y>
+      <w>140</w>
+      <h>75</h>
+    </coordinates>
+    <panel_attributes>AuthenticationResponse
+
+--
+
+-JWT: String
+
+--
+
++AuthenticationResponse (JWT : String)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2710</x>
+      <y>585</y>
+      <w>360</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>JwtRequestFilter
+
+--
+
+-myUserDetailsService: MyUserDetailsService
+-jwtUtil: JwtUtil
+
+--
+
+#doFilterInternal (request : HttpServletRequest, response : HttpServletResponse, filterChain : FilterChain): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2985</x>
+      <y>670</y>
+      <w>15</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2925</x>
+      <y>695</y>
+      <w>125</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>OncePerRequestFilter</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2840</x>
+      <y>525</y>
+      <w>125</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>Logger</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2825</x>
+      <y>545</y>
+      <w>125</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>AuthenticationManager</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2155</x>
+      <y>815</y>
+      <w>15</w>
+      <h>195</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;370.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2055</x>
+      <y>1000</y>
+      <w>225</w>
+      <h>175</h>
+    </coordinates>
+    <panel_attributes>AccountsServiceImpl
+
+--
+
+-BANK_ACCOUNT_BALANCE_LIMIT: double (read only)
+-checkingAccountRepository: CheckingAccountRepository
+-savingsAccountRepository: SavingsAccountRepository
+-cdAccountRepository: CDAccountRepository
+-accountHolderRepository: AccountHolderRepository
+
+--
+
++AccountServiceImpl()
+
++getAccountHolderById (id : int): AccountHolder
++addCheckingAccount (id : int, checkingAccount : CheckingAccount): CheckingAccount
++addSavingsAccount (id : int, savingsAccount : SavingsAccount): SavingsAccount
++addCDAccount (id : int, cdAccount : CDAccount): CDAccount
++getCheckingAccountById (id : Integer): List&lt;CheckingAccount&gt;
++getSavingsAccountById (id : Integer): List&lt;SavingsAccount&gt;
++getCDAccountById (id : Integer): List&lt;CDAccount&gt;
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2830</x>
+      <y>1045</y>
+      <w>230</w>
+      <h>75</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+UserDetailsService
+
+--
+
++addCheckingAccount(id : int, checkingAccount : CheckingAccount)
++addSavingsAccount(id : int, savingsAccount : SavingsAccount)
++addCDAccount(id : int, cdAccount : CDAccount)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2855</x>
+      <y>985</y>
+      <w>15</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1295</x>
+      <y>515</y>
+      <w>365</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>AccountHolderController
+
+--
+
+-accountHolderService: AccountHolderService
+
+--
+
++addAccountHolder (accountHolder : AccountHolder): AccountHolder
++addContactDetails (accountHolderContactDetails : AccountHolderContactDetails): AccountHolderContactDetails
++getAccountHolders (): List&lt;AccountHolder&gt;
++getAccountHolderById (id : Integer): AccountHolder
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1300</x>
+      <y>1030</y>
+      <w>325</w>
+      <h>145</h>
+    </coordinates>
+    <panel_attributes>AccountHolderServiceImpl
+
+--
+
+-accountHolderRepository: AccountHolderRepository
+-accountHolderContactDetailsRepository: AccountHolderContactDetailsRepository
+
+--
+
++addAccountHolder (accountHolder : AccountHolder): AccountHolder
++getAccountHolderById (id : Integer): AccountHolder
++getAccountHolders () : List&lt;AccountHolder&gt;
++getCheckingAccounts (id : Integer) : List&lt;CheckingAccount&gt;
++getSavingsAccounts (id : Integer) : List&lt;SavingsAccount&gt;
++getCDAccounts (id : Integer) : List&lt;CDAccount&gt;
++addContactDetails (id : Integer, a ccountHolderContactDetails : AccountHolderContactDetails) : AccountHolderContactDetails
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1275</x>
+      <y>825</y>
+      <w>400</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+AccountHolderService
+
+--
+
++addContactDetails (id : Integer, accountHolderContactDetails : AccountHolderContactDetails): AccountHolderContactDetails
++addAccountHolder (accountHolder : AccountHolder): AccountHolder
++getAccountHolderById (id : Integer): AccountHolder
++getAccountHolders(id : Integer): List&lt;AccountHolder&gt;
++getCheckingAccounts(id : Integer): List&lt;CheckingAccount&gt;
++getSavingsAccounts(id : Integer): List&lt;SavingsAccount&gt;
++getCDAccounts(id : Integer): List&lt;CDAccounts&gt;
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1675</x>
+      <y>610</y>
+      <w>295</w>
+      <h>125</h>
+    </coordinates>
+    <panel_attributes>AccountsController
+
+--
+
+-accountsService: AccountService
+-accountHolderService: AccountHolderService
+
+--
+
++addCheckingAccount (id : Integer, checkingAccount : CheckingAccount): CheckingAccount
++addSavingsAccount (id : Integer, savingsAccount : SavingsAccount): SavingsAccount
++addCDAccount (id : Integer, cdACcount : CDAccount): CDAccount
++getCheckingAccounts (id : Integer): List&lt;CheckingAccount&gt;
++getSavingsAccounts (id : Integer): List&lt;SavingsAccount&gt;
++getCDAccountsById (id : Integer): List&lt;CDAccount&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1460</x>
+      <y>930</y>
+      <w>15</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;200.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1500</x>
+      <y>640</y>
+      <w>125</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>Logger</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1740</x>
+      <y>375</y>
+      <w>210</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>NOTE..
+bg=yellow
+
+Typical Getters/Setters not included
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>940</x>
+      <y>1210</y>
+      <w>255</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>AuthenticationRequest
+
+--
+
+-username: String
+-password: String
+
+--
+
++AuthenticationRequest ()
++AuthenticationRequest (username : String, password : String)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3195</x>
+      <y>590</y>
+      <w>230</w>
+      <h>75</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+CDOfferingService
+
+--
+
++addCheckingAccount(id : int, checkingAccount : CheckingAccount)
++addSavingsAccount(id : int, savingsAccount : SavingsAccount)
++addCDAccount(id : int, cdAccount : CDAccount)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3305</x>
+      <y>480</y>
+      <w>15</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;220.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3200</x>
+      <y>770</y>
+      <w>225</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>CDOfferingServiceImpl
+
+--
+
+-cdOfferingRepository : CDOfferingRepository
+
+--
+
++addCDOffering (cdOffering : CDOffering): CDOffering
++getCDOfferings (): List&lt;CDOffering&gt;
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3305</x>
+      <y>660</y>
+      <w>15</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;220.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3305</x>
+      <y>855</y>
+      <w>15</w>
+      <h>420</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;820.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2410</x>
+      <y>845</y>
+      <w>230</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+AuthService
+
+--
+
+-accountHolderRepository: AccountHolderRepository
+-userRepository: UserRepository
+-roleRepository: RoleRepository
+
+--
+
++registerUser(registerRequest : RegisterRequest): ResponseEntity&lt;?&gt;
++addAccountHolder(AccountHolder : AccountHolder): AccountHolder
++getAccountHolders(): List&lt;AccountHolder&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2510</x>
+      <y>960</y>
+      <w>15</w>
+      <h>310</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;600.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1870</x>
+      <y>945</y>
+      <w>550</w>
+      <h>325</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>1080.0;10.0;10.0;10.0;10.0;630.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2520</x>
+      <y>960</y>
+      <w>155</w>
+      <h>310</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;500.0;290.0;500.0;290.0;600.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2445</x>
+      <y>1260</y>
+      <w>145</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+RoleRepository
+
+--
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2725</x>
+      <y>160</y>
+      <w>105</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;utility&gt;&gt;
+BankAppApplication
+
+--
+
+--
+
+_+main(args : String[]) : void_</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1895</x>
+      <y>1430</y>
+      <w>1180</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>
+JPARepository&lt;&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2475</x>
+      <y>1455</y>
+      <w>15</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2475</x>
+      <y>1365</y>
+      <w>15</w>
+      <h>75</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1460</x>
+      <y>1360</y>
+      <w>1865</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;3710.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3310</x>
+      <y>1310</y>
+      <w>15</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1460</x>
+      <y>1300</y>
+      <w>15</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;10.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1870</x>
+      <y>1305</y>
+      <w>15</w>
+      <h>75</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2190</x>
+      <y>1305</y>
+      <w>15</w>
+      <h>75</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2355</x>
+      <y>1305</y>
+      <w>15</w>
+      <h>75</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2030</x>
+      <y>1305</y>
+      <w>15</w>
+      <h>75</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2510</x>
+      <y>1305</y>
+      <w>15</w>
+      <h>75</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2670</x>
+      <y>1305</y>
+      <w>15</w>
+      <h>75</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2820</x>
+      <y>670</y>
+      <w>15</w>
+      <h>255</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;490.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2825</x>
+      <y>505</y>
+      <w>15</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2850</x>
+      <y>505</y>
+      <w>15</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2950</x>
+      <y>450</y>
+      <w>155</w>
+      <h>520</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>50.0;10.0;290.0;10.0;290.0;1020.0;10.0;1020.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2540</x>
+      <y>455</y>
+      <w>125</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>230.0;10.0;10.0;10.0;10.0;260.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2390</x>
+      <y>440</y>
+      <w>275</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>530.0;10.0;10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2695</x>
+      <y>985</y>
+      <w>55</w>
+      <h>285</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>90.0;10.0;90.0;450.0;10.0;450.0;10.0;550.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2155</x>
+      <y>680</y>
+      <w>15</w>
+      <h>75</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2265</x>
+      <y>535</y>
+      <w>45</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;70.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1840</x>
+      <y>730</y>
+      <w>215</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0;410.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1670</x>
+      <y>730</y>
+      <w>175</w>
+      <h>165</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>330.0;10.0;330.0;310.0;10.0;310.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1460</x>
+      <y>615</y>
+      <w>15</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;420.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1535</x>
+      <y>615</y>
+      <w>15</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1460</x>
+      <y>1170</y>
+      <w>15</w>
+      <h>95</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;170.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1470</x>
+      <y>1170</y>
+      <w>405</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0;790.0;70.0;790.0;180.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1880</x>
+      <y>1170</y>
+      <w>240</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>460.0;10.0;460.0;70.0;10.0;70.0;10.0;180.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2030</x>
+      <y>1170</y>
+      <w>120</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>220.0;10.0;220.0;100.0;10.0;100.0;10.0;180.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2165</x>
+      <y>1170</y>
+      <w>40</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0;60.0;100.0;60.0;180.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2200</x>
+      <y>1170</y>
+      <w>170</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0;320.0;100.0;320.0;180.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2855</x>
+      <y>815</y>
+      <w>15</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;200.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2845</x>
+      <y>720</y>
+      <w>225</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>SecurityConfig
+
+--
+
+-mysUserDetailsService: mysUserDetailsService
+-jwtRequestFilter: JwtRequestFilter
+
+--
+
+#configure (auth : AuthenticationManagerBuilder):
+#configure (http : HttpSecurity):
++getPasswordEncoder (): PasswordEncoder
++authenticationManagerBean (): AuthenticationManager</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2980</x>
+      <y>815</y>
+      <w>15</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2920</x>
+      <y>840</y>
+      <w>125</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>WebSecurityConfigureAdapter</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2855</x>
+      <y>670</y>
+      <w>15</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2440</x>
+      <y>780</y>
+      <w>250</w>
+      <h>490</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;480.0;10.0;480.0;960.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2300</x>
+      <y>700</y>
+      <w>145</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>UserServiceImpl
+
+--
+
+-userRepository: UserRepository
+
+--
+
++registerUser (user : User): User
++getUser (id : int):
++getUserByUserName (username: String:
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2375</x>
+      <y>560</y>
+      <w>15</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;280.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1110</x>
+      <y>400</y>
+      <w>160</w>
+      <h>135</h>
+    </coordinates>
+    <panel_attributes>User
+
+--
+
+-id: Integer
+-username: String
+-password: String
+-active: boolean
+-accountHolder: AccountHolder
+-roles: Set&lt;Role&gt;
+
+
+--
+
++User()
++User(username: String, password: String)
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1045</x>
+      <y>485</y>
+      <w>75</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;130.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>720</x>
+      <y>465</y>
+      <w>330</w>
+      <h>235</h>
+    </coordinates>
+    <panel_attributes>AccountHolder
+
+--
+
+-id: Integer
+-firstName: String
+-middleName: String
+-lastName: String
+-ssn: String
+-checkingAccountList: List&lt;CheckingAccount&gt;
+-savingsAccountsList: List&lt;SavingsAccount&gt;
+-cdAccountList: List&lt;CDAccount&gt;
+-accountHolderContactDetails: AccountHolderContactDetails
+-user: User
+-combinedBal: double
+
+--
+
++AccountHolder()
++AccountHolder(firstName: String, middleName: String, lastName: String, ssn: String)
+
++getNumberOfCheckingAccounts (): double
++getNumberOfSavingsAccounts (): double
++getNumberOfCDAccounts (): double
++getCheckingBalance (): double
++getSavingsBalance (): double
++getCDBalance (): double
++getCombinedAccountBalance (): double
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1110</x>
+      <y>560</y>
+      <w>140</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>AccountHolderContactDetails
+
+--
+
+-id: Integer
+-phoneNumber: String
+-email: String
+-address: String
+-accountHolder: AccountHolder
+
+--
+
++AccountHolderContactDetails()
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1045</x>
+      <y>605</y>
+      <w>75</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;130.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>295</x>
+      <y>510</y>
+      <w>330</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>/BankAccount/
+
+--
+
+_-nextAccountNumber: long_
+-id: Integer
+-accountNumber: long
+-balance: double
+-openedOn: LocalDateTime
+-interestRate: double
+-accountHolder: AccountHolder
+
+--
+
++BankAccount()
++BankAccount(balance: double)
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>620</x>
+      <y>570</y>
+      <w>110</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>200.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>30</x>
+      <y>790</y>
+      <w>165</w>
+      <h>95</h>
+    </coordinates>
+    <panel_attributes>/CDAccount/
+
+--
+
+-id: Integer
+-cdOffering: CDOffering
+
+--
+
++CDAccount()
++CDAccount(balance: double)
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>450</x>
+      <y>790</y>
+      <w>190</w>
+      <h>95</h>
+    </coordinates>
+    <panel_attributes>/SavingsAccount/
+
+--
+
+-id: Integer
+
+--
+
++SavingsAccount()
++SavingsAccount(balance: double)
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>20</x>
+      <y>535</y>
+      <w>160</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>CDOffering
+
+--
+
+-id: Integer
+-term: Integer
+-interestRate: double
+-cdAccountList: List&lt;CDAccount&gt;
+
+--
+
++CDOffering()
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>90</x>
+      <y>630</y>
+      <w>15</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;320.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>145</x>
+      <y>635</y>
+      <w>195</w>
+      <h>165</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>370.0;10.0;370.0;130.0;10.0;130.0;10.0;310.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>225</x>
+      <y>790</y>
+      <w>190</w>
+      <h>95</h>
+    </coordinates>
+    <panel_attributes>/CheckingAccount/
+
+--
+
+-id: Integer
+
+--
+
++CheckingAccount()
++CheckingAccount(balance: double)
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>315</x>
+      <y>635</y>
+      <w>130</w>
+      <h>165</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>240.0;10.0;240.0;190.0;10.0;190.0;10.0;310.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>535</x>
+      <y>635</y>
+      <w>15</w>
+      <h>165</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;310.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>715</x>
+      <y>750</y>
+      <w>330</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>MyUserDetails
+
+--
+
+-username: String
+-password: String
+-active: boolean
+-authorities: List&lt;GrantedAuthority&gt;
+
+--
+
++MyUserDetails()
++MyUserDetails(user: User)
+
++isAccountNonExpired (): boolean
++isAccountNonLocked (): boolean
++isCredentialsNonExpired (): boolean
++isEnabled (): boolean
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>870</x>
+      <y>895</y>
+      <w>15</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>840</x>
+      <y>940</y>
+      <w>75</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>UserDetails
+
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>1050</y>
+      <w>220</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>AccountNotFoundException
+
+--
+
++AccountNotFoundException (message : String)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>490</x>
+      <y>1095</y>
+      <w>85</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;140.0;150.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>380</x>
+      <y>1165</y>
+      <w>135</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>java.lanq.Exception</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>95</x>
+      <y>1095</y>
+      <w>295</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>570.0;140.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>230</x>
+      <y>1050</y>
+      <w>220</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>ExceedsCombinedBalanceLimitException
+
+--
+
++ExceedsCombinedBalanceLimitException (message : String)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>460</x>
+      <y>1050</y>
+      <w>220</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>InvalidArgumentException
+
+--
+
++InvalidArgumentException (message : String)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>690</x>
+      <y>1050</y>
+      <w>220</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>NegativeAmountException
+
+--
+
++NegativeAmountException (message : String)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>505</x>
+      <y>1095</y>
+      <w>300</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;140.0;580.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>335</x>
+      <y>1095</y>
+      <w>80</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>140.0;140.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>925</x>
+      <y>1050</y>
+      <w>220</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>NoResourceFoundException
+
+--
+
++NoResourceFoundException (message : String)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>510</x>
+      <y>1095</y>
+      <w>550</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;160.0;1080.0;10.0</additional_attributes>
+  </element>
+</diagram>
