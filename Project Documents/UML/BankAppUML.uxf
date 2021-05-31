@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>5</zoom_level>
+  <zoom_level>10</zoom_level>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>2415</x>
-      <y>1480</y>
-      <w>135</w>
-      <h>95</h>
+      <x>4830</x>
+      <y>2960</y>
+      <w>270</w>
+      <h>190</h>
     </coordinates>
     <panel_attributes>                        MySQL DB
 customelement=
@@ -27,10 +27,10 @@ drawArc(0,height*3/5,width,height*2/5,180,180,true) fg=black bg=#222222 //Parame
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1805</x>
-      <y>1260</y>
-      <w>145</w>
-      <h>50</h>
+      <x>3610</x>
+      <y>2520</y>
+      <w>290</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Interface&gt;&gt;
 AccountHolderRepository
@@ -43,10 +43,10 @@ AccountHolderRepository
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2005</x>
-      <y>540</y>
-      <w>265</w>
-      <h>145</h>
+      <x>4010</x>
+      <y>1080</y>
+      <w>530</w>
+      <h>290</h>
     </coordinates>
     <panel_attributes>UserController
 
@@ -73,10 +73,10 @@ AccountHolderRepository
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2465</x>
-      <y>585</y>
-      <w>230</w>
-      <h>140</h>
+      <x>4930</x>
+      <y>1170</y>
+      <w>460</w>
+      <h>280</h>
     </coordinates>
     <panel_attributes>JwtUtil
 
@@ -101,10 +101,10 @@ AccountHolderRepository
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2045</x>
-      <y>745</y>
-      <w>230</w>
-      <h>75</h>
+      <x>4090</x>
+      <y>1490</y>
+      <w>460</w>
+      <h>150</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Interface&gt;&gt;
 AccountsService
@@ -119,10 +119,10 @@ AccountsService
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2300</x>
-      <y>495</y>
-      <w>165</w>
-      <h>70</h>
+      <x>4600</x>
+      <y>990</y>
+      <w>330</w>
+      <h>140</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Interface&gt;&gt;
 UserService
@@ -136,10 +136,10 @@ UserService
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3205</x>
-      <y>395</y>
-      <w>220</w>
-      <h>90</h>
+      <x>6410</x>
+      <y>790</y>
+      <w>440</w>
+      <h>180</h>
     </coordinates>
     <panel_attributes>CDOfferingsController
 
@@ -156,10 +156,10 @@ UserService
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3240</x>
-      <y>1265</y>
-      <w>145</w>
-      <h>50</h>
+      <x>6480</x>
+      <y>2530</y>
+      <w>290</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Interface&gt;&gt;
 CDOfferingRepository
@@ -173,10 +173,10 @@ CDOfferingRepository
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1965</x>
-      <y>1260</y>
-      <w>145</w>
-      <h>50</h>
+      <x>3930</x>
+      <y>2520</y>
+      <w>290</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Interface&gt;&gt;
 CDAccountRepository
@@ -189,10 +189,10 @@ CDAccountRepository
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1395</x>
-      <y>1255</y>
-      <w>145</w>
-      <h>50</h>
+      <x>2790</x>
+      <y>2510</y>
+      <w>290</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Interface&gt;&gt;
 AccountHolderContactDetailsRepository
@@ -206,10 +206,10 @@ AccountHolderContactDetailsRepository
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2125</x>
-      <y>1260</y>
-      <w>145</w>
-      <h>50</h>
+      <x>4250</x>
+      <y>2520</y>
+      <w>290</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Interface&gt;&gt;
 CheckingAccountRepository
@@ -223,10 +223,10 @@ CheckingAccountRepository
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2605</x>
-      <y>1260</y>
-      <w>145</w>
-      <h>50</h>
+      <x>5210</x>
+      <y>2520</y>
+      <w>290</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Interface&gt;&gt;
 UserRepository
@@ -240,10 +240,10 @@ UserRepository
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2285</x>
-      <y>1260</y>
-      <w>145</w>
-      <h>50</h>
+      <x>4570</x>
+      <y>2520</y>
+      <w>290</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Interface&gt;&gt;
 SavingsAccountRepository
@@ -255,10 +255,10 @@ SavingsAccountRepository
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2655</x>
-      <y>400</y>
-      <w>320</w>
-      <h>110</h>
+      <x>5310</x>
+      <y>800</y>
+      <w>640</w>
+      <h>220</h>
     </coordinates>
     <panel_attributes>AuthController
 
@@ -280,10 +280,10 @@ SavingsAccountRepository
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>2700</x>
+      <x>5400</x>
       <y>0</y>
-      <w>30</w>
-      <h>55</h>
+      <w>60</w>
+      <h>110</h>
     </coordinates>
     <panel_attributes>Client</panel_attributes>
     <additional_attributes/>
@@ -291,10 +291,10 @@ SavingsAccountRepository
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2710</x>
-      <y>30</y>
-      <w>75</w>
-      <h>140</h>
+      <x>5420</x>
+      <y>60</y>
+      <w>150</w>
+      <h>280</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;10.0;130.0;260.0</additional_attributes>
@@ -302,10 +302,10 @@ SavingsAccountRepository
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2735</x>
-      <y>915</y>
-      <w>220</w>
-      <h>75</h>
+      <x>5470</x>
+      <y>1830</y>
+      <w>440</w>
+      <h>150</h>
     </coordinates>
     <panel_attributes>MyUserDetailsService
 
@@ -322,10 +322,10 @@ SavingsAccountRepository
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>785</x>
-      <y>1210</y>
-      <w>140</w>
-      <h>75</h>
+      <x>1570</x>
+      <y>2420</y>
+      <w>280</w>
+      <h>150</h>
     </coordinates>
     <panel_attributes>AuthenticationResponse
 
@@ -341,10 +341,10 @@ SavingsAccountRepository
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2710</x>
-      <y>585</y>
-      <w>360</w>
-      <h>90</h>
+      <x>5420</x>
+      <y>1170</y>
+      <w>720</w>
+      <h>180</h>
     </coordinates>
     <panel_attributes>JwtRequestFilter
 
@@ -362,10 +362,10 @@ SavingsAccountRepository
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2985</x>
-      <y>670</y>
-      <w>15</w>
-      <h>35</h>
+      <x>5970</x>
+      <y>1340</y>
+      <w>30</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
@@ -373,10 +373,10 @@ SavingsAccountRepository
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2925</x>
-      <y>695</y>
-      <w>125</w>
-      <h>15</h>
+      <x>5850</x>
+      <y>1390</y>
+      <w>250</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>OncePerRequestFilter</panel_attributes>
     <additional_attributes/>
@@ -384,10 +384,10 @@ SavingsAccountRepository
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2840</x>
-      <y>525</y>
-      <w>125</w>
-      <h>15</h>
+      <x>5680</x>
+      <y>1050</y>
+      <w>250</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>Logger</panel_attributes>
     <additional_attributes/>
@@ -395,10 +395,10 @@ SavingsAccountRepository
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2825</x>
-      <y>545</y>
-      <w>125</w>
-      <h>15</h>
+      <x>5650</x>
+      <y>1090</y>
+      <w>250</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>AuthenticationManager</panel_attributes>
     <additional_attributes/>
@@ -406,10 +406,10 @@ SavingsAccountRepository
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2155</x>
-      <y>815</y>
-      <w>15</w>
-      <h>195</h>
+      <x>4310</x>
+      <y>1630</y>
+      <w>30</w>
+      <h>390</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;370.0</additional_attributes>
@@ -417,10 +417,10 @@ SavingsAccountRepository
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2055</x>
-      <y>1000</y>
-      <w>225</w>
-      <h>175</h>
+      <x>4110</x>
+      <y>2000</y>
+      <w>450</w>
+      <h>350</h>
     </coordinates>
     <panel_attributes>AccountsServiceImpl
 
@@ -451,10 +451,10 @@ SavingsAccountRepository
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2830</x>
-      <y>1045</y>
-      <w>230</w>
-      <h>75</h>
+      <x>5660</x>
+      <y>2090</y>
+      <w>460</w>
+      <h>150</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Interface&gt;&gt;
 UserDetailsService
@@ -469,10 +469,10 @@ UserDetailsService
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2855</x>
-      <y>985</y>
-      <w>15</w>
-      <h>70</h>
+      <x>5710</x>
+      <y>1970</y>
+      <w>30</w>
+      <h>140</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
@@ -480,10 +480,10 @@ UserDetailsService
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1295</x>
-      <y>515</y>
-      <w>365</w>
-      <h>105</h>
+      <x>2590</x>
+      <y>1030</y>
+      <w>730</w>
+      <h>210</h>
     </coordinates>
     <panel_attributes>AccountHolderController
 
@@ -504,10 +504,10 @@ UserDetailsService
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1300</x>
-      <y>1030</y>
-      <w>325</w>
-      <h>145</h>
+      <x>2600</x>
+      <y>2060</y>
+      <w>650</w>
+      <h>290</h>
     </coordinates>
     <panel_attributes>AccountHolderServiceImpl
 
@@ -531,10 +531,10 @@ UserDetailsService
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1275</x>
-      <y>825</y>
-      <w>400</w>
-      <h>110</h>
+      <x>2550</x>
+      <y>1650</y>
+      <w>800</w>
+      <h>220</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Interface&gt;&gt;
 AccountHolderService
@@ -555,10 +555,10 @@ AccountHolderService
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1675</x>
-      <y>610</y>
-      <w>295</w>
-      <h>125</h>
+      <x>3350</x>
+      <y>1220</y>
+      <w>590</w>
+      <h>250</h>
     </coordinates>
     <panel_attributes>AccountsController
 
@@ -580,10 +580,10 @@ AccountHolderService
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1460</x>
-      <y>930</y>
-      <w>15</w>
-      <h>110</h>
+      <x>2920</x>
+      <y>1860</y>
+      <w>30</w>
+      <h>220</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;200.0</additional_attributes>
@@ -591,36 +591,21 @@ AccountHolderService
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1500</x>
-      <y>640</y>
-      <w>125</w>
-      <h>20</h>
+      <x>3000</x>
+      <y>1280</y>
+      <w>250</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>Logger</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <id>UMLNote</id>
-    <coordinates>
-      <x>1740</x>
-      <y>375</y>
-      <w>210</w>
-      <h>60</h>
-    </coordinates>
-    <panel_attributes>NOTE..
-bg=yellow
-
-Typical Getters/Setters not included
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>940</x>
-      <y>1210</y>
-      <w>255</w>
-      <h>100</h>
+      <x>1880</x>
+      <y>2420</y>
+      <w>510</w>
+      <h>200</h>
     </coordinates>
     <panel_attributes>AuthenticationRequest
 
@@ -638,10 +623,10 @@ Typical Getters/Setters not included
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3195</x>
-      <y>590</y>
-      <w>230</w>
-      <h>75</h>
+      <x>6390</x>
+      <y>1180</y>
+      <w>460</w>
+      <h>150</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Interface&gt;&gt;
 CDOfferingService
@@ -656,10 +641,10 @@ CDOfferingService
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>3305</x>
-      <y>480</y>
-      <w>15</w>
-      <h>120</h>
+      <x>6610</x>
+      <y>960</y>
+      <w>30</w>
+      <h>240</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;220.0</additional_attributes>
@@ -667,10 +652,10 @@ CDOfferingService
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3200</x>
-      <y>770</y>
-      <w>225</w>
-      <h>90</h>
+      <x>6400</x>
+      <y>1540</y>
+      <w>450</w>
+      <h>180</h>
     </coordinates>
     <panel_attributes>CDOfferingServiceImpl
 
@@ -690,10 +675,10 @@ CDOfferingService
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>3305</x>
-      <y>660</y>
-      <w>15</w>
-      <h>120</h>
+      <x>6610</x>
+      <y>1320</y>
+      <w>30</w>
+      <h>240</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;220.0</additional_attributes>
@@ -701,10 +686,10 @@ CDOfferingService
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>3305</x>
-      <y>855</y>
-      <w>15</w>
-      <h>420</h>
+      <x>6610</x>
+      <y>1710</y>
+      <w>30</w>
+      <h>840</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;820.0</additional_attributes>
@@ -712,10 +697,10 @@ CDOfferingService
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2410</x>
-      <y>845</y>
-      <w>230</w>
-      <h>120</h>
+      <x>4820</x>
+      <y>1690</y>
+      <w>460</w>
+      <h>240</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Interface&gt;&gt;
 AuthService
@@ -736,10 +721,10 @@ AuthService
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2510</x>
-      <y>960</y>
-      <w>15</w>
-      <h>310</h>
+      <x>5020</x>
+      <y>1920</y>
+      <w>30</w>
+      <h>620</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;600.0</additional_attributes>
@@ -747,10 +732,10 @@ AuthService
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1870</x>
-      <y>945</y>
-      <w>550</w>
-      <h>325</h>
+      <x>3740</x>
+      <y>1890</y>
+      <w>1100</w>
+      <h>650</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>1080.0;10.0;10.0;10.0;10.0;630.0</additional_attributes>
@@ -758,10 +743,10 @@ AuthService
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2520</x>
-      <y>960</y>
-      <w>155</w>
-      <h>310</h>
+      <x>5040</x>
+      <y>1920</y>
+      <w>310</w>
+      <h>620</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;500.0;290.0;500.0;290.0;600.0</additional_attributes>
@@ -769,10 +754,10 @@ AuthService
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2445</x>
-      <y>1260</y>
-      <w>145</w>
-      <h>50</h>
+      <x>4890</x>
+      <y>2520</y>
+      <w>290</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Interface&gt;&gt;
 RoleRepository
@@ -786,10 +771,10 @@ RoleRepository
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2725</x>
-      <y>160</y>
-      <w>105</w>
-      <h>65</h>
+      <x>5450</x>
+      <y>320</y>
+      <w>210</w>
+      <h>130</h>
     </coordinates>
     <panel_attributes>&lt;&lt;utility&gt;&gt;
 BankAppApplication
@@ -804,10 +789,10 @@ _+main(args : String[]) : void_</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1895</x>
-      <y>1430</y>
-      <w>1180</w>
-      <h>30</h>
+      <x>3790</x>
+      <y>2860</y>
+      <w>2360</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>
 JPARepository&lt;&gt;</panel_attributes>
@@ -816,10 +801,10 @@ JPARepository&lt;&gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2475</x>
-      <y>1455</y>
-      <w>15</w>
-      <h>35</h>
+      <x>4950</x>
+      <y>2910</y>
+      <w>30</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
@@ -827,10 +812,10 @@ JPARepository&lt;&gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2475</x>
-      <y>1365</y>
-      <w>15</w>
-      <h>75</h>
+      <x>4950</x>
+      <y>2730</y>
+      <w>30</w>
+      <h>150</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
@@ -838,10 +823,10 @@ JPARepository&lt;&gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1460</x>
-      <y>1360</y>
-      <w>1865</w>
-      <h>20</h>
+      <x>2920</x>
+      <y>2720</y>
+      <w>3730</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;20.0;3710.0;20.0</additional_attributes>
@@ -849,10 +834,10 @@ JPARepository&lt;&gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>3310</x>
-      <y>1310</y>
-      <w>15</w>
-      <h>70</h>
+      <x>6620</x>
+      <y>2620</y>
+      <w>30</w>
+      <h>140</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
@@ -860,10 +845,10 @@ JPARepository&lt;&gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1460</x>
-      <y>1300</y>
-      <w>15</w>
-      <h>80</h>
+      <x>2920</x>
+      <y>2600</y>
+      <w>30</w>
+      <h>160</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;10.0;10.0;140.0</additional_attributes>
@@ -871,10 +856,10 @@ JPARepository&lt;&gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1870</x>
-      <y>1305</y>
-      <w>15</w>
-      <h>75</h>
+      <x>3740</x>
+      <y>2610</y>
+      <w>30</w>
+      <h>150</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
@@ -882,10 +867,10 @@ JPARepository&lt;&gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2190</x>
-      <y>1305</y>
-      <w>15</w>
-      <h>75</h>
+      <x>4380</x>
+      <y>2610</y>
+      <w>30</w>
+      <h>150</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
@@ -893,10 +878,10 @@ JPARepository&lt;&gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2355</x>
-      <y>1305</y>
-      <w>15</w>
-      <h>75</h>
+      <x>4710</x>
+      <y>2610</y>
+      <w>30</w>
+      <h>150</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
@@ -904,10 +889,10 @@ JPARepository&lt;&gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2030</x>
-      <y>1305</y>
-      <w>15</w>
-      <h>75</h>
+      <x>4060</x>
+      <y>2610</y>
+      <w>30</w>
+      <h>150</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
@@ -915,10 +900,10 @@ JPARepository&lt;&gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2510</x>
-      <y>1305</y>
-      <w>15</w>
-      <h>75</h>
+      <x>5020</x>
+      <y>2610</y>
+      <w>30</w>
+      <h>150</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
@@ -926,10 +911,10 @@ JPARepository&lt;&gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2670</x>
-      <y>1305</y>
-      <w>15</w>
-      <h>75</h>
+      <x>5340</x>
+      <y>2610</y>
+      <w>30</w>
+      <h>150</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
@@ -937,10 +922,10 @@ JPARepository&lt;&gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2820</x>
-      <y>670</y>
-      <w>15</w>
-      <h>255</h>
+      <x>5640</x>
+      <y>1340</y>
+      <w>30</w>
+      <h>510</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;490.0</additional_attributes>
@@ -948,10 +933,10 @@ JPARepository&lt;&gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2825</x>
-      <y>505</y>
-      <w>15</w>
-      <h>50</h>
+      <x>5650</x>
+      <y>1010</y>
+      <w>30</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
@@ -959,10 +944,10 @@ JPARepository&lt;&gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2850</x>
-      <y>505</y>
-      <w>15</w>
-      <h>30</h>
+      <x>5700</x>
+      <y>1010</y>
+      <w>30</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
@@ -970,10 +955,10 @@ JPARepository&lt;&gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2950</x>
-      <y>450</y>
-      <w>155</w>
-      <h>520</h>
+      <x>5900</x>
+      <y>900</y>
+      <w>310</w>
+      <h>1040</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>50.0;10.0;290.0;10.0;290.0;1020.0;10.0;1020.0</additional_attributes>
@@ -981,10 +966,10 @@ JPARepository&lt;&gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2540</x>
-      <y>455</y>
-      <w>125</w>
-      <h>140</h>
+      <x>5080</x>
+      <y>910</y>
+      <w>250</w>
+      <h>280</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>230.0;10.0;10.0;10.0;10.0;260.0</additional_attributes>
@@ -992,10 +977,10 @@ JPARepository&lt;&gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2390</x>
-      <y>440</y>
-      <w>275</w>
-      <h>65</h>
+      <x>4780</x>
+      <y>880</y>
+      <w>550</w>
+      <h>130</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>530.0;10.0;10.0;10.0;10.0;110.0</additional_attributes>
@@ -1003,10 +988,10 @@ JPARepository&lt;&gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2695</x>
-      <y>985</y>
-      <w>55</w>
-      <h>285</h>
+      <x>5390</x>
+      <y>1970</y>
+      <w>110</w>
+      <h>570</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>90.0;10.0;90.0;450.0;10.0;450.0;10.0;550.0</additional_attributes>
@@ -1014,10 +999,10 @@ JPARepository&lt;&gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2155</x>
-      <y>680</y>
-      <w>15</w>
-      <h>75</h>
+      <x>4310</x>
+      <y>1360</y>
+      <w>30</w>
+      <h>150</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
@@ -1025,10 +1010,10 @@ JPARepository&lt;&gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2265</x>
-      <y>535</y>
-      <w>45</w>
-      <h>15</h>
+      <x>4530</x>
+      <y>1070</y>
+      <w>90</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;70.0;10.0</additional_attributes>
@@ -1036,10 +1021,10 @@ JPARepository&lt;&gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1840</x>
-      <y>730</y>
-      <w>215</w>
-      <h>65</h>
+      <x>3680</x>
+      <y>1460</y>
+      <w>430</w>
+      <h>130</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;110.0;410.0;110.0</additional_attributes>
@@ -1047,10 +1032,10 @@ JPARepository&lt;&gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1670</x>
-      <y>730</y>
-      <w>175</w>
-      <h>165</h>
+      <x>3340</x>
+      <y>1460</y>
+      <w>350</w>
+      <h>330</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>330.0;10.0;330.0;310.0;10.0;310.0</additional_attributes>
@@ -1058,10 +1043,10 @@ JPARepository&lt;&gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1460</x>
-      <y>615</y>
-      <w>15</w>
-      <h>220</h>
+      <x>2920</x>
+      <y>1230</y>
+      <w>30</w>
+      <h>440</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;420.0</additional_attributes>
@@ -1069,10 +1054,10 @@ JPARepository&lt;&gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1535</x>
-      <y>615</y>
-      <w>15</w>
-      <h>35</h>
+      <x>3070</x>
+      <y>1230</y>
+      <w>30</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
@@ -1080,10 +1065,10 @@ JPARepository&lt;&gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1460</x>
-      <y>1170</y>
-      <w>15</w>
-      <h>95</h>
+      <x>2920</x>
+      <y>2340</y>
+      <w>30</w>
+      <h>190</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;170.0</additional_attributes>
@@ -1091,10 +1076,10 @@ JPARepository&lt;&gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1470</x>
-      <y>1170</y>
-      <w>405</w>
-      <h>100</h>
+      <x>2940</x>
+      <y>2340</y>
+      <w>810</w>
+      <h>200</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;70.0;790.0;70.0;790.0;180.0</additional_attributes>
@@ -1102,10 +1087,10 @@ JPARepository&lt;&gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1880</x>
-      <y>1170</y>
-      <w>240</w>
-      <h>100</h>
+      <x>3760</x>
+      <y>2340</y>
+      <w>480</w>
+      <h>200</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>460.0;10.0;460.0;70.0;10.0;70.0;10.0;180.0</additional_attributes>
@@ -1113,10 +1098,10 @@ JPARepository&lt;&gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2030</x>
-      <y>1170</y>
-      <w>120</w>
-      <h>100</h>
+      <x>4060</x>
+      <y>2340</y>
+      <w>240</w>
+      <h>200</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>220.0;10.0;220.0;100.0;10.0;100.0;10.0;180.0</additional_attributes>
@@ -1124,10 +1109,10 @@ JPARepository&lt;&gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2165</x>
-      <y>1170</y>
-      <w>40</w>
-      <h>100</h>
+      <x>4330</x>
+      <y>2340</y>
+      <w>80</w>
+      <h>200</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;100.0;60.0;100.0;60.0;180.0</additional_attributes>
@@ -1135,10 +1120,10 @@ JPARepository&lt;&gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2200</x>
-      <y>1170</y>
-      <w>170</w>
-      <h>100</h>
+      <x>4400</x>
+      <y>2340</y>
+      <w>340</w>
+      <h>200</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;100.0;320.0;100.0;320.0;180.0</additional_attributes>
@@ -1146,10 +1131,10 @@ JPARepository&lt;&gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2855</x>
-      <y>815</y>
-      <w>15</w>
-      <h>110</h>
+      <x>5710</x>
+      <y>1630</y>
+      <w>30</w>
+      <h>220</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;200.0</additional_attributes>
@@ -1157,10 +1142,10 @@ JPARepository&lt;&gt;</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2845</x>
-      <y>720</y>
-      <w>225</w>
-      <h>100</h>
+      <x>5690</x>
+      <y>1440</y>
+      <w>450</w>
+      <h>200</h>
     </coordinates>
     <panel_attributes>SecurityConfig
 
@@ -1180,10 +1165,10 @@ JPARepository&lt;&gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2980</x>
-      <y>815</y>
-      <w>15</w>
-      <h>35</h>
+      <x>5960</x>
+      <y>1630</y>
+      <w>30</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
@@ -1191,10 +1176,10 @@ JPARepository&lt;&gt;</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2920</x>
-      <y>840</y>
-      <w>125</w>
-      <h>15</h>
+      <x>5840</x>
+      <y>1680</y>
+      <w>250</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>WebSecurityConfigureAdapter</panel_attributes>
     <additional_attributes/>
@@ -1202,10 +1187,10 @@ JPARepository&lt;&gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2855</x>
-      <y>670</y>
-      <w>15</w>
-      <h>60</h>
+      <x>5710</x>
+      <y>1340</y>
+      <w>30</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
@@ -1213,10 +1198,10 @@ JPARepository&lt;&gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2440</x>
-      <y>780</y>
-      <w>250</w>
-      <h>490</h>
+      <x>4880</x>
+      <y>1560</y>
+      <w>500</w>
+      <h>980</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;480.0;10.0;480.0;960.0</additional_attributes>
@@ -1224,10 +1209,10 @@ JPARepository&lt;&gt;</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2300</x>
-      <y>700</y>
-      <w>145</w>
-      <h>110</h>
+      <x>4600</x>
+      <y>1400</y>
+      <w>290</w>
+      <h>220</h>
     </coordinates>
     <panel_attributes>UserServiceImpl
 
@@ -1247,10 +1232,10 @@ JPARepository&lt;&gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2375</x>
-      <y>560</y>
-      <w>15</w>
-      <h>150</h>
+      <x>4750</x>
+      <y>1120</y>
+      <w>30</w>
+      <h>300</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;280.0</additional_attributes>
@@ -1258,10 +1243,10 @@ JPARepository&lt;&gt;</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1110</x>
-      <y>400</y>
-      <w>160</w>
-      <h>135</h>
+      <x>2220</x>
+      <y>800</y>
+      <w>320</w>
+      <h>270</h>
     </coordinates>
     <panel_attributes>User
 
@@ -1287,10 +1272,10 @@ JPARepository&lt;&gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1045</x>
-      <y>485</y>
-      <w>75</w>
-      <h>15</h>
+      <x>2090</x>
+      <y>970</y>
+      <w>150</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;130.0;10.0</additional_attributes>
@@ -1298,10 +1283,10 @@ JPARepository&lt;&gt;</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>720</x>
-      <y>465</y>
-      <w>330</w>
-      <h>235</h>
+      <x>1440</x>
+      <y>930</y>
+      <w>660</w>
+      <h>470</h>
     </coordinates>
     <panel_attributes>AccountHolder
 
@@ -1339,10 +1324,10 @@ JPARepository&lt;&gt;</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1110</x>
-      <y>560</y>
-      <w>140</w>
-      <h>105</h>
+      <x>2220</x>
+      <y>1120</y>
+      <w>280</w>
+      <h>210</h>
     </coordinates>
     <panel_attributes>AccountHolderContactDetails
 
@@ -1365,10 +1350,10 @@ JPARepository&lt;&gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1045</x>
-      <y>605</y>
-      <w>75</w>
-      <h>15</h>
+      <x>2090</x>
+      <y>1210</y>
+      <w>150</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;130.0;10.0</additional_attributes>
@@ -1376,10 +1361,10 @@ JPARepository&lt;&gt;</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>295</x>
-      <y>510</y>
-      <w>330</w>
-      <h>130</h>
+      <x>590</x>
+      <y>1020</y>
+      <w>660</w>
+      <h>260</h>
     </coordinates>
     <panel_attributes>/BankAccount/
 
@@ -1406,10 +1391,10 @@ _-nextAccountNumber: long_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>620</x>
-      <y>570</y>
-      <w>110</w>
-      <h>15</h>
+      <x>1240</x>
+      <y>1140</y>
+      <w>220</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>200.0;10.0;10.0;10.0</additional_attributes>
@@ -1417,10 +1402,10 @@ _-nextAccountNumber: long_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>30</x>
-      <y>790</y>
-      <w>165</w>
-      <h>95</h>
+      <x>60</x>
+      <y>1580</y>
+      <w>330</w>
+      <h>190</h>
     </coordinates>
     <panel_attributes>/CDAccount/
 
@@ -1442,10 +1427,10 @@ _-nextAccountNumber: long_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>450</x>
-      <y>790</y>
-      <w>190</w>
-      <h>95</h>
+      <x>900</x>
+      <y>1580</y>
+      <w>380</w>
+      <h>190</h>
     </coordinates>
     <panel_attributes>/SavingsAccount/
 
@@ -1466,10 +1451,10 @@ _-nextAccountNumber: long_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>20</x>
-      <y>535</y>
-      <w>160</w>
-      <h>100</h>
+      <x>40</x>
+      <y>1070</y>
+      <w>320</w>
+      <h>200</h>
     </coordinates>
     <panel_attributes>CDOffering
 
@@ -1491,10 +1476,10 @@ _-nextAccountNumber: long_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>90</x>
-      <y>630</y>
-      <w>15</w>
-      <h>170</h>
+      <x>180</x>
+      <y>1260</y>
+      <w>30</w>
+      <h>340</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;320.0;10.0;10.0</additional_attributes>
@@ -1502,10 +1487,10 @@ _-nextAccountNumber: long_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>145</x>
-      <y>635</y>
-      <w>195</w>
-      <h>165</h>
+      <x>290</x>
+      <y>1270</y>
+      <w>390</w>
+      <h>330</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>370.0;10.0;370.0;130.0;10.0;130.0;10.0;310.0</additional_attributes>
@@ -1513,10 +1498,10 @@ _-nextAccountNumber: long_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>225</x>
-      <y>790</y>
-      <w>190</w>
-      <h>95</h>
+      <x>450</x>
+      <y>1580</y>
+      <w>380</w>
+      <h>190</h>
     </coordinates>
     <panel_attributes>/CheckingAccount/
 
@@ -1537,10 +1522,10 @@ _-nextAccountNumber: long_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>315</x>
-      <y>635</y>
-      <w>130</w>
-      <h>165</h>
+      <x>630</x>
+      <y>1270</y>
+      <w>260</w>
+      <h>330</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>240.0;10.0;240.0;190.0;10.0;190.0;10.0;310.0</additional_attributes>
@@ -1548,10 +1533,10 @@ _-nextAccountNumber: long_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>535</x>
-      <y>635</y>
-      <w>15</w>
-      <h>165</h>
+      <x>1070</x>
+      <y>1270</y>
+      <w>30</w>
+      <h>330</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;310.0</additional_attributes>
@@ -1559,10 +1544,10 @@ _-nextAccountNumber: long_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>715</x>
-      <y>750</y>
-      <w>330</w>
-      <h>150</h>
+      <x>1430</x>
+      <y>1500</y>
+      <w>660</w>
+      <h>300</h>
     </coordinates>
     <panel_attributes>MyUserDetails
 
@@ -1590,10 +1575,10 @@ _-nextAccountNumber: long_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>870</x>
-      <y>895</y>
-      <w>15</w>
-      <h>55</h>
+      <x>1740</x>
+      <y>1790</y>
+      <w>30</w>
+      <h>110</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
@@ -1601,10 +1586,10 @@ _-nextAccountNumber: long_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>840</x>
-      <y>940</y>
-      <w>75</w>
-      <h>40</h>
+      <x>1680</x>
+      <y>1880</y>
+      <w>150</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>UserDetails
 
@@ -1615,9 +1600,9 @@ _-nextAccountNumber: long_
     <id>UMLClass</id>
     <coordinates>
       <x>0</x>
-      <y>1050</y>
-      <w>220</w>
-      <h>50</h>
+      <y>2100</y>
+      <w>440</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>AccountNotFoundException
 
@@ -1629,10 +1614,10 @@ _-nextAccountNumber: long_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>490</x>
-      <y>1095</y>
-      <w>85</w>
-      <h>80</h>
+      <x>980</x>
+      <y>2190</y>
+      <w>170</w>
+      <h>160</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;140.0;150.0;10.0</additional_attributes>
@@ -1640,10 +1625,10 @@ _-nextAccountNumber: long_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>380</x>
-      <y>1165</y>
-      <w>135</w>
-      <h>15</h>
+      <x>760</x>
+      <y>2330</y>
+      <w>270</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>java.lanq.Exception</panel_attributes>
     <additional_attributes/>
@@ -1651,10 +1636,10 @@ _-nextAccountNumber: long_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>95</x>
-      <y>1095</y>
-      <w>295</w>
-      <h>80</h>
+      <x>190</x>
+      <y>2190</y>
+      <w>590</w>
+      <h>160</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>570.0;140.0;10.0;10.0</additional_attributes>
@@ -1662,10 +1647,10 @@ _-nextAccountNumber: long_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>230</x>
-      <y>1050</y>
-      <w>220</w>
-      <h>50</h>
+      <x>460</x>
+      <y>2100</y>
+      <w>440</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>ExceedsCombinedBalanceLimitException
 
@@ -1677,10 +1662,10 @@ _-nextAccountNumber: long_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>460</x>
-      <y>1050</y>
-      <w>220</w>
-      <h>50</h>
+      <x>920</x>
+      <y>2100</y>
+      <w>440</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>InvalidArgumentException
 
@@ -1692,10 +1677,10 @@ _-nextAccountNumber: long_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>690</x>
-      <y>1050</y>
-      <w>220</w>
-      <h>50</h>
+      <x>1380</x>
+      <y>2100</y>
+      <w>440</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>NegativeAmountException
 
@@ -1707,10 +1692,10 @@ _-nextAccountNumber: long_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>505</x>
-      <y>1095</y>
-      <w>300</w>
-      <h>80</h>
+      <x>1010</x>
+      <y>2190</y>
+      <w>600</w>
+      <h>160</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;140.0;580.0;10.0</additional_attributes>
@@ -1718,10 +1703,10 @@ _-nextAccountNumber: long_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>335</x>
-      <y>1095</y>
-      <w>80</w>
-      <h>80</h>
+      <x>670</x>
+      <y>2190</y>
+      <w>160</w>
+      <h>160</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>140.0;140.0;10.0;10.0</additional_attributes>
@@ -1729,10 +1714,10 @@ _-nextAccountNumber: long_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>925</x>
-      <y>1050</y>
-      <w>220</w>
-      <h>50</h>
+      <x>1850</x>
+      <y>2100</y>
+      <w>440</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>NoResourceFoundException
 
@@ -1744,12 +1729,28 @@ _-nextAccountNumber: long_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>510</x>
-      <y>1095</y>
-      <w>550</w>
-      <h>90</h>
+      <x>1020</x>
+      <y>2190</y>
+      <w>1100</w>
+      <h>180</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;160.0;1080.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>3500</x>
+      <y>770</y>
+      <w>420</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>NOTE..
+bg=yellow
+
+Typical Getters/Setters not included due to Lombok library
+being involved. Will be noted in HLA diagram
+</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>
