@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
-import { Alert, Button, Form } from 'react-bootstrap'
+import { Button, Form } from 'react-bootstrap'
+import { useHistory } from 'react-router-dom'
+
 // import PropTypes from 'prop-types'
 // import { REST_API, API_PORT, SIGN_IN } from '../types'
 
@@ -16,6 +18,9 @@ async function signinUser(credentials) {
     .then(data => data.json())
 }
 
+const logout = () => {
+    localStorage.clear();
+}
 
 export default function Signin({ setToken }) {
 
@@ -26,6 +31,7 @@ export default function Signin({ setToken }) {
     
       e.preventDefault();
      
+      
       const token = await signinUser({
         usernameOrEmail,
         password
@@ -54,6 +60,10 @@ export default function Signin({ setToken }) {
                 
                 <Button id="sign-in-button" variant="info" type="submit">
                     Submit
+                </Button>{' '}
+
+                <Button id="log-out-button" variant="info" type="reset" onClick={logout}>
+                    Logout
                 </Button>
 
             </Form>

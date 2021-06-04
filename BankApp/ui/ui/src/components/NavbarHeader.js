@@ -13,8 +13,8 @@ const NavbarHeader = () => {
 
                     <Nav className="justify-content-center" display="flex">
                         <Nav.Link href="/preferences">Preferences</Nav.Link>
-                        <Nav.Link href="/link2">Link 2</Nav.Link>
-                        <Nav.Link href="link3">Link 3</Nav.Link>
+                        <Nav.Link href="/accounts">Accounts</Nav.Link>
+                        <Nav.Link href="/aboutus">About Us</Nav.Link>
                     </Nav>
 
                         <Dropdown>
