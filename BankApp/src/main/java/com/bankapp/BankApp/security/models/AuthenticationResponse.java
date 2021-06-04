@@ -7,5 +7,5 @@ import lombok.NoArgsConstructor;
 @Data
 public class AuthenticationResponse {
 
-   private final String JWT;
+   private final String jwt;
 }

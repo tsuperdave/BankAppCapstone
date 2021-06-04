@@ -18,19 +18,19 @@ public class AccountHolder {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "account_holder_id")
-    private Integer id;
+    Integer id;
 
     @NotBlank(message = "First Name cannot be blank")
     @NotNull(message = "First name cannot be blank")
-    private String firstName;
-    private String middleName;
+    String firstName;
+    String middleName;
     @NotBlank(message = "First Name cannot be blank")
     @NotNull(message = "First name cannot be blank")
-    private String lastName;
+    String lastName;
     @NotBlank(message = "First Name cannot be blank")
     @NotNull(message = "First name cannot be blank")
     @Length(min = 9, max = 9)
-    private String ssn;
+    String ssn;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "accountHolder")
     private List<CheckingAccount> checkingAccountList = new ArrayList<>();

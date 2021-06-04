@@ -11,7 +11,7 @@ import java.util.List;
 public class CDOfferingServiceImpl implements CDOfferingsService {
 
     @Autowired
-    private CDOfferingRepository cdOfferingRepository;
+    CDOfferingRepository cdOfferingRepository;
 
     @Override
     public CDOffering addCDOffering(CDOffering cdOffering) {

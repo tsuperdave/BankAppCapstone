@@ -24,13 +24,13 @@ import javax.servlet.http.HttpServletResponse;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private MyUserDetailsService myUserDetailsService;
+    public MyUserDetailsService mysUserDetailsService;
     @Autowired
-    private JwtRequestFilter jwtRequestFilter;
+    JwtRequestFilter jwtRequestFilter;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(myUserDetailsService);
+        auth.userDetailsService(mysUserDetailsService);
     }
 
     /**
@@ -45,10 +45,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.csrf().disable();
         http.authorizeRequests()
-                .antMatchers("/api/**").permitAll()
-//                .antMatchers("/api/auth/**").permitAll()
+//                .antMatchers("/api/auth/registerUser").hasRole("admin")
+                .antMatchers("/api/auth/**").permitAll()
                 .antMatchers("/api/Me/**").hasRole("AccountHolder")
-                .antMatchers("/api/auth/registerUser").hasRole("admin")
+                .antMatchers("/api/**").hasAnyRole("user", "admin")
+                .antMatchers("/**", "/").permitAll()
                 .anyRequest().authenticated().and()
                 .exceptionHandling().and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);

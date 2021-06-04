@@ -6,7 +6,8 @@ import javax.persistence.*;
 import java.util.*;
 
 @Data
-@Entity
+@Entity(name = "CDOffering")
+@Table(name = "CheckingAccount")
 public class CDOffering {
 
     @Id
@@ -14,8 +15,8 @@ public class CDOffering {
     @Column(name = "offering_id")
     private Integer id;
 
-    private Integer term;
-    private double interestRate;
+    Integer term;
+    double interestRate;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cdOffering")
     private List<CDAccount> cdAccountList;

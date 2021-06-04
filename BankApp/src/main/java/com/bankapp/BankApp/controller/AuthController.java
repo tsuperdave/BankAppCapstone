@@ -1,10 +1,10 @@
 package com.bankapp.BankApp.controller;
 
-import com.bankapp.BankApp.models.*;
 import com.bankapp.BankApp.security.models.AuthenticationRequest;
 import com.bankapp.BankApp.security.models.AuthenticationResponse;
+import com.bankapp.BankApp.security.models.RegisterRequest;
+import com.bankapp.BankApp.services.AuthService;
 import com.bankapp.BankApp.services.MyUserDetailsService;
-import com.bankapp.BankApp.services.UserService;
 import com.bankapp.BankApp.security.util.JwtUtil;
 
 import lombok.extern.slf4j.Slf4j;
@@ -25,34 +25,44 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
 
     @Autowired
-    private UserService userService;
-    @Autowired
     private AuthenticationManager authenticationManager;
     @Autowired
     private MyUserDetailsService myUserDetailsService;
     @Autowired
     private JwtUtil jwtTokenUtil;
+    @Autowired
+    AuthService authService;
 
     @PostMapping(value = "/signin")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
+        System.out.println("Reached");
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-                    authenticationRequest.getUsername(), authenticationRequest.getPassword()));
-        } catch(BadCredentialsException bce) {
+                    authenticationRequest.getUsernameOrEmail(), authenticationRequest.getPassword()));
+        } catch (BadCredentialsException bce) {
             throw new Exception("Incorrect username or password", bce);
         }
-        final UserDetails userDetails = myUserDetailsService.loadUserByUsername(authenticationRequest.getUsername());
+
+        final UserDetails userDetails = myUserDetailsService.loadUserByUsername(authenticationRequest.getUsernameOrEmail());
+
         final String jwt = jwtTokenUtil.generateToken(userDetails);
+
         return ResponseEntity.ok(new AuthenticationResponse(jwt));
     }
+
+//    @PostMapping(value = "/registerUser")
+//    @ResponseStatus(HttpStatus.CREATED)
+//    @PreAuthorize("hasAuthority('admin')")
+//    public User registerUser(@RequestBody User user) {
+//        return userService.registerUser(user);
+//    }
 
     @PostMapping(value = "/registerUser")
     @ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("hasAuthority('admin')")
-    public User registerUser(@RequestBody User user) {
-        return userService.registerUser(user);
+    public ResponseEntity<?> registerUser(@RequestBody RegisterRequest registerRequest) {
+        return authService.registerUser(registerRequest);
     }
-
 
 }

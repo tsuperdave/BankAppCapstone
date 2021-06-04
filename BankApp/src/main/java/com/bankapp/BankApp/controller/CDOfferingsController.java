@@ -14,7 +14,7 @@ import java.util.List;
 public class CDOfferingsController {
 
     @Autowired
-    private CDOfferingsService cdOfferingsService;
+    CDOfferingsService cdOfferingsService;
 
     @PostMapping(value = "/")
     @ResponseStatus(HttpStatus.CREATED)

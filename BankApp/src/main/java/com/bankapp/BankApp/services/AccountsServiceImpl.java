@@ -25,13 +25,13 @@ public class AccountsServiceImpl implements AccountsService {
     private static final double BANK_ACCOUNT_BALANCE_LIMIT = 25000;
 
     @Autowired
-    private AccountHolderRepository accountHolderRepository;
+    AccountHolderRepository accountHolderRepository;
     @Autowired
-    private CheckingAccountRepository checkingAccountRepository;
+    CheckingAccountRepository checkingAccountRepository;
     @Autowired
-    private SavingsAccountRepository savingsAccountRepository;
+    SavingsAccountRepository savingsAccountRepository;
     @Autowired
-    private CDAccountRepository cdAccountRepository;
+    CDAccountRepository cdAccountRepository;
 
     @Override
     public CheckingAccount addCheckingAccount(int id, CheckingAccount checkingAccount) throws AccountNotFoundException, ExceedsCombinedBalanceLimitException {

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/me")
+@RequestMapping("/api/Me")
 public class UserController {
 
     @Autowired
@@ -22,6 +22,13 @@ public class UserController {
     private JwtUtil jwtUtil;
     @Autowired
     private AccountsService accountsService;
+
+    @PostMapping(value = "/registerUser")
+    @ResponseStatus(HttpStatus.CREATED)
+    @PreAuthorize("hasAuthority('admin')")
+    public User registerUser(@RequestBody User user) {
+        return userService.registerUser(user);
+    }
 
     @GetMapping("/")
     @PreAuthorize("hasAuthority('AccountHolder')")
