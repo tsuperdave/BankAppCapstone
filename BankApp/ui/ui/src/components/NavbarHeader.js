@@ -3,6 +3,10 @@ import bank_logo from '../resources/bank_logo.png'
 import { Navbar, Nav } from 'react-bootstrap'
 import { Dropdown  } from 'react-bootstrap'
 
+const logout = () => {
+    localStorage.clear();
+}
+
 const NavbarHeader = () => {
     return (
         <>
@@ -22,9 +26,9 @@ const NavbarHeader = () => {
                                 More Deets
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
-                                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                                <Dropdown.Item href="/preferences">Preferences</Dropdown.Item>
+                                <Dropdown.Item href="/accounts">Accounts</Dropdown.Item>
+                                <Dropdown.Item href="/" onClick={logout}>Log Out</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>  
                                

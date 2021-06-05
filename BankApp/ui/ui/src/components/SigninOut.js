@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
-import { Button, Form } from 'react-bootstrap'
+import { Button, Form, Jumbotron } from 'react-bootstrap'
 import { useHistory } from 'react-router-dom'
+import { REST_API, API_PORT } from '../constants/actionTypes'
+
 
 // import PropTypes from 'prop-types'
 // import { REST_API, API_PORT, SIGN_IN } from '../types'
@@ -22,16 +24,14 @@ const logout = () => {
     localStorage.clear();
 }
 
-export default function Signin({ setToken }) {
+export default function SigninOut({ setToken }) {
 
     const [usernameOrEmail, setUsername] = useState('');
     const [password, setPassword] = useState(''); 
   
     const handleSubmit = async e => {
-    
       e.preventDefault();
-     
-      
+
       const token = await signinUser({
         usernameOrEmail,
         password
@@ -64,9 +64,10 @@ export default function Signin({ setToken }) {
 
                 <Button id="log-out-button" variant="info" type="reset" onClick={logout}>
                     Logout
-                </Button>
+                </Button>        
 
             </Form>
+            
         </>
     )
 }
