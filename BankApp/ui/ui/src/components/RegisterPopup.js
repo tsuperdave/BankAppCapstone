@@ -40,7 +40,7 @@ export default function RegisterPopup(props) {
             <Modal
                 {...props}
                 size="lg"
-                aria-labelledby="contained-modal-title-vcenter"
+                aria-labeledby="contained-modal-title-vcenter"
                 centered
                 >
                 <Modal.Header>

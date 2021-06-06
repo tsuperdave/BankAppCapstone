@@ -16,20 +16,20 @@ export default function useToken() {
   };
 
   
-  const decodeRole = () => {
-    const tokenString = localStorage.getItem('jwt');
-    const userRole = JSON.parse(tokenString);
-    const decode = jwt_decode(tokenString)
-    return decode['sub'];
-  }
+  // const decodeRole = () => {
+  //   const tokenString = localStorage.getItem('jwt');
+  //   const userRole = JSON.parse(tokenString);
+  //   const decode = jwt_decode(tokenString)
+  //   return decode['sub'];
+  // }
 
-  decodeRole();
+  // decodeRole();
   
-  const saveRole = () => {
-    localStorage.setItem('role', JSON.stringify(decodeRole()))
-  }
+  // const saveRole = () => {
+  //   localStorage.setItem('role', JSON.stringify(decodeRole()))
+  // }
 
-  saveRole();
+  // saveRole();
 
   return {
     setToken: saveToken,
