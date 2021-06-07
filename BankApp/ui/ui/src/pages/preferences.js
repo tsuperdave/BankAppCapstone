@@ -2,6 +2,8 @@ import React from "react";
 import NavbarMain from "./../components/NavbarMain";
 import FeaturesSection from "./../components/FeaturesSection";
 import Footer from "./../components/Footer";
+import bank_logo from '../resources/bank_logo.png';
+import MA_logo from '../resources/MA_logo.png';
 
 function PreferencesPage(props) {
   return (
@@ -10,7 +12,7 @@ function PreferencesPage(props) {
         bg="light"
         variant="light"
         expand="md"
-        logo="https://uploads.divjoy.com/logo.svg"
+        logo={bank_logo}
       />
       <FeaturesSection
         bg="white"
@@ -29,7 +31,7 @@ function PreferencesPage(props) {
         bgImageOpacity={1}
         description="A short description of what you do here"
         copyright="© 2021 Company"
-        logo="https://uploads.divjoy.com/logo.svg"
+        logo={MA_logo}
       />
     </>
   );

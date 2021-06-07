@@ -7,6 +7,7 @@ import React, {
 } from "react";
 import { history } from "./router";
 import PageLoader from "./components/PageLoader";
+import { Redirect } from "react-router";
 
 const authContext = createContext();
 
@@ -26,6 +27,14 @@ export const useAuth = () => {
 function useAuthProvider() {
   // Store token object
   const [token, setToken] = useState(null);
+  const [user, setUser] = useState(null);
+
+  // Handle response from authentication functions
+  const handleAuth = async (user) => {
+    // Update user in state
+    setUser(user)
+    return user;
+  }
 
   const useToken = () => {
     const getToken = () => {
@@ -56,7 +65,7 @@ function useAuthProvider() {
   }
 
   // fetch token
-  async function signin(credentials) {
+  const signin = (usernameOrEmail, password ) => {
     console.log("SIGN IN");
     return fetch("http://localhost:8080/api/auth/signin", {
       method: "POST",
@@ -64,11 +73,13 @@ function useAuthProvider() {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(credentials),
-    }).then((data) => data.json());
+      body: JSON.stringify({ usernameOrEmail, password }),
+    }).then((data) => data.json())
+    .then((res) => handleAuth(res.user));
   }
 
   const signout = () => {
+    // <Redirect exact path="/home">
     return localStorage.clear();
   };
 }

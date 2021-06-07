@@ -6,23 +6,30 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Avatar from "./Avatar";
+import "./TeamSection.scss";
+import bank_logo from '../resources/bank_logo.png'
+import AspectRatio from "./AspectRatio";
+import Image from "react-bootstrap/esm/Image";
 
 function TeamSection(props) {
   const items = [
     {
-      avatar: "",
+      headerImage: {bank_logo},
+      img: {bank_logo},
       name: "Daved T",
       role: "Software Engineer Team Lead",
       bio: "Dream big, dare to fail.",
     },
     {
-      avatar: "",
-      name: "Ashwin S",
+      headerImage: {bank_logo},
+      img: {bank_logo},
+      name: "Ashwin N",
       role: "Software Engineer",
       bio: "Test Here",
     },
     {
-      avatar: "",
+      headerImage: {bank_logo},
+      img: {bank_logo},
       name: "Judith M",
       role: "Software Engineer",
       bio: "Text Here",
@@ -55,8 +62,17 @@ function TeamSection(props) {
               key={index}
             >
               <Card>
+                <AspectRatio ratio={3 / 1}>
+                  <Image src={item.headerImage} fluid={true} />
+                </AspectRatio>
                 <Card.Body className="d-flex flex-column text-center align-items-center p-4">
-                  <Avatar src={item.avatar} alt={item.name} size="128px" />
+                  <div className="TeamBiosSection__avatar-wrapper">
+                    <Avatar
+                      src={item.img}
+                      alt={item.name}
+                      size="128px"
+                    />
+                  </div>
                   <h6 className="font-weight-bold mb-0 mt-4">{item.name}</h6>
                   <small>{item.role}</small>
                   <Card.Text className="mt-4">{item.bio}</Card.Text>

@@ -2,6 +2,8 @@ import React from 'react'
 import NavbarMain from "../components/NavbarMain";
 import HeroSection from "../components/HeroSection";
 import Footer from "../components/Footer";
+import bank_logo from '../resources/bank_logo.png';
+import MA_logo from '../resources/MA_logo.png';
 
 export default function HomePage(props) {
     return (
@@ -10,7 +12,7 @@ export default function HomePage(props) {
           bg="light"
           variant="light"
           expand="md"
-          logo=""
+          logo={bank_logo}
         />
         <HeroSection
           bg="white"
@@ -32,7 +34,7 @@ export default function HomePage(props) {
           bgImageOpacity={1}
           description="A short description of what you do here"
           copyright="© 2021 Company"
-          logo=""
+          logo={MA_logo}
         />
       </>
     );
