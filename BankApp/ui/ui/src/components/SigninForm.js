@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { useAuth } from "./../auth.js";
+import { useAuth } from "../auth.js";
 import Container from "react-bootstrap/esm/Container";
 import { useHistory } from "react-router";
 
-function AuthForm(props) {
-  const auth = useAuth();
+export default function SigninForm({ props }) {
+  // const auth = useAuth();
 
   const [token, setToken] = useState('');
   const [usernameOrEmail, setUsername] = useState('');
@@ -22,59 +22,67 @@ function AuthForm(props) {
     console.log(usernameOrEmail)
     console.log(password)
 
-    //////
-    submitHandlersByType[props.type] ({
+    const token = signin({
       usernameOrEmail,
       password
     })
-    .catch((error) => {
-      
-      // Show error alert message
-      props.onFormAlert({
-        type: "error",
-        message: error.message,
-      });
-    // may need to catch error here?
     setToken(token);
-    });
+    // reroute to admin page
+   
   };
-
-  console.log("Sending info to Handler")
-  console.log(usernameOrEmail)
-  console.log(password)
-
-  const submitHandlersByType = {
-    
-    signin: ({ usernameOrEmail, password }) => {
-      return auth.signin(usernameOrEmail, password)
-      .then((user) => {
-        // Call auth complete handler
-        props.onAuth(user);
-      });
-    },
-    signup: ({ email, password }) => {
-      return auth.register(firstName, lastName, email, usernameOrEmail, password)
-      .then((user) => {
-        // Call auth complete handler
-        props.onAuth(user);
-      });
-    }
-    
-  };
-
-  ////  
-
+ 
   const history = useHistory();
 
   const goBack = () => {
     history.goBack()
   }
 
+  console.log("fetch token in auth.js")
+  async function signin(credentials) {
+    console.log("SIGN IN");
+    return fetch("http://localhost:8080/api/auth/signin", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ usernameOrEmail, password }),
+    }).then((data) => data.json())
+    // .then((res) => handleAuth(res.user));
+  }
+
+  async function signup(credentials) {
+    console.log("SIGN UP");
+    return fetch("http://localhost:8080/api/auth/registerUser", {
+      method: "post",
+      headers: {
+        Accept: "application/json",
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(credentials),
+    }).then((data) => data.json());
+  }
+
+  const useToken = () => {
+    const getToken = () => {
+      const tokenString = localStorage.getItem("jwt");
+      const userToken = JSON.parse(tokenString);
+      return userToken?.token;
+    };
+
+    const [token, setToken] = useState(getToken());
+
+    const saveToken = (userToken) => {
+      localStorage.setItem("jwt", JSON.stringify(userToken));
+      setToken(userToken.token);
+    };
+  };
+
   return (
 
     <Container>
-      <Form onSubmit={handleSubmit} > 
-        {["signup", "signin"].includes(props.type) && (
+      <Form onSubmit={handleSubmit}> 
+        
           <Form.Group controlId="formUsernameOrEmail">
             <Form.Control
               size="lg"
@@ -85,9 +93,7 @@ function AuthForm(props) {
            
             />
           </Form.Group>
-        )}
-
-        {["signup", "signin"].includes(props.type) && (
+        
           <Form.Group controlId="formPassword">
             <Form.Control
               size="lg"
@@ -97,19 +103,6 @@ function AuthForm(props) {
               onChange={e => setPassword(e.target.value)}    
             />
           </Form.Group>
-        )}
-
-        {/* {["signup"].includes(props.type) && (
-          <Form.Group controlId="formConfirmPass">
-            <FormField
-              size="lg"
-              name="confirmPass"
-              type="password"
-              placeholder="Confirm Password"
-  
-            />
-          </Form.Group>
-        )} */}
 
         <Button
           variant="primary"
@@ -134,7 +127,4 @@ function AuthForm(props) {
     </Container>
   );
 
-
 }
-
-export default AuthForm;

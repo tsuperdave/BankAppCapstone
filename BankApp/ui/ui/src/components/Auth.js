@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import FormAlert from "./FormAlert";
-import AuthForm from "./AuthForm";
-import AuthSocial from "./AuthSocial";
+import SigninForm from "./SigninForm";
 import AuthFooter from "./AuthFooter";
 import { useRouter } from "./../router.js";
 
@@ -23,39 +22,17 @@ function Auth(props) {
         <FormAlert type={formAlert.type} message={formAlert.message} />
       )}
 
-      <AuthForm
+      <SigninForm
         type={props.type}
         typeValues={props.typeValues}
         onAuth={handleAuth}
         onFormAlert={handleFormAlert}
       />
-
-      {["register", "signin"].includes(props.type) && (
-        <>
-          {props.providers && props.providers.length && (
-            <>
-              <small className="text-center d-block my-3">OR</small>
-              <AuthSocial
-                type={props.type}
-                buttonText={props.typeValues.buttonText}
-                providers={props.providers}
-                showLastUsed={true}
-                onAuth={handleAuth}
-                onError={(message) => {
-                  handleFormAlert({
-                    type: "error",
-                    message: message,
-                  });
-                }}
-              />
-            </>
-          )}
-
           <AuthFooter type={props.type} typeValues={props.typeValues} />
-        </>
-      )}
-    </>
-  );
+       </> 
+      )
+    
+  
 }
 
 export default Auth;
