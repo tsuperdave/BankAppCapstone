@@ -1,36 +1,25 @@
 
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { useState } from 'react';
+import "./styles/global.scss";
+import { Switch, Route, Router } from './router';
+import HomePage from './pages/Home';
+import AdminPage from "./pages/admin";
 
-import Home from './pages/Home'
-import Preferences from './containers/Preferences'
-import useToken from './components/useToken';
+export default function App(props) {
 
-
-
-function App() {
-
-  //add func to check if token exists, to disallow routing to other pages
-  const {token, setToken} = useToken();
-
-  if(!token) {
-    return <Home setToken={setToken}/>
-    
-  }
-  
+  // wrap below in AuthProvider
   return (
-    <div className="App">
-      <BrowserRouter>
+ 
+      <Router>
         <Switch>
-          <Route path='/preferences'>
-            <Preferences />
-          </Route>
+
+          <Route exact path='/home' component={HomePage} />
+
+          <Route exact path="/admin" component={AdminPage} />
+ 
         </Switch>
-      </BrowserRouter>
-    </div>
+      </Router>
+    
   );
 }
 
-export default App;
