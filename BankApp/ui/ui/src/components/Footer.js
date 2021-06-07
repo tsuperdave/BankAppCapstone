@@ -17,12 +17,12 @@ export default function Footer(props) {
       <Container>
         <div className="FooterComponent__inner">
           <div className="brand left">
-            <Link to="/">
+            <Link to="/home">
               <img src={props.logo} alt="Logo" />
             </Link>
           </div>
           <div className="links right">
-            <Link to="/about">About</Link>
+            <Link to="/aboutus">About</Link>
             <Link to="/contact">Contact</Link>
           </div>
           <div className="social right">

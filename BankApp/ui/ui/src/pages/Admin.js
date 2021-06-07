@@ -43,4 +43,6 @@ function AdminPage(props) {
   );
 }
 
-export default requireAuth(AdminPage);
+export default AdminPage;
+// add below once auth is created 
+// export default requireAuth(AdminPage);

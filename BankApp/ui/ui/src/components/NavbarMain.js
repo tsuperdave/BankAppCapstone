@@ -5,10 +5,10 @@ import { LinkContainer } from "react-router-bootstrap";
 import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Dropdown from "react-bootstrap/Dropdown";
-import { useAuth } from "./../auth"
+// import { useAuth } from "./../auth"
 
 export default function NavbarMain(props) {
-  const auth = useAuth();
+  // const auth = useAuth();
 
   return (
     <Navbar bg={props.bg} variant={props.variant} expand={props.expand}>
@@ -44,14 +44,14 @@ export default function NavbarMain(props) {
             </LinkContainer>
           </Nav>
           <Nav className="mr-1">
-            {auth.user && (
+            {/* {auth.user && ( */}
               <NavDropdown id="dropdown" title="Account" alignRight={true}>
-                <LinkContainer to="/dashboard">
-                  <NavDropdown.Item active={false}>Dashboard</NavDropdown.Item>
+                <LinkContainer to="/preferences">
+                  <NavDropdown.Item active={false}>Preferences</NavDropdown.Item>
                 </LinkContainer>
 
-                <LinkContainer to="/settings/general">
-                  <NavDropdown.Item active={false}>Settings</NavDropdown.Item>
+                <LinkContainer to="/accounts">
+                  <NavDropdown.Item active={false}>Accounts</NavDropdown.Item>
                 </LinkContainer>
 
                 <Dropdown.Divider />
@@ -59,20 +59,20 @@ export default function NavbarMain(props) {
                 <LinkContainer to="/auth/signout">
                   <NavDropdown.Item
                     active={false}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      auth.signout();
-                    }}
+                    // onClick={(e) => {
+                    //   e.preventDefault();
+                    //   auth.signout();
+                    // }}
                   ></NavDropdown.Item>
                 </LinkContainer>
               </NavDropdown>
-            )}
+            {/* )} */}
 
-            {!auth.user && (
+            {/* {!auth.user && ( */}
               <LinkContainer to="/auth/signin">
                 <Nav.Link active={false}>Sign in</Nav.Link>
               </LinkContainer>
-            )}
+            {/* )} */}
           </Nav>
         </Navbar.Collapse>
       </Container>

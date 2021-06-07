@@ -4,10 +4,10 @@ import Container from "react-bootstrap/Container";
 import SectionHeader from "./SectionHeader";
 import Button from "react-bootstrap/Button";
 import { LinkContainer } from "react-router-bootstrap";
-import { useAuth } from "./../auth"
+// import { useAuth } from "./../auth"
 
 function HeroSection(props) {
-  const auth = useAuth();
+  // const auth = useAuth();
 
   return (
     <Section
@@ -25,13 +25,13 @@ function HeroSection(props) {
           spaced={true}
         />
 
-        {!auth.user && (
+        {/* {!auth.user && ( */}
           <LinkContainer to={props.buttonPath}>
             <Button variant={props.buttonColor} size="lg">
               Register Now!
             </Button>
           </LinkContainer>
-        )}
+        {/* )} */}
       </Container>
     </Section>
   );
