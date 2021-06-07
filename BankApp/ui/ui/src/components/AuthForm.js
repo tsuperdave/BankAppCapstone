@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
-import FormField from "./FormField";
+// import FormField from "./FormField";
 import Button from "react-bootstrap/Button";
-import Spinner from "react-bootstrap/Spinner";
 import { useAuth } from "./../auth.js";
-import { useForm } from "react-hook-form";
 import Container from "react-bootstrap/esm/Container";
 import { useHistory } from "react-router";
 
@@ -12,13 +10,12 @@ function AuthForm(props) {
   const auth = useAuth();
 
   const [token, setToken] = useState(null);
-  const [usernameOrEmail, setUsernameOrEmail] = useState('');
+  const [usernameOrEmail, setUsername] = useState('');
   const [password, setPassword] = useState(''); 
   const [email, setEmail] = useState(''); 
-  const [username, setUsername] = useState('');
   const [firstName, setFirstName] = useState(''); 
   const [lastName, setLastName] = useState(''); 
-  const { handleSubmit, getValues } = useForm();
+  
 
   const submitHandlersByType = {
     signin: ({ usernameOrEmail, password }) => {
@@ -29,7 +26,7 @@ function AuthForm(props) {
       });
     },
     signup: ({ email, password }) => {
-      return auth.register(firstName, lastName, email, username, password)
+      return auth.register(firstName, lastName, email, usernameOrEmail, password)
       .then((user) => {
         // Call auth complete handler
         props.onAuth(user);
@@ -39,21 +36,26 @@ function AuthForm(props) {
   };
 
   // Handle form submission
-  const onSubmit = ({ usernameOrEmail, password }) => {
+  const onSubmit = ({ setToken }) => {
 
     console.log("Submit pressed")
+    console.log(usernameOrEmail)
+    console.log(password)
     
     submitHandlersByType[props.type] ({
       usernameOrEmail,
       password
-    }).catch((error) => {
+    })
+    .catch((error) => {
+      
+      // Show error alert message
       props.onFormAlert({
         type: "error",
         message: error.message,
       });
-    })
-    console.log(usernameOrEmail)
-    console.log(password)
+    // may need to catch error here?
+    setToken(token);
+    });
   };
 
   const history = useHistory();
@@ -65,7 +67,7 @@ function AuthForm(props) {
   return (
 
     <Container>
-      <Form onSubmit={handleSubmit(onSubmit)} > 
+      <Form onSubmit={onSubmit} > 
         {["signup", "signin"].includes(props.type) && (
           <Form.Group controlId="formUsernameOrEmail">
             <Form.Control
@@ -73,7 +75,8 @@ function AuthForm(props) {
               name="usernameOrEmail"
               type="text"
               placeholder="Enter Username"
-              // onChange={e => setUsernameOrEmail(e.target.value)}
+              onChange={e => setUsername(e.target.value)}
+           
             />
           </Form.Group>
         )}
@@ -85,12 +88,12 @@ function AuthForm(props) {
               name="password"
               type="password"
               placeholder="Password" 
-              // onChange={e => setPassword(e.target.value)}    
+              onChange={e => setPassword(e.target.value)}    
             />
           </Form.Group>
         )}
 
-        {["signup"].includes(props.type) && (
+        {/* {["signup"].includes(props.type) && (
           <Form.Group controlId="formConfirmPass">
             <FormField
               size="lg"
@@ -100,7 +103,7 @@ function AuthForm(props) {
   
             />
           </Form.Group>
-        )}
+        )} */}
 
         <Button
           variant="primary"
@@ -121,7 +124,6 @@ function AuthForm(props) {
           >
           Go Back
       </Button>
-
 
     </Container>
   );

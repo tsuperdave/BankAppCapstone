@@ -27,12 +27,15 @@ export const useAuth = () => {
 function useAuthProvider() {
   // Store token object
   const [token, setToken] = useState(null);
-  const [user, setUser] = useState(null);
+  const [usernameOrEmail, setUsernameOrEmail] = useState(null);
+  const [password, setPassword] = useState(null);
 
   // Handle response from authentication functions
   const handleAuth = async (user) => {
     // Update user in state
-    setUser(user)
+    await signin(usernameOrEmail, password)
+
+    // setUser(user)
     return user;
   }
 
@@ -75,7 +78,7 @@ function useAuthProvider() {
       },
       body: JSON.stringify({ usernameOrEmail, password }),
     }).then((data) => data.json())
-    .then((res) => handleAuth(res.user));
+    // .then((res) => handleAuth(res.user));
   }
 
   const signout = () => {
