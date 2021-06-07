@@ -1,7 +1,7 @@
 import React from 'react'
-import NavbarMain from "./../components/NavbarMain";
-import HeroSection from "./../components/HeroSection";
-import Footer from "./../components/Footer";
+import NavbarMain from "../components/NavbarMain";
+import HeroSection from "../components/HeroSection";
+import Footer from "../components/Footer";
 
 export default function HomePage(props) {
     return (
@@ -22,7 +22,7 @@ export default function HomePage(props) {
           subtitle="Sub title test here"
           buttonText="Get Started"
           buttonColor="primary"
-          buttonPath="/pricing"
+          buttonPath="/register"
         />
         <Footer
           bg="white"

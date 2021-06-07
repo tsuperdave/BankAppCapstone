@@ -2,13 +2,14 @@
 import './App.css';
 import "./styles/global.scss";
 import { Switch, Route, Router } from './router';
-import HomePage from './pages/Home';
+import HomePage from './pages/home';
 import AdminPage from "./pages/admin";
 import AboutUs from "./pages/aboutus";
 import { Redirect } from 'react-router';
 import PreferencesPage from './pages/preferences';
 import AccountsPage from './pages/accounts';
 import AuthSigninPage from './pages/auth/signin';
+import AuthRegisterPage from './pages/auth/register';
 
 export default function App(props) {
 
@@ -32,6 +33,8 @@ export default function App(props) {
           <Route exact path="/accounts" component={AccountsPage} />
 
           <Route exact path="/auth/signin" component={AuthSigninPage} />
+
+          <Route exact path="/register" component={AuthRegisterPage} />
  
         </Switch>
       </Router>

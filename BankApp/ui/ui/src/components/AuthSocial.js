@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
-import Spinner from "react-bootstrap/Spinner";
 import Badge from "react-bootstrap/Badge";
-// import { useAuth } from "./../auth.js";
 import "./AuthSocial.scss";
 
 function AuthSocial(props) {
   // const auth = useAuth();
-  const [pending, setPending] = useState(null);
   const [lastUsed, setLastUsed] = useState(null);
 
   const providerDisplayNames = {
@@ -16,20 +13,6 @@ function AuthSocial(props) {
     twitter: "Twitter",
     github: "GitHub",
   };
-
-  // const onSigninWithProvider = (provider) => {
-  //   setPending(provider);
-  //   auth
-  //     .signinWithProvider(provider)
-  //     .then((user) => {
-  //       localStorage.setItem("lastUsedAuthProvider", provider);
-  //       props.onAuth(user);
-  //     })
-  //     .catch((error) => {
-  //       setPending(null);
-  //       props.onError(error.message);
-  //     });
-  // };
 
   // Get value of last used auth provider
   useEffect(() => {
@@ -48,9 +31,6 @@ function AuthSocial(props) {
           variant="light"
           size="lg"
           block={true}
-          // onClick={() => {
-          //   onSigninWithProvider(provider);
-          // }}
           className="position-relative"
           key={provider}
         >
@@ -61,23 +41,10 @@ function AuthSocial(props) {
             />
           </div>
 
-          {pending !== provider && (
             <span>
               {props.buttonText} with {providerDisplayNames[provider]}
             </span>
-          )}
-
-          {pending === provider && (
-            <Spinner
-              animation="border"
-              size="sm"
-              role="status"
-              aria-hidden={true}
-              className="align-baseline text-primary"
-            >
-              <span className="sr-only">Loading...</span>
-            </Spinner>
-          )}
+          
 
           {provider === lastUsed && (
             <Badge

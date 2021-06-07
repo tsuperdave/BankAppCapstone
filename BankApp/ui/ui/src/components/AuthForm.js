@@ -3,103 +3,79 @@ import Form from "react-bootstrap/Form";
 import FormField from "./FormField";
 import Button from "react-bootstrap/Button";
 import Spinner from "react-bootstrap/Spinner";
-// import { useAuth } from "./../auth.js";
+import { useAuth } from "./../auth.js";
 import { useForm } from "react-hook-form";
 
 function AuthForm(props) {
-  // const auth = useAuth();
+  const auth = useAuth();
 
   const [pending, setPending] = useState(false);
   const { handleSubmit, register, errors, getValues } = useForm();
 
-  // const submitHandlersByType = {
-  //   signin: ({ email, pass }) => {
-  //     return auth.signin(email, pass).then((user) => {
-  //       // Call auth complete handler
-  //       props.onAuth(user);
-  //     });
-  //   },
-  //   signup: ({ email, pass }) => {
-  //     return auth.register(email, pass).then((user) => {
-  //       // Call auth complete handler
-  //       props.onAuth(user);
-  //     });
-  //   },
-  //   forgotpass: ({ email }) => {
-  //     return auth.sendPasswordResetEmail(email).then(() => {
-  //       setPending(false);
-  //       // Show success alert message
-  //       props.onFormAlert({
-  //         type: "success",
-  //         message: "Password reset email sent",
-  //       });
-  //     });
-  //   },
-  //   changepass: ({ pass }) => {
-  //     return auth.confirmPasswordReset(pass).then(() => {
-  //       setPending(false);
-  //       // Show success alert message
-  //       props.onFormAlert({
-  //         type: "success",
-  //         message: "Your password has been changed",
-  //       });
-  //     });
-  //   },
-  // };
+  const submitHandlersByType = {
+    signin: ({ usernameOrEmail, pass }) => {
+      return auth.signin(usernameOrEmail, pass).then((user) => {
+        // Call auth complete handler
+        props.onAuth(user);
+      });
+    },
+    signup: ({ email, pass }) => {
+      return auth.register(email, pass).then((user) => {
+        // Call auth complete handler
+        props.onAuth(user);
+      });
+    },
+    
+  };
 
   // Handle form submission
-  // const onSubmit = ({ email, pass }) => {
-  //   // Show pending indicator
-  //   setPending(true);
+  const onSubmit = ({ email, pass }) => {
+    // Show pending indicator
+    setPending(true);
 
-  //   // Call submit handler for auth type
-  //   submitHandlersByType[props.type]({
-  //     email,
-  //     pass,
-  //   }).catch((error) => {
-  //     setPending(false);
-  //     // Show error alert message
-  //     props.onFormAlert({
-  //       type: "error",
-  //       message: error.message,
-  //     });
-  //   });
-  // };
+    // Call submit handler for auth type
+    submitHandlersByType[props.type]({
+      email,
+      pass,
+    }).catch((error) => {
+      setPending(false);
+      // Show error alert message
+      props.onFormAlert({
+        type: "error",
+        message: error.message,
+      });
+    });
+  };
 
   return (
-    // <Form onSubmit={handleSubmit(onSubmit)}
-    <Form >
-      {["signup", "signin", "forgotpass"].includes(props.type) && (
+    <Form onSubmit={handleSubmit(onSubmit)} > 
+      {["signup", "signin"].includes(props.type) && (
         <Form.Group controlId="formUsername">
           <FormField
             size="lg"
             name="username"
             type="text"
             placeholder="Enter Username"
-            error={errors.username}
-            inputRef={register({
-              required: "Please enter a valid user name",
-            })}
+            error='test error'
+            
           />
         </Form.Group>
       )}
 
-      {["signup", "signin", "changepass"].includes(props.type) && (
+      {["signup", "signin"].includes(props.type) && (
         <Form.Group controlId="formPassword">
           <FormField
             size="lg"
             name="pass"
             type="password"
             placeholder="Password"
-            error={errors.pass}
-            inputRef={register({
-              required: "Please enter a password",
-            })}
+            error='test error'
+          
           />
         </Form.Group>
       )}
 
-      {["signup", "changepass"].includes(props.type) && (
+      {["signup"].includes(props.type) && (
         <Form.Group controlId="formConfirmPass">
           <FormField
             size="lg"
