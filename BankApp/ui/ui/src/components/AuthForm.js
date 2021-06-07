@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
-// import FormField from "./FormField";
 import Button from "react-bootstrap/Button";
 import { useAuth } from "./../auth.js";
 import Container from "react-bootstrap/esm/Container";
@@ -9,39 +8,21 @@ import { useHistory } from "react-router";
 function AuthForm(props) {
   const auth = useAuth();
 
-  const [token, setToken] = useState(null);
+  const [token, setToken] = useState('');
   const [usernameOrEmail, setUsername] = useState('');
   const [password, setPassword] = useState(''); 
   const [email, setEmail] = useState(''); 
   const [firstName, setFirstName] = useState(''); 
   const [lastName, setLastName] = useState(''); 
   
+  const handleSubmit = async e => {
+    e.preventDefault();
 
-  const submitHandlersByType = {
-    signin: ({ usernameOrEmail, password }) => {
-      return auth.signin(usernameOrEmail, password)
-      .then((jwt) => {
-        // Call auth complete handler
-        props.onAuth(jwt);
-      });
-    },
-    signup: ({ email, password }) => {
-      return auth.register(firstName, lastName, email, usernameOrEmail, password)
-      .then((user) => {
-        // Call auth complete handler
-        props.onAuth(user);
-      });
-    },
-    
-  };
-
-  // Handle form submission
-  const onSubmit = ({ setToken }) => {
-
-    console.log("Submit pressed")
+    console.log("Submit pressed from handleSubmit")
     console.log(usernameOrEmail)
     console.log(password)
-    
+
+    //////
     submitHandlersByType[props.type] ({
       usernameOrEmail,
       password
@@ -58,6 +39,31 @@ function AuthForm(props) {
     });
   };
 
+  console.log("Sending info to Handler")
+  console.log(usernameOrEmail)
+  console.log(password)
+
+  const submitHandlersByType = {
+    
+    signin: ({ usernameOrEmail, password }) => {
+      return auth.signin(usernameOrEmail, password)
+      .then((user) => {
+        // Call auth complete handler
+        props.onAuth(user);
+      });
+    },
+    signup: ({ email, password }) => {
+      return auth.register(firstName, lastName, email, usernameOrEmail, password)
+      .then((user) => {
+        // Call auth complete handler
+        props.onAuth(user);
+      });
+    }
+    
+  };
+
+  ////  
+
   const history = useHistory();
 
   const goBack = () => {
@@ -67,7 +73,7 @@ function AuthForm(props) {
   return (
 
     <Container>
-      <Form onSubmit={onSubmit} > 
+      <Form onSubmit={handleSubmit} > 
         {["signup", "signin"].includes(props.type) && (
           <Form.Group controlId="formUsernameOrEmail">
             <Form.Control

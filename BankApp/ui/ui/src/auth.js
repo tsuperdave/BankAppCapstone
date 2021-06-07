@@ -68,7 +68,8 @@ function useAuthProvider() {
   }
 
   // fetch token
-  const signin = (usernameOrEmail, password ) => {
+  console.log("fetch token in auth.js")
+  const signin = (usernameOrEmail, password) => {
     console.log("SIGN IN");
     return fetch("http://localhost:8080/api/auth/signin", {
       method: "POST",
