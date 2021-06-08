@@ -32,11 +32,13 @@ export default function App(props) {
 
           <Route exact path="/preferences" component={PreferencesPage} />
 
+          {localStorage.getItem('userRole') === 'user' && (
           <Route exact path="/accounts" component={AccountsPage} />
-
-          {localStorage.getItem('role') == 'admin' ? (
-          <Route exact path="/admin" component={AdminPage} />
-          ) : console.log("Must be admin to access this page") }
+          )}
+          
+          {localStorage.getItem('userRole') === 'admin' && (
+          <Route exact path='/admin' component={AdminPage} />
+          )}
           
         </Switch>
       </Router>

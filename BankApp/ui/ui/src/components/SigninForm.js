@@ -21,20 +21,19 @@ export default function SigninForm({ props }) {
       password
     })
 
-    const role = decodeAndSaveRole();
-
-    console.log(role)
+    console.log("After sign in " + localStorage.getItem('userRole'));
     
-    switch(role){
-      case 'admin':
-        history.push('/admin')
-        break;
-      case 'user':
-        <Redirect to='/accounts' />
-        break;
-      default:
-        console.log("must Log in")
-    }
+    // switch(localStorage.getItem('userRole')){
+    //   case "admin":
+    //     history.push('/admin')
+    //     break;
+    //   case "user":
+    //     console.log("Switch case User role made");
+    //     <Redirect to='/accounts' />
+    //     break;
+    //   default:
+    //     console.log("must Log in")
+    // }
 
     // history.push('/accounts')
     // reroute to accounts page by default IF accountHolder,
@@ -48,7 +47,7 @@ export default function SigninForm({ props }) {
   const goBack = () => {
     history.goBack()
   }
-
+  
   const goHome = () => {
     history.push('/home')
   }
@@ -65,16 +64,12 @@ export default function SigninForm({ props }) {
     .then(data => {
       saveToken(data);
       // error is running this
-      // decodeAndSaveRole();
-      
+      decodeAndSaveRole(); 
       
     })         
   }
   
-  
-
   async function signup(credentials) {
-    console.log("SIGN UP");
     return fetch("http://localhost:8080/api/auth/registerUser", {
       method: "post",
       headers: {
@@ -95,20 +90,16 @@ export default function SigninForm({ props }) {
 
   const saveToken = (userToken) => {
     localStorage.setItem("jwt", JSON.stringify(userToken));
-    // setToken(userToken.token);
   };
 
-  function decodeAndSaveRole() {
+  const decodeAndSaveRole = () => {
     const tokenString = localStorage.getItem('jwt');
-      // console.log(tokenString) // null
-    const role = JSON.parse(tokenString);
-    // console.log(role) // null
+      // console.log("Grab token from local " + tokenString) // null
     const decoded = jwt_decode(tokenString);
-      // console.log(decoded['sub'])  
+      // console.log("After decoding role " + decoded['sub'])  
     localStorage.setItem('userRole', JSON.stringify(decoded['sub']));
     return decoded['sub'];
   }
-  
 
   return (
 
