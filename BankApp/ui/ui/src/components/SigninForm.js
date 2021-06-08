@@ -6,7 +6,7 @@ import Container from "react-bootstrap/esm/Container";
 import { useHistory } from "react-router";
 
 export default function SigninForm({ props }) {
-  // const auth = useAuth();
+  const auth = useAuth();
 
   const [token, setToken] = useState('');
   const [usernameOrEmail, setUsername] = useState('');
@@ -14,46 +14,20 @@ export default function SigninForm({ props }) {
   const [email, setEmail] = useState(''); 
   const [firstName, setFirstName] = useState(''); 
   const [lastName, setLastName] = useState(''); 
-  
-  const handleSubmit = async e => {
-    e.preventDefault();
 
-    // console.log("Submit pressed from handleSubmit")
-    // console.log(usernameOrEmail)
-    // console.log(password)
-
-    const token = signin({
-      usernameOrEmail,
-      password
-    })
-    setToken(token);
-    // reroute to admin page
-   
-  };
- 
   const history = useHistory();
 
   const goBack = () => {
     history.goBack()
   }
 
-  console.log("fetch token in auth.js")
-  async function signin(credentials) {
-    // console.log("SIGN IN");
-    return fetch("http://localhost:8080/api/auth/signin", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ usernameOrEmail, password }),
-    }).then(res => res.json())
-    .then(data => {
-      saveToken(data); 
-      history.goBack()
-      }) 
-        
-  }
+  const handleSubmit = async e => {
+    e.preventDefault();
+
+    const token = auth.token()
+    // reroute to admin page
+   
+  };
 
   async function signup(credentials) {
     console.log("SIGN UP");
@@ -66,22 +40,7 @@ export default function SigninForm({ props }) {
       body: JSON.stringify(credentials),
     }).then((data) => data.json());
   }
-
-  const useToken = () => {
-    const getToken = () => {
-      const tokenString = localStorage.getItem("jwt");
-      const userToken = JSON.parse(tokenString);
-      return userToken?.token;
-    };
-
-  }
-
-  const saveToken = (userToken) => {
-    localStorage.setItem("jwt", JSON.stringify(userToken));
-    // setToken(userToken.token);
-  };
   
-
   return (
 
     <Container>
