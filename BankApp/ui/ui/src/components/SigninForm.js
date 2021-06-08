@@ -48,7 +48,7 @@ export default function SigninForm({ props }) {
       },
       body: JSON.stringify({ usernameOrEmail, password }),
     }).then((data) => data.json())
-    // .then((res) => handleAuth(res.user));
+    .then((res) => setToken(res));
   }
 
   async function signup(credentials) {
