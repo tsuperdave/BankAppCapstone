@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import { useAuth } from "../auth.js";
 import Container from "react-bootstrap/esm/Container";
 import { useHistory } from "react-router";
+import jwt_decode from 'jwt-decode'
 
 export default function SigninForm({ props }) {
 
@@ -17,17 +18,15 @@ export default function SigninForm({ props }) {
   const handleSubmit = async e => {
     e.preventDefault();
 
-    // console.log("Submit pressed from handleSubmit")
-    // console.log(usernameOrEmail)
-    // console.log(password)
-
     const token = signin({
       usernameOrEmail,
       password
     })
-    // setToken(token);
-    history.goBack()
-    // reroute to admin page
+    
+    history.push('/accounts')
+    // reroute to accounts page by default IF accountHolder,
+    // ... preferences if user
+    // ... admin if admin
    
   };
  
@@ -54,7 +53,8 @@ export default function SigninForm({ props }) {
     }).then(res => res.json())
     .then(data => {
       saveToken(data);
-      goBack();       
+      decodeAndSaveRole();
+            
     })         
   }
 
@@ -82,6 +82,14 @@ export default function SigninForm({ props }) {
     localStorage.setItem("jwt", JSON.stringify(userToken));
     // setToken(userToken.token);
   };
+
+  const decodeAndSaveRole = () => {
+    const tokenString = localStorage.getItem('jwt');
+    const role = JSON.parse(tokenString);
+    const decoded = jwt_decode(tokenString);
+    localStorage.setItem('userRole', decoded['sub']);
+    // return decoded['sub'];
+  }
   
 
   return (

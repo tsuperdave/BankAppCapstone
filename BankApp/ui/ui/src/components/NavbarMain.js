@@ -42,7 +42,7 @@ export default function NavbarMain(props) {
             </LinkContainer>
           </Nav>
           <Nav className="mr-1">
-            {/* {auth.user && ( */}
+            {localStorage.getItem('jwt') && (
               <NavDropdown id="dropdown" title="Account" alignRight={true}>
                 <LinkContainer to="/preferences">
                   <NavDropdown.Item active={false}>Preferences</NavDropdown.Item>
@@ -58,19 +58,19 @@ export default function NavbarMain(props) {
                   <NavDropdown.Item
                     active={false}
                     onClick={(e) => {
-                      e.preventDefault();
+                      // e.preventDefault();
                       localStorage.clear();
                     }}
                   >Sign Out</NavDropdown.Item>
                 </LinkContainer>
               </NavDropdown>
+            )}
            
             {!localStorage.getItem('jwt') && (
               <LinkContainer to="/auth/signin">
                 <Nav.Link active={false}>Sign in</Nav.Link>
               </LinkContainer>
             )}
-
 
           </Nav>
         </Navbar.Collapse>
