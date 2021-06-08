@@ -9,6 +9,22 @@
 // import PageLoader from "./components/PageLoader";
 
 
+
+// const decodeRole = () => {
+  //   const tokenString = localStorage.getItem('jwt');
+  //   const userRole = JSON.parse(tokenString);
+  //   const decode = jwt_decode(tokenString)
+  //   return decode['sub'];
+  // }
+
+  // decodeRole();
+  
+  // const saveRole = () => {
+  //   localStorage.setItem('role', JSON.stringify(decodeRole()))
+  // }
+
+  // saveRole();
+  
 //   // A Higher Order Component for requiring authentication
 //   export const requireAuth = (Component) => {
 //     return (props) => {
