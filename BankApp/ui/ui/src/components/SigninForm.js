@@ -49,7 +49,7 @@ export default function SigninForm({ props }) {
       body: JSON.stringify({ usernameOrEmail, password }),
     }).then(res => res.json())
     .then(data => {
-      if(data.status === 200) { setToken(data); }
+      saveToken(data); 
       history.goBack()
       }) 
         
@@ -74,13 +74,13 @@ export default function SigninForm({ props }) {
       return userToken?.token;
     };
 
-    const [token, setToken] = useState(getToken());
+  }
 
-    const saveToken = (userToken) => {
-      localStorage.setItem("jwt", JSON.stringify(userToken));
-      setToken(userToken.token);
-    };
+  const saveToken = (userToken) => {
+    localStorage.setItem("jwt", JSON.stringify(userToken));
+    // setToken(userToken.token);
   };
+  
 
   return (
 
