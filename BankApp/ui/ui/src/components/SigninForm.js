@@ -1,35 +1,48 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { useAuth } from "../auth.js";
 import Container from "react-bootstrap/esm/Container";
-import { useHistory } from "react-router";
+import { Redirect, useHistory } from "react-router";
 import jwt_decode from 'jwt-decode'
 
 export default function SigninForm({ props }) {
 
-  const [token, setToken] = useState('');
   const [usernameOrEmail, setUsername] = useState('');
   const [password, setPassword] = useState(''); 
-  const [email, setEmail] = useState(''); 
-  const [firstName, setFirstName] = useState(''); 
-  const [lastName, setLastName] = useState(''); 
+  // const [email, setEmail] = useState(''); 
+  // const [firstName, setFirstName] = useState(''); 
+  // const [lastName, setLastName] = useState(''); 
   
   const handleSubmit = async e => {
     e.preventDefault();
 
-    const token = signin({
+    signin({
       usernameOrEmail,
       password
     })
+
+    const role = decodeAndSaveRole();
+
+    console.log(role)
     
-    history.push('/accounts')
+    switch(role){
+      case 'admin':
+        history.push('/admin')
+        break;
+      case 'user':
+        <Redirect to='/accounts' />
+        break;
+      default:
+        console.log("must Log in")
+    }
+
+    // history.push('/accounts')
     // reroute to accounts page by default IF accountHolder,
     // ... preferences if user
     // ... admin if admin
    
   };
- 
+
   const history = useHistory();
 
   const goBack = () => {
@@ -40,9 +53,7 @@ export default function SigninForm({ props }) {
     history.push('/home')
   }
 
-  console.log("fetch token in auth.js")
   async function signin(credentials) {
-    // console.log("SIGN IN");
     return fetch("http://localhost:8080/api/auth/signin", {
       method: "POST",
       headers: {
@@ -53,10 +64,14 @@ export default function SigninForm({ props }) {
     }).then(res => res.json())
     .then(data => {
       saveToken(data);
-      decodeAndSaveRole();
-            
+      // error is running this
+      // decodeAndSaveRole();
+      
+      
     })         
   }
+  
+  
 
   async function signup(credentials) {
     console.log("SIGN UP");
@@ -83,12 +98,15 @@ export default function SigninForm({ props }) {
     // setToken(userToken.token);
   };
 
-  const decodeAndSaveRole = () => {
+  function decodeAndSaveRole() {
     const tokenString = localStorage.getItem('jwt');
+      // console.log(tokenString) // null
     const role = JSON.parse(tokenString);
+    // console.log(role) // null
     const decoded = jwt_decode(tokenString);
-    localStorage.setItem('userRole', decoded['sub']);
-    // return decoded['sub'];
+      // console.log(decoded['sub'])  
+    localStorage.setItem('userRole', JSON.stringify(decoded['sub']));
+    return decoded['sub'];
   }
   
 
