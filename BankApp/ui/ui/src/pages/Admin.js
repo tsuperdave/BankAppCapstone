@@ -1,8 +1,8 @@
 import React from "react";
-import NavbarMain from "./../components/NavbarMain";
+import NavbarMain from "../components/NavbarMain";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import Footer from "./../components/Footer";
+import Footer from "../components/Footer";
 // import { requireAuth } from "./../auth.js";
 
 function AdminPage(props) {

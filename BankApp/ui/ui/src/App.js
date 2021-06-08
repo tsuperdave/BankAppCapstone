@@ -24,18 +24,20 @@ export default function App(props) {
 
           <Route exact path='/home' component={HomePage} />
 
-          <Route exact path="/admin" component={AdminPage} />
-
           <Route exact path="/aboutus" component={AboutUs} />
+
+          <Route exact path="/auth/signin" component={AuthSigninPage} />
+
+          <Route exact path="/register" component={AuthRegisterPage} />
 
           <Route exact path="/preferences" component={PreferencesPage} />
 
           <Route exact path="/accounts" component={AccountsPage} />
 
-          <Route exact path="/auth/signin" component={AuthSigninPage} />
-
-          <Route exact path="/register" component={AuthRegisterPage} />
- 
+          {localStorage.getItem('role') == 'admin' ? (
+          <Route exact path="/admin" component={AdminPage} />
+          ) : console.log("Must be admin to access this page") }
+          
         </Switch>
       </Router>
     

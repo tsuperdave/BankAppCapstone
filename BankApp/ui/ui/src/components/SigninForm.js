@@ -18,9 +18,9 @@ export default function SigninForm({ props }) {
   const handleSubmit = async e => {
     e.preventDefault();
 
-    console.log("Submit pressed from handleSubmit")
-    console.log(usernameOrEmail)
-    console.log(password)
+    // console.log("Submit pressed from handleSubmit")
+    // console.log(usernameOrEmail)
+    // console.log(password)
 
     const token = signin({
       usernameOrEmail,
@@ -39,7 +39,7 @@ export default function SigninForm({ props }) {
 
   console.log("fetch token in auth.js")
   async function signin(credentials) {
-    console.log("SIGN IN");
+    // console.log("SIGN IN");
     return fetch("http://localhost:8080/api/auth/signin", {
       method: "POST",
       headers: {
@@ -47,8 +47,12 @@ export default function SigninForm({ props }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ usernameOrEmail, password }),
-    }).then((data) => data.json())
-    .then((res) => setToken(res));
+    }).then(res => res.json())
+    .then(data => {
+      if(data.status === 200) { setToken(data); }
+      history.goBack()
+      }) 
+        
   }
 
   async function signup(credentials) {
