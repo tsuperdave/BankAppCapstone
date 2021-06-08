@@ -5,10 +5,8 @@ import { LinkContainer } from "react-router-bootstrap";
 import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Dropdown from "react-bootstrap/Dropdown";
-// import { useAuth } from "./../auth"
 
 export default function NavbarMain(props) {
-  // const auth = useAuth();
 
   return (
     <Navbar bg={props.bg} variant={props.variant} expand={props.expand}>
@@ -56,23 +54,24 @@ export default function NavbarMain(props) {
 
                 <Dropdown.Divider />
 
-                <LinkContainer to="/auth/signout">
+                <LinkContainer to="/home">
                   <NavDropdown.Item
                     active={false}
-                    // onClick={(e) => {
-                    //   e.preventDefault();
-                    //   auth.signout();
-                    // }}
-                  ></NavDropdown.Item>
+                    onClick={(e) => {
+                      e.preventDefault();
+                      localStorage.clear();
+                    }}
+                  >Sign Out</NavDropdown.Item>
                 </LinkContainer>
               </NavDropdown>
-            {/* )} */}
-
-            {/* {!auth.user && ( */}
+           
+            {!localStorage.getItem('jwt') && (
               <LinkContainer to="/auth/signin">
                 <Nav.Link active={false}>Sign in</Nav.Link>
               </LinkContainer>
-            {/* )} */}
+            )}
+
+
           </Nav>
         </Navbar.Collapse>
       </Container>

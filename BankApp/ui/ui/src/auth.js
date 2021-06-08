@@ -1,22 +1,23 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 
-export default function useAuth() {
+export const useAuth = () => {
 
   const [usernameOrEmail, setUsername] = useState('');
   const [password, setPassword] = useState(''); 
-
-  const token = signin({
-    usernameOrEmail,
-    password
-  })
-  // setToken(token);
 
   const history = useHistory();
 
   const goBack = () => {
     history.goBack()
   }
+
+  const token = signin({
+    usernameOrEmail,
+    password
+  })
+  goBack();
+  // setToken(token);
 
   const getToken = () => {
     const tokenString = localStorage.getItem("jwt");
