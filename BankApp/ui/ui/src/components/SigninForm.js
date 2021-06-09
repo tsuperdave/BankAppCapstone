@@ -89,19 +89,19 @@ export default function SigninForm({ props }) {
   const signinRedirect = (role) => {
     switch(role) {
       case "admin":
-          console.log(auth)
+          // console.log(auth)
         history.push('/admin')
         break;
       case "user":
-          console.log(auth)
+          // console.log(auth)
         history.push('/preferences')
         break;
       case "AccountHolder":
-          console.log(auth)
+          // console.log(auth)
         history.push('/accounts')
         break;
       default:
-          console.log(auth)
+          // console.log(auth)
         console.log("must Log in")
     }
   }

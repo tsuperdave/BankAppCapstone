@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import { LinkContainer } from "react-router-bootstrap";
 import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Dropdown from "react-bootstrap/Dropdown";
+import { AuthorizationContext } from "../auth";
 
 
 export default function NavbarMain(props) {
+
+  const [auth, setAuth] = useContext(AuthorizationContext)
 
   return (
     <Navbar bg={props.bg} variant={props.variant} expand={props.expand}>
@@ -59,10 +62,17 @@ export default function NavbarMain(props) {
                 <LinkContainer to="/home">
                   <NavDropdown.Item
                     active={false}
-                    onClick={(e) => {
-                      // e.preventDefault();
+                    onClick={(e) => {                     
                       localStorage.clear();
+                      setAuth({
+                        jwt: '',
+                        role: '',
+                        isLoggedIn: false
+                      })
+                      console.log('LOG OUT COMPLETE')
+                      console.log(auth)
                     }}
+                    // onClick={logout}
                   >Sign Out</NavDropdown.Item>
                 </LinkContainer>
               </NavDropdown>
