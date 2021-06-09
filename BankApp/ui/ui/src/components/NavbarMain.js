@@ -41,6 +41,7 @@ export default function NavbarMain(props) {
               <Nav.Link active={false}>Administration</Nav.Link>
             </LinkContainer>
           </Nav>
+          
           <Nav className="mr-1">
             {localStorage.getItem('jwt') && (
               <NavDropdown id="dropdown" title="Account" alignRight={true}>

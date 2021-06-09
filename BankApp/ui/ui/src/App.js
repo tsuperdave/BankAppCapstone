@@ -10,13 +10,13 @@ import PreferencesPage from './pages/preferences';
 import AccountsPage from './pages/accounts';
 import AuthSigninPage from './pages/auth/signin';
 import AuthRegisterPage from './pages/auth/register';
-// import { AuthorizationProvider } from './auth';
+import { AuthorizationProvider } from './auth';
 
 export default function App(props) {
 
   // wrap below in AuthProvider
   return (
-    // <AuthorizationProvider>
+    <AuthorizationProvider>
       <Router>
         <Switch>
           <Route exact path='/' component={HomePage}>
@@ -32,18 +32,14 @@ export default function App(props) {
           <Route exact path="/register" component={AuthRegisterPage} />
 
           <Route exact path="/preferences" component={PreferencesPage} />
-
-          {localStorage.getItem('userRole') === 'user' && (
+    
           <Route exact path="/accounts" component={AccountsPage} />
-          )}
           
-          {localStorage.getItem('userRole') === 'admin' && (
           <Route exact path='/admin' component={AdminPage} />
-          )}
-          
+
         </Switch>
       </Router>
-    // </AuthorizationProvider>
+    </AuthorizationProvider>
   );
 }
 

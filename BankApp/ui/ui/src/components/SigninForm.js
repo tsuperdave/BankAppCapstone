@@ -2,15 +2,15 @@ import React, { useContext, useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/esm/Container";
-import { Redirect, useHistory } from "react-router";
+import { useHistory } from "react-router";
 import jwt_decode from 'jwt-decode'
-// import { AuthorizationContext } from "../auth";
+import { AuthorizationContext } from "../auth";
 
 export default function SigninForm({ props }) {
 
   const [usernameOrEmail, setUsername] = useState('');
   const [password, setPassword] = useState(''); 
-  // const [auth, setAuth] = useContext(AuthorizationContext);
+  const [auth, setAuth] = useContext(AuthorizationContext);
   // const [firstName, setFirstName] = useState(''); 
   // const [lastName, setLastName] = useState(''); 
   
@@ -21,8 +21,6 @@ export default function SigninForm({ props }) {
       usernameOrEmail,
       password
     })
-
-    console.log("After sign in " + localStorage.getItem('userRole'));
    
   };
 
@@ -44,14 +42,18 @@ export default function SigninForm({ props }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ usernameOrEmail, password }),
-    }).then(res => res.json()
-    )
+    })
+    .then(res => res.json())
     .then(data => {
       saveToken(data);
       signinRedirect(decodeAndSaveRole());
+      setAuth({
+        jwt: data,
+        role: decodeAndSaveRole(),
+        isLoggedIn: true
+      })
     })
-    // .catch(e => )    
-        
+            
   }
   
   async function signup(credentials) {
@@ -64,14 +66,12 @@ export default function SigninForm({ props }) {
       body: JSON.stringify(credentials),
     }).then((data) => data.json());
   }
-
   
   const getToken = () => {
     const tokenString = localStorage.getItem("jwt");
     const userToken = JSON.parse(tokenString);
     return userToken?.token;
   };
-
 
   const saveToken = (userToken) => {
     localStorage.setItem("jwt", JSON.stringify(userToken));
@@ -86,20 +86,30 @@ export default function SigninForm({ props }) {
     return decoded['sub'];
   }
 
+  // const setAuth = () => {
+  //   setAuth({
+  //     jwt: tokenString,
+  //     role: decoded,
+  //     isLoggedIn: true
+  //   })
+  // }
+
   const signinRedirect = (role) => {
     switch(role) {
       case "admin":
+          console.log(auth)
         history.push('/admin')
         break;
       case "user":
-        // console.log("Switch case User role made");
+          console.log(auth)
         history.push('/preferences')
         break;
       case "AccountHolder":
-        // console.log("Switch case User role made");
+          console.log(auth)
         history.push('/accounts')
         break;
       default:
+          console.log(auth)
         console.log("must Log in")
     }
   }
@@ -154,3 +164,10 @@ export default function SigninForm({ props }) {
   );
 
 }
+
+// for reference
+// setAuth({
+//   jwt: saveToken(data),
+//   role: signinRedirect(decodeAndSaveRole()),
+//   isLoggedIn: true
+// })

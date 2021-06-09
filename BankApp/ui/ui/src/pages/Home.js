@@ -22,7 +22,7 @@ export default function HomePage(props) {
           bgImageOpacity={1}
           title="Your Home page title here"
           subtitle="Sub title test here"
-          buttonText="Get Started"
+          buttonText="Register Now!"
           buttonColor="primary"
           buttonPath="/register"
         />

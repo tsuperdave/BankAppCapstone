@@ -28,7 +28,7 @@ function HeroSection(props) {
         {/* {!auth.user && ( */}
           <LinkContainer to={props.buttonPath}>
             <Button variant={props.buttonColor} size="lg">
-              Register Now!
+              {props.buttonText}
             </Button>
           </LinkContainer>
         {/* )} */}

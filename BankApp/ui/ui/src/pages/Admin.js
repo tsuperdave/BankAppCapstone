@@ -3,6 +3,7 @@ import NavbarMain from "../components/NavbarMain";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Footer from "../components/Footer";
+import { requireAuth } from "../auth";
 
 function AdminPage(props) {
   return (
@@ -42,6 +43,6 @@ function AdminPage(props) {
   );
 }
 
-export default AdminPage;
+// export default AdminPage;
 // add below once auth is created 
-// export default requireAuth(AdminPage);
+export default requireAuth(AdminPage);
