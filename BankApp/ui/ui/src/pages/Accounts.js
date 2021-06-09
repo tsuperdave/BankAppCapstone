@@ -6,6 +6,7 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import AccountsOverview from "../components/AccountsOverview";
 import Footer from "../components/Footer";
+import { requireAuth } from "../auth";
 
 function AccountsPage(props) {
   return (
@@ -63,4 +64,4 @@ function AccountsPage(props) {
   );
 }
 
-export default AccountsPage;
+export default requireAuth(AccountsPage);

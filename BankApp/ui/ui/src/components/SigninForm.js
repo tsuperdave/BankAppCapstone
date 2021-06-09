@@ -86,14 +86,6 @@ export default function SigninForm({ props }) {
     return decoded['sub'];
   }
 
-  // const setAuth = () => {
-  //   setAuth({
-  //     jwt: tokenString,
-  //     role: decoded,
-  //     isLoggedIn: true
-  //   })
-  // }
-
   const signinRedirect = (role) => {
     switch(role) {
       case "admin":
