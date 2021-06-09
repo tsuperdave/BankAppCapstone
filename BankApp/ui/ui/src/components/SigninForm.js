@@ -1,15 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/esm/Container";
 import { Redirect, useHistory } from "react-router";
 import jwt_decode from 'jwt-decode'
+// import { AuthorizationContext } from "../auth";
 
 export default function SigninForm({ props }) {
 
   const [usernameOrEmail, setUsername] = useState('');
   const [password, setPassword] = useState(''); 
-  // const [email, setEmail] = useState(''); 
+  // const [auth, setAuth] = useContext(AuthorizationContext);
   // const [firstName, setFirstName] = useState(''); 
   // const [lastName, setLastName] = useState(''); 
   
@@ -22,23 +23,6 @@ export default function SigninForm({ props }) {
     })
 
     console.log("After sign in " + localStorage.getItem('userRole'));
-    
-    // switch(localStorage.getItem('userRole')){
-    //   case "admin":
-    //     history.push('/admin')
-    //     break;
-    //   case "user":
-    //     console.log("Switch case User role made");
-    //     <Redirect to='/accounts' />
-    //     break;
-    //   default:
-    //     console.log("must Log in")
-    // }
-
-    // history.push('/accounts')
-    // reroute to accounts page by default IF accountHolder,
-    // ... preferences if user
-    // ... admin if admin
    
   };
 
@@ -60,13 +44,14 @@ export default function SigninForm({ props }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ usernameOrEmail, password }),
-    }).then(res => res.json())
+    }).then(res => res.json()
+    )
     .then(data => {
       saveToken(data);
-      // error is running this
-      decodeAndSaveRole(); 
-      
-    })         
+      signinRedirect(decodeAndSaveRole());
+    })
+    // .catch(e => )    
+        
   }
   
   async function signup(credentials) {
@@ -99,6 +84,24 @@ export default function SigninForm({ props }) {
       // console.log("After decoding role " + decoded['sub'])  
     localStorage.setItem('userRole', JSON.stringify(decoded['sub']));
     return decoded['sub'];
+  }
+
+  const signinRedirect = (role) => {
+    switch(role) {
+      case "admin":
+        history.push('/admin')
+        break;
+      case "user":
+        // console.log("Switch case User role made");
+        history.push('/preferences')
+        break;
+      case "AccountHolder":
+        // console.log("Switch case User role made");
+        history.push('/accounts')
+        break;
+      default:
+        console.log("must Log in")
+    }
   }
 
   return (

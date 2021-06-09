@@ -10,12 +10,13 @@ import PreferencesPage from './pages/preferences';
 import AccountsPage from './pages/accounts';
 import AuthSigninPage from './pages/auth/signin';
 import AuthRegisterPage from './pages/auth/register';
+// import { AuthorizationProvider } from './auth';
 
 export default function App(props) {
 
   // wrap below in AuthProvider
   return (
- 
+    // <AuthorizationProvider>
       <Router>
         <Switch>
           <Route exact path='/' component={HomePage}>
@@ -42,7 +43,7 @@ export default function App(props) {
           
         </Switch>
       </Router>
-    
+    // </AuthorizationProvider>
   );
 }
 
