@@ -4,17 +4,15 @@ import Container from "react-bootstrap/Container";
 import SectionHeader from "./SectionHeader";
 import Button from "react-bootstrap/Button";
 import { LinkContainer } from "react-router-bootstrap";
-// import { useAuth } from "./../auth"
 
 function HeroSection(props) {
-  // const auth = useAuth();
 
   return (
     <Section
+      bgImage={props.bgImage}
       bg={props.bg}
       textColor={props.textColor}
       size={props.size}
-      bgImage={props.bgImage}
       bgImageOpacity={props.bgImageOpacity}
     >
       <Container className="text-center">

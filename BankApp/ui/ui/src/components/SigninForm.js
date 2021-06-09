@@ -48,7 +48,7 @@ export default function SigninForm({ props }) {
       saveToken(data);
       signinRedirect(decodeAndSaveRole());
       setAuth({
-        jwt: data,
+        jwt: getToken(),
         role: decodeAndSaveRole(),
         isLoggedIn: true
       })
@@ -70,7 +70,7 @@ export default function SigninForm({ props }) {
   const getToken = () => {
     const tokenString = localStorage.getItem("jwt");
     const userToken = JSON.parse(tokenString);
-    return userToken?.token;
+    return userToken.jwt;
   };
 
   const saveToken = (userToken) => {

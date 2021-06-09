@@ -4,6 +4,7 @@ import HeroSection from "../components/HeroSection";
 import Footer from "../components/Footer";
 import bank_logo from '../resources/bank_logo.png';
 import MA_logo from '../resources/MA_logo.png';
+import home_bg from '../resources/home_bg.png'
 
 export default function HomePage(props) {
     return (
@@ -18,8 +19,8 @@ export default function HomePage(props) {
           bg="white"
           textColor="dark"
           size="md"
-          bgImage=""
-          bgImageOpacity={1}
+          bgImage={home_bg}
+          bgImageOpacity={0.5}
           title="Your Home page title here"
           subtitle="Sub title test here"
           buttonText="Register Now!"
@@ -31,7 +32,7 @@ export default function HomePage(props) {
           textColor="dark"
           size="md"
           bgImage=""
-          bgImageOpacity={1}
+          bgImageOpacity={0.5}
           description="A short description of what you do here"
           copyright="© 2021 Company"
           logo={MA_logo}
