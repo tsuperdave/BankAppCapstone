@@ -9,15 +9,15 @@ import javax.persistence.*;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
-@NoArgsConstructor
 public class SavingsAccount extends BankAccount{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    public SavingsAccount(double balance) {
-        super(balance);
+    public SavingsAccount() {
+        super();
+        accountType = "SavingsAccount";
     }
 
 }

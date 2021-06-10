@@ -7,18 +7,17 @@ import java.util.*;
 
 @Data
 @Entity(name = "CDOffering")
-@Table(name = "CheckingAccount")
+@Table(name = "PersonalCheckingAccount")
 public class CDOffering {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "offering_id")
     private Integer id;
 
     Integer term;
     double interestRate;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cdOffering")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cdOffering", fetch = FetchType.LAZY)
     private List<CDAccount> cdAccountList;
 
 }

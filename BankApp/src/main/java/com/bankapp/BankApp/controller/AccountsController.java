@@ -4,7 +4,7 @@ import com.bankapp.BankApp.exceptions.AccountNotFoundException;
 import com.bankapp.BankApp.exceptions.ExceedsCombinedBalanceLimitException;
 import com.bankapp.BankApp.exceptions.InvalidArgumentException;
 import com.bankapp.BankApp.models.CDAccount;
-import com.bankapp.BankApp.models.CheckingAccount;
+import com.bankapp.BankApp.models.PersonalCheckingAccount;
 import com.bankapp.BankApp.models.SavingsAccount;
 import com.bankapp.BankApp.services.AccountHolderService;
 import com.bankapp.BankApp.services.AccountsService;
@@ -28,14 +28,14 @@ public class AccountsController {
     @PostMapping(value = "/checkingaccounts")
     @ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("hasAuthority('admin')")
-    public CheckingAccount addCheckingAccount(@RequestBody CheckingAccount checkingAccount, @PathVariable Integer id) throws AccountNotFoundException, ExceedsCombinedBalanceLimitException, InvalidArgumentException {
-        return accountsService.addCheckingAccount(id, checkingAccount);
+    public PersonalCheckingAccount addCheckingAccount(@RequestBody PersonalCheckingAccount personalCheckingAccount, @PathVariable Integer id) throws AccountNotFoundException, ExceedsCombinedBalanceLimitException, InvalidArgumentException {
+        return accountsService.addCheckingAccount(id, personalCheckingAccount);
     }
 
-    @GetMapping(value = "checkingaccounts")
+    @GetMapping(value = "/checkingaccounts")
     @ResponseStatus(HttpStatus.OK)
     @PreAuthorize("hasAuthority('admin')")
-    public List<CheckingAccount> getCheckingAccounts(@PathVariable Integer id) throws InvalidArgumentException {
+    public List<PersonalCheckingAccount> getCheckingAccounts(@PathVariable Integer id) throws InvalidArgumentException {
         return accountHolderService.getCheckingAccounts(id);
     }
 

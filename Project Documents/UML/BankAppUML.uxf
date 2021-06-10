@@ -59,7 +59,7 @@ AccountHolderRepository
 --
 
 +getAccountHolderById (id : Integer): AccountHolder
-+addCheckingAccount (checkingAccount : CheckingAccount): CheckingAccount
++addCheckingAccount (personalCheckingAccount : CheckingAccount): CheckingAccount
 +getCheckingAccount (): List&lt;CheckingAccount&gt;
 +addSavingsAccount (savingsAccount : SavingsAccount): SavingsAccount
 +getSavingsAccount (): List&lt;SavingsAccount&gt;
@@ -111,7 +111,7 @@ AccountsService
 
 --
 
-+addCheckingAccount(id : int, checkingAccount : CheckingAccount)
++addCheckingAccount(id : int, personalCheckingAccount : CheckingAccount)
 +addSavingsAccount(id : int, savingsAccount : SavingsAccount)
 +addCDAccount(id : int, cdAccount : CDAccount)</panel_attributes>
     <additional_attributes/>
@@ -438,7 +438,7 @@ SavingsAccountRepository
 +AccountServiceImpl()
 
 +getAccountHolderById (id : int): AccountHolder
-+addCheckingAccount (id : int, checkingAccount : CheckingAccount): CheckingAccount
++addCheckingAccount (id : int, personalCheckingAccount : CheckingAccount): CheckingAccount
 +addSavingsAccount (id : int, savingsAccount : SavingsAccount): SavingsAccount
 +addCDAccount (id : int, cdAccount : CDAccount): CDAccount
 +getCheckingAccountById (id : Integer): List&lt;CheckingAccount&gt;
@@ -462,7 +462,7 @@ UserDetailsService
 
 --
 
-+addCheckingAccount(id : int, checkingAccount : CheckingAccount)
++addCheckingAccount(id : int, personalCheckingAccount : CheckingAccount)
 +addSavingsAccount(id : int, savingsAccount : SavingsAccount)
 +addCDAccount(id : int, cdAccount : CDAccount)</panel_attributes>
     <additional_attributes/>
@@ -570,7 +570,7 @@ AccountHolderService
 
 --
 
-+addCheckingAccount (id : Integer, checkingAccount : CheckingAccount): CheckingAccount
++addCheckingAccount (id : Integer, personalCheckingAccount : CheckingAccount): CheckingAccount
 +addSavingsAccount (id : Integer, savingsAccount : SavingsAccount): SavingsAccount
 +addCDAccount (id : Integer, cdACcount : CDAccount): CDAccount
 +getCheckingAccounts (id : Integer): List&lt;CheckingAccount&gt;
@@ -634,7 +634,7 @@ CDOfferingService
 
 --
 
-+addCheckingAccount(id : int, checkingAccount : CheckingAccount)
++addCheckingAccount(id : int, personalCheckingAccount : CheckingAccount)
 +addSavingsAccount(id : int, savingsAccount : SavingsAccount)
 +addCDAccount(id : int, cdAccount : CDAccount)</panel_attributes>
     <additional_attributes/>

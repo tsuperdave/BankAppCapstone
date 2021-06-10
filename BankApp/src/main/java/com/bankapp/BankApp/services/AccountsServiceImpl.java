@@ -5,7 +5,7 @@ import com.bankapp.BankApp.exceptions.ExceedsCombinedBalanceLimitException;
 import com.bankapp.BankApp.exceptions.InvalidArgumentException;
 import com.bankapp.BankApp.models.AccountHolder;
 import com.bankapp.BankApp.models.CDAccount;
-import com.bankapp.BankApp.models.CheckingAccount;
+import com.bankapp.BankApp.models.PersonalCheckingAccount;
 import com.bankapp.BankApp.models.SavingsAccount;
 import com.bankapp.BankApp.repository.AccountHolderRepository;
 import com.bankapp.BankApp.repository.CDAccountRepository;
@@ -34,16 +34,16 @@ public class AccountsServiceImpl implements AccountsService {
     CDAccountRepository cdAccountRepository;
 
     @Override
-    public CheckingAccount addCheckingAccount(int id, CheckingAccount checkingAccount) throws AccountNotFoundException, ExceedsCombinedBalanceLimitException {
+    public PersonalCheckingAccount addCheckingAccount(int id, PersonalCheckingAccount personalCheckingAccount) throws AccountNotFoundException, ExceedsCombinedBalanceLimitException {
         //need to grab account by id to add checking
         AccountHolder accountHolder = getAccountHolderById(id);
-        if(accountHolder.getCombinedAccountBalance() + checkingAccount.getBalance() > BANK_ACCOUNT_BALANCE_LIMIT) {
+        if(accountHolder.getCombinedAccountBalance() + personalCheckingAccount.getBalance() > BANK_ACCOUNT_BALANCE_LIMIT) {
             throw new ExceedsCombinedBalanceLimitException("Total balance exceeds threshold. Cannot create a Checking Account at this time");
         }
-        accountHolder.setCheckingAccountList(Arrays.asList(checkingAccount));
-        checkingAccount.setAccountHolder(accountHolder);
-        checkingAccountRepository.save(checkingAccount);
-        return checkingAccount;
+        accountHolder.setPersonalCheckingAccountList(Arrays.asList(personalCheckingAccount));
+        personalCheckingAccount.setAccountHolder(accountHolder);
+        checkingAccountRepository.save(personalCheckingAccount);
+        return personalCheckingAccount;
     }
 
     @Override
@@ -75,8 +75,8 @@ public class AccountsServiceImpl implements AccountsService {
         return accountHolderRepository.findById(id).orElse(null);
     }
 
-    public List<CheckingAccount> getCheckingAccountById(int id) throws AccountNotFoundException {
-        return getAccountHolderById(id).getCheckingAccountList();
+    public List<PersonalCheckingAccount> getCheckingAccountById(int id) throws AccountNotFoundException {
+        return getAccountHolderById(id).getPersonalCheckingAccountList();
     }
 
     public List<SavingsAccount> getSavingsAccountById(Integer id) throws AccountNotFoundException {

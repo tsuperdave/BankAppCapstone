@@ -1,39 +1,54 @@
 package com.bankapp.BankApp.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
 
 @Data
-@NoArgsConstructor
-@MappedSuperclass
+//@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class BankAccount {
 	
-		@Id
-		@GeneratedValue(strategy=GenerationType.IDENTITY)
-		private Integer id;
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Integer id;
 
-		private static long nextAccountNumber = 1;
+	private static long nextAccountNumber = 1;
 
-		@ManyToOne
-		@JoinColumn(name = "account_holder_id")
-		@JsonIgnore
-		private AccountHolder accountHolder;
+	@ManyToOne
+	@JoinColumn(name = "accountHolder_id")
+	private AccountHolder accountHolder;
 
-		private long accountNumber;
-		private double balance;
-		private LocalDateTime openedOn;
-		private double interestRate;
+	private double balance;
+	private LocalDateTime openedOn;
+	String accountType;
 
-		public BankAccount(double balance) {
-			this.accountNumber = nextAccountNumber++;
-			this.balance = balance;
-			this.interestRate = 0.01;
-			this.openedOn = LocalDateTime.now();
-		}
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "source_account_txns", fetch = FetchType.LAZY)
+	private List<Transaction> sourceAccountTransactions;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "personalCheckingAccount", fetch = FetchType.LAZY)
+	private List<Transaction> personalCheckingTxns;
+
+	public BankAccount() {
+		super();
+	}
+
+	@JsonBackReference(value = "account_holder")
+	public AccountHolder getAccountHolder() {
+		return accountHolder;
+	}
+
+	@JsonBackReference(value = "source_account")
+	public List<Transaction> getSourceTransactions() {
+		return sourceAccountTransactions;
+	}
+
+	public void withdraw(double amount) {
+		this.balance -= amount;
+	}
+
+	//TODO add deposit method
+
 }

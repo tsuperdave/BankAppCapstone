@@ -10,7 +10,6 @@ import javax.persistence.*;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
-@NoArgsConstructor
 public class CDAccount extends BankAccount{
 
     @Id
@@ -21,8 +20,7 @@ public class CDAccount extends BankAccount{
     @JoinColumn(name = "offering_id")
     private CDOffering cdOffering;
 
-    public CDAccount(double balance, CDOffering cdOffering) {
-        super(balance);
-        this.cdOffering = cdOffering;
+    public CDAccount() {
+        super();
     }
 }

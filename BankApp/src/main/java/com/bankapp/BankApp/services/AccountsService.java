@@ -3,22 +3,13 @@ package com.bankapp.BankApp.services;
 import com.bankapp.BankApp.exceptions.AccountNotFoundException;
 import com.bankapp.BankApp.exceptions.ExceedsCombinedBalanceLimitException;
 import com.bankapp.BankApp.exceptions.InvalidArgumentException;
-import com.bankapp.BankApp.models.AccountHolder;
 import com.bankapp.BankApp.models.CDAccount;
-import com.bankapp.BankApp.models.CheckingAccount;
+import com.bankapp.BankApp.models.PersonalCheckingAccount;
 import com.bankapp.BankApp.models.SavingsAccount;
-import com.bankapp.BankApp.repository.AccountHolderRepository;
-import com.bankapp.BankApp.repository.CDAccountRepository;
-import com.bankapp.BankApp.repository.CheckingAccountRepository;
-import com.bankapp.BankApp.repository.SavingsAccountRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.Arrays;
-import java.util.List;
 
 public interface AccountsService {
 
-    public CheckingAccount addCheckingAccount(int id, CheckingAccount checkingAccount)
+    public PersonalCheckingAccount addCheckingAccount(int id, PersonalCheckingAccount personalCheckingAccount)
             throws AccountNotFoundException,
             ExceedsCombinedBalanceLimitException,
             InvalidArgumentException;

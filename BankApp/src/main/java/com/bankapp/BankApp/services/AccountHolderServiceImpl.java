@@ -32,11 +32,11 @@ public class AccountHolderServiceImpl implements AccountHolderService {
     }
 
     @Override
-    public List<CheckingAccount> getCheckingAccounts(Integer id) {
+    public List<PersonalCheckingAccount> getCheckingAccounts(Integer id) {
         // TODO add exception if Account Holder is not found
         if(accountHolderRepository.existsById(id)) {
             AccountHolder accountHolder = accountHolderRepository.getOne(id);
-            return accountHolder.getCheckingAccountList();
+            return accountHolder.getPersonalCheckingAccountList();
         }
         return null;
     }
