@@ -7,15 +7,13 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 @Data
-//@Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Entity(name="BankAccount")
+@Inheritance
 public abstract class BankAccount {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
-
-	private static long nextAccountNumber = 1;
 
 	@ManyToOne
 	@JoinColumn(name = "accountHolder_id")
@@ -25,24 +23,32 @@ public abstract class BankAccount {
 	private LocalDateTime openedOn;
 	String accountType;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "source_account_txns", fetch = FetchType.LAZY)
-	private List<Transaction> sourceAccountTransactions;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "sourceAccount", fetch = FetchType.LAZY)
+	private List<Transaction> sourceAccountTxns;
+
+	// TODO add targetAccountTxns
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "personalCheckingAccount", fetch = FetchType.LAZY)
 	private List<Transaction> personalCheckingTxns;
+
+	// TODO add TXNs list for all types of accounts
+
+
+	// ------ END INSTANCE VARS
+
 
 	public BankAccount() {
 		super();
 	}
 
-	@JsonBackReference(value = "account_holder")
+	@JsonBackReference(value = "accountHolder")
 	public AccountHolder getAccountHolder() {
 		return accountHolder;
 	}
 
-	@JsonBackReference(value = "source_account")
+	@JsonBackReference(value = "sourceAccount")
 	public List<Transaction> getSourceTransactions() {
-		return sourceAccountTransactions;
+		return sourceAccountTxns;
 	}
 
 	public void withdraw(double amount) {

@@ -10,11 +10,12 @@ import java.util.*;
 
 @Data
 @Entity
+@Table
 @NoArgsConstructor
 public class AccountHolder {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     Integer id;
 
     @NotBlank(message = "First Name cannot be blank")
@@ -30,9 +31,9 @@ public class AccountHolder {
     String ssn;
 
     @OneToOne(cascade = CascadeType.REMOVE, mappedBy = "accountHolder", fetch = FetchType.LAZY)
-    private List<PersonalCheckingAccount> personalCheckingAccountList = new ArrayList<>();
+    private PersonalCheckingAccount personalCheckingAccount;
     @OneToOne(cascade = CascadeType.REMOVE, mappedBy = "accountHolder", fetch = FetchType.LAZY)
-    private List<SavingsAccount> savingsAccountsList = new ArrayList<>();
+    private SavingsAccount savingsAccount;
     @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "accountHolder", fetch = FetchType.LAZY)
     private List<CDAccount> cdAccountList = new ArrayList<>();
 
@@ -53,48 +54,25 @@ public class AccountHolder {
         this.ssn = ssn;
     }
 
-    public double getNumberOfCheckingAccounts() {
-        if(personalCheckingAccountList != null) {
-            return personalCheckingAccountList.size();
-        }
-        return 0;
-    }
-
-    public double getNumberOfSavingsAccounts() {
-        if(personalCheckingAccountList != null) {
-            return savingsAccountsList.size();
-        }
-        return 0;
-    }
-
-    public double getNumberOfCDAccounts() {
-        if(personalCheckingAccountList != null) {
-            return cdAccountList.size();
-        }
-        return 0;
-    }
-
-    public double getCheckingBalance() {
+    public double getPersonalCheckingBalance() {
         double total = 0;
-        if(personalCheckingAccountList != null) {
-            for(PersonalCheckingAccount ca: personalCheckingAccountList) {
-                total += ca.getBalance();
-            }
+        if(personalCheckingAccount != null) {
+            total += personalCheckingAccount.getBalance();
             return total;
-        }
+            }
         return 0;
     }
 
     public double getSavingsBalance() {
         double total = 0;
-        if(personalCheckingAccountList != null) {
-            for(SavingsAccount sa: savingsAccountsList) {
-                total += sa.getBalance();
-            }
+        if(savingsAccount != null) {
+            total += savingsAccount.getBalance();
             return total;
         }
         return 0;
     }
+
+
 
     public double getCDBalance() {
         double total = 0;
@@ -108,7 +86,7 @@ public class AccountHolder {
     }
 
     public double getCombinedAccountBalance() {
-        combinedBal = getCheckingBalance() + getSavingsBalance() + getCDBalance();
+        combinedBal = getPersonalCheckingBalance() + getSavingsBalance() + getCDBalance();
         return combinedBal;
     }
 

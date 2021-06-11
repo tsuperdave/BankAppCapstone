@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
-@RequestMapping("/api/Me/accounts/{id}")
+@RequestMapping("/api/Me/accounts/")
 public class TransactionController {
 
     @Autowired

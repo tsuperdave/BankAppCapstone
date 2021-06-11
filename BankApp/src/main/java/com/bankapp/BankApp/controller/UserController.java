@@ -62,10 +62,10 @@ public class UserController {
 
     @GetMapping("/checkingaccounts")
     @PreAuthorize("hasAuthority('AccountHolder')")
-    public List<PersonalCheckingAccount> getCheckingAccount() {
+    public PersonalCheckingAccount getCheckingAccount() {
         String username = jwtUtil.getCurrentUserName();
         User user = userService.getUserByUserName(username);
-        return user.getAccountHolder().getPersonalCheckingAccountList();
+        return user.getAccountHolder().getPersonalCheckingAccount();
     }
 
     @PostMapping("/savingsaccounts")
@@ -91,10 +91,10 @@ public class UserController {
 
     @GetMapping("/savingsaccounts")
     @PreAuthorize("hasAuthority('AccountHolder')")
-    public List<SavingsAccount> getSavingsAccount() {
+    public SavingsAccount getSavingsAccount() {
         String username = jwtUtil.getCurrentUserName();
         User user = userService.getUserByUserName(username);
-        return user.getAccountHolder().getSavingsAccountsList();
+        return user.getAccountHolder().getSavingsAccount();
     }
 
     @PostMapping("/cdaccounts")

@@ -6,12 +6,18 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Data
+@Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Transaction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
+    String txnType;
+    double amount;
+    Integer accountOrigin;
+    String account;
 
     // TODO add many-to-ones for each type of account
     // also join columns
@@ -24,6 +30,10 @@ public abstract class Transaction {
     @ManyToOne
     @JoinColumn(name = "personalCheckingAccount_id")
     PersonalCheckingAccount personalCheckingAccount;
+
+    @ManyToOne
+    @JoinColumn(name = "sourceAccount_id")
+    BankAccount sourceAccount;
 
     public abstract void processTxn();
 

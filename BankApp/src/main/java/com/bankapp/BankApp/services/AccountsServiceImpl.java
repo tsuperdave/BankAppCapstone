@@ -40,7 +40,7 @@ public class AccountsServiceImpl implements AccountsService {
         if(accountHolder.getCombinedAccountBalance() + personalCheckingAccount.getBalance() > BANK_ACCOUNT_BALANCE_LIMIT) {
             throw new ExceedsCombinedBalanceLimitException("Total balance exceeds threshold. Cannot create a Checking Account at this time");
         }
-        accountHolder.setPersonalCheckingAccountList(Arrays.asList(personalCheckingAccount));
+        accountHolder.setPersonalCheckingAccount(personalCheckingAccount);
         personalCheckingAccount.setAccountHolder(accountHolder);
         checkingAccountRepository.save(personalCheckingAccount);
         return personalCheckingAccount;
@@ -52,7 +52,7 @@ public class AccountsServiceImpl implements AccountsService {
         if(accountHolder.getCombinedAccountBalance() + savingsAccount.getBalance() > BANK_ACCOUNT_BALANCE_LIMIT) {
             throw new ExceedsCombinedBalanceLimitException("Total balance exceeds threshold. Cannot create a Savings Account at this time");
         }
-        accountHolder.setSavingsAccountsList(Arrays.asList(savingsAccount));
+        accountHolder.setSavingsAccount(savingsAccount);
         savingsAccount.setAccountHolder(accountHolder);
         savingsAccountRepository.save(savingsAccount);
         return savingsAccount;
@@ -75,12 +75,12 @@ public class AccountsServiceImpl implements AccountsService {
         return accountHolderRepository.findById(id).orElse(null);
     }
 
-    public List<PersonalCheckingAccount> getCheckingAccountById(int id) throws AccountNotFoundException {
-        return getAccountHolderById(id).getPersonalCheckingAccountList();
+    public PersonalCheckingAccount getCheckingAccountById(int id) throws AccountNotFoundException {
+        return getAccountHolderById(id).getPersonalCheckingAccount();
     }
 
-    public List<SavingsAccount> getSavingsAccountById(Integer id) throws AccountNotFoundException {
-        return getAccountHolderById(id).getSavingsAccountsList();
+    public SavingsAccount getSavingsAccountById(Integer id) throws AccountNotFoundException {
+        return getAccountHolderById(id).getSavingsAccount();
     }
 
     public List<CDAccount> getCDAccountById(Integer id) throws AccountNotFoundException {

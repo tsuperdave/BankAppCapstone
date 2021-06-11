@@ -9,11 +9,11 @@ import javax.persistence.*;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
-@Table
-public class PersonalCheckingAccount extends BankAccount{
-//
+//@Table
+public class PersonalCheckingAccount extends BankAccount {
+
 //	@Id
-//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	@GeneratedValue(strategy = GenerationType.AUTO)
 //	private Integer id;
 
 	double interestRate = 0.0001;

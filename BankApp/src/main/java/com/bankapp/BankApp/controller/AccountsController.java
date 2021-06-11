@@ -35,7 +35,7 @@ public class AccountsController {
     @GetMapping(value = "/checkingaccounts")
     @ResponseStatus(HttpStatus.OK)
     @PreAuthorize("hasAuthority('admin')")
-    public List<PersonalCheckingAccount> getCheckingAccounts(@PathVariable Integer id) throws InvalidArgumentException {
+    public PersonalCheckingAccount getCheckingAccounts(@PathVariable Integer id) throws InvalidArgumentException {
         return accountHolderService.getCheckingAccounts(id);
     }
 
@@ -50,7 +50,7 @@ public class AccountsController {
     @GetMapping(value = "/savingsaccounts")
     @ResponseStatus(HttpStatus.OK)
     @PreAuthorize("hasAuthority('admin')")
-    public List<SavingsAccount> getSavingsAccounts(@PathVariable Integer id) throws AccountNotFoundException {
+    public SavingsAccount getSavingsAccounts(@PathVariable Integer id) throws AccountNotFoundException {
         return accountHolderService.getSavingsAccounts(id);
     }
 
