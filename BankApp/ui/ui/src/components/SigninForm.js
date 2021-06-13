@@ -21,6 +21,8 @@ export default function SigninForm({ props }) {
       usernameOrEmail,
       password
     })
+
+    
    
   };
 
@@ -52,7 +54,9 @@ export default function SigninForm({ props }) {
         role: decodeAndSaveRole(),
         isLoggedIn: true
       })
+      // console.log(auth.role)
     })
+    
             
   }
   
@@ -79,9 +83,9 @@ export default function SigninForm({ props }) {
 
   const decodeAndSaveRole = () => {
     const tokenString = localStorage.getItem('jwt');
-      // console.log("Grab token from local " + tokenString) // null
+      console.log("Grab token from local " + tokenString) // null
     const decoded = jwt_decode(tokenString);
-      // console.log("After decoding role " + decoded['sub'])  
+      console.log("After decoding role " + decoded['sub'])  
     localStorage.setItem('userRole', JSON.stringify(decoded['sub']));
     return decoded['sub'];
   }
