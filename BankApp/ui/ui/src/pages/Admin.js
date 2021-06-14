@@ -20,10 +20,10 @@ function AdminPage(props) {
           <Form.Control type="text" placeholder="Enter User ID" />
           <Button variant="primary" size="md">
             Find User By Id
-          </Button>
+          </Button>{' '}
           <Button variant="primary" size="md">
             Delete Account
-          </Button>
+          </Button>{' '}
           <Button variant="primary" size="md">
             Delete Account Holder
           </Button>

@@ -7,6 +7,7 @@ import Button from "react-bootstrap/Button";
 import AccountsOverview from "../components/AccountsOverview";
 import Footer from "../components/Footer";
 import { requireAuth } from "../auth";
+import { Row } from "react-bootstrap";
 
 function AccountsPage(props) {
   return (
@@ -15,26 +16,41 @@ function AccountsPage(props) {
         bg="light"
         variant="light"
         expand="md"
-        logo="https://uploads.divjoy.com/logo.svg"
+        logo=""
       />
-      <section>
+      
         <Container>
+        <Row>
           <Col>
             <Card>
               <Card.Body>
-                <Card.Text>Account Nickname</Card.Text>
-                <Card.Title>Account Name</Card.Title>
-                <Card.Text>Accnt #</Card.Text>
+                <Row>
+                  <Col>
+                    <Card.Text>Account Nickname</Card.Text>
+                    <Card.Title>Account Name</Card.Title>
+                    <Card.Text>Accnt #</Card.Text>
+                  </Col>
+                  <Col>
+                    <h4>Account Balance</h4>
+                    <p>
+                      $$ put bal object here $$
+                    </p>
+                  </Col>
+                </Row>
               </Card.Body>
-            </Card>
-          </Col>
+            </Card>          
+          </Col>  
+          
+        </Row>
+            <Col>
+              <Button variant="primary" size="md">
+                Delete Account
+              </Button>
+            </Col>
+
         </Container>
-        <Col>
-          <Button variant="primary" size="md">
-            Delete Account
-          </Button>
-        </Col>
-      </section>
+        
+     
       <AccountsOverview
         bg="white"
         textColor="dark"
@@ -44,12 +60,14 @@ function AccountsPage(props) {
         title="Accounts Overview"
         subtitle=""
       />
+      
       <Card>
         <Card.Body>
           <Card.Title>Latest Transactions</Card.Title>
           <Card.Text>put txn info here</Card.Text>
         </Card.Body>
       </Card>
+
       <Footer
         bg="white"
         textColor="dark"

@@ -6,6 +6,7 @@ import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Dropdown from "react-bootstrap/Dropdown";
 import { AuthorizationContext } from "../auth";
+import bank_logo from '../resources/bank_logo.png'
 
 
 export default function NavbarMain(props) {
@@ -19,7 +20,7 @@ export default function NavbarMain(props) {
           <Navbar.Brand>
             <img
               className="d-inline-block align-top"
-              src={props.logo}
+              src={bank_logo}
               alt="Logo"
               height="30"
             />

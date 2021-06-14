@@ -1,5 +1,6 @@
 package com.bankapp.BankApp.controller;
 
+import com.bankapp.BankApp.models.UserDTO;
 import com.bankapp.BankApp.security.models.AuthenticationRequest;
 import com.bankapp.BankApp.security.models.AuthenticationResponse;
 import com.bankapp.BankApp.security.models.RegisterRequest;
@@ -45,11 +46,12 @@ public class AuthController {
             throw new Exception("Incorrect username or password", bce);
         }
 
-        final UserDetails userDetails = myUserDetailsService.loadUserByUsername(authenticationRequest.getUsernameOrEmail());
+        final UserDetails usernameOrEmail = myUserDetailsService.loadUserByUsername(authenticationRequest.getUsernameOrEmail());
+        final String jwt = jwtTokenUtil.generateToken(usernameOrEmail);
 
-        final String jwt = jwtTokenUtil.generateToken(userDetails);
+        final UserDTO user = new UserDTO(jwt, usernameOrEmail.getAuthorities().toString());
 
-        return ResponseEntity.ok(new AuthenticationResponse(jwt));
+        return ResponseEntity.ok(user);
     }
 
 //    @PostMapping(value = "/registerUser")

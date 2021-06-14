@@ -3,6 +3,7 @@ import Section from "./Section";
 import Container from "react-bootstrap/Container";
 import { Link } from "./../router";
 import "./Footer.scss";
+import MA_logo from "../resources/MA_logo.png"
 
 export default function Footer(props) {
   return (
@@ -18,7 +19,7 @@ export default function Footer(props) {
         <div className="FooterComponent__inner">
           <div className="brand left">
             <Link to="/home">
-              <img src={props.logo} alt="Logo" />
+              <img src={MA_logo} alt="Logo" />
             </Link>
           </div>
           <div className="links right">
