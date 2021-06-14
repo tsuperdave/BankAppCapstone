@@ -72,8 +72,6 @@ public class AccountHolder {
         return 0;
     }
 
-
-
     public double getCDBalance() {
         double total = 0;
         if(cdAccountList != null) {

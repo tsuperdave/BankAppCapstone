@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
 
 @Data
 @Entity
@@ -13,8 +16,9 @@ public abstract class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-
+    @NotBlank(message = "Must specify account type")
     String txnType;
+    @Positive(message = "Amount must be above 0")
     double amount;
     Integer accountOrigin;
     String account;

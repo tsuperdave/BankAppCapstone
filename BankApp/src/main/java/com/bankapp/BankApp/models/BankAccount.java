@@ -3,6 +3,7 @@ package com.bankapp.BankApp.models;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 import javax.persistence.*;
+import javax.validation.constraints.Positive;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -19,7 +20,9 @@ public abstract class BankAccount {
 	@JoinColumn(name = "accountHolder_id")
 	private AccountHolder accountHolder;
 
+	@Positive(message = "Balance must be above 0")
 	private double balance;
+
 	private LocalDateTime openedOn;
 	String accountType;
 
