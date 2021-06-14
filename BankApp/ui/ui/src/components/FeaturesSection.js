@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Section from "./Section";
 import Container from "react-bootstrap/Container";
 import SectionHeader from "./SectionHeader";
@@ -8,30 +8,15 @@ import Col from "react-bootstrap/Col";
 import AspectRatio from "./AspectRatio";
 import Image from "react-bootstrap/Image";
 import "./FeaturesSection.scss";
+import MA_logo from '../resources/MA_logo.png'
+import { AuthorizationContext } from "../auth";
+import { Button, Form } from "react-bootstrap";
 
 function FeaturesSection(props) {
-  const items = [
-    {
-      title: "Find Best CD Offer Now!",
-      body: "Get the best rate here!",
-      image: "",
-    },
-    {
-      title: "Update Details",
-      body: "Update contact details (email, phone number, display name)",
-      image: "",
-    },
-    {
-      title: "Block Title",
-      body: "Some random other stuff to do here",
-      image: "",
-    },
-    {
-      title: "Some other block title",
-      body: "moar stuff",
-      image: "",
-    },
-  ];
+
+  const [auth, setAuth] = useContext(AuthorizationContext);
+
+  console.log("Value of Auth in Features is: " + auth.jwt)
 
   return (
     <Section
@@ -43,14 +28,13 @@ function FeaturesSection(props) {
     >
       <Container className="text-center">
         <SectionHeader
-          title={props.title}
-          subtitle={props.subtitle}
+          title={`Welcome, ${auth.role}!`}
+          subtitle='Preferences'
           size={2}
           spaced={true}
         />
         <Card>
-          <Row className="no-gutters overflow-hidden">
-            {items.map((item, index) => (
+          <Row className="no-gutters overflow-hidden">          
               <Col
                 xs={12}
                 lg={6}
@@ -59,20 +43,40 @@ function FeaturesSection(props) {
                   alignItems: "stretch",
                   justifyContent: "center",
                   boxShadow: "1px 1px 0 0 #efefef",
-                }}
-                key={index}
-              >
+                }} >
+
                 <div className="FeaturesSection__item has-text-centered">
                   <div className="FeaturesSection__image-container">
                     <AspectRatio ratio={4 / 3}>
-                      <Image src={item.image} alt={item.title} fluid={true} />
+                      <Image src={MA_logo} fluid={true} />
                     </AspectRatio>
-                  </div>
-                  <h4>{item.title}</h4>
-                  <p>{item.body}</p>
-                </div>
+                  </div>                                    
+                    <Form>
+                      <Row>
+                        <Col>
+                          <Form.Group controlId="formGroupEmail">
+                            <Form.Label>Change Email</Form.Label>
+                            <Form.Control type="email" placeholder="Change Email" />
+                          </Form.Group>
+                        </Col>
+                        <Col>
+                          <Form.Group controlId="formGroupPhoneNum">
+                            <Form.Label>Change Phone Number</Form.Label>
+                            <Form.Control type="text" placeholder="123-456-7891" />
+                          </Form.Group>
+                        </Col>
+                      </Row>
+                      <Row>
+                      <Form.Group controlID="formGroupEmail">
+                            <Form.Label>Change Address</Form.Label>
+                            <Form.Control type="text" placeholder="1234 Main St." />
+                          </Form.Group>
+                      </Row>
+
+                        <Button variant="primary" type="submit">Submit</Button>      
+                    </Form>                  
+                </div>                             
               </Col>
-            ))}
           </Row>
         </Card>
       </Container>
