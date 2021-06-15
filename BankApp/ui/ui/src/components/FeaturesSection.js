@@ -54,20 +54,20 @@ function FeaturesSection(props) {
                     <Form>
                       <Row>
                         <Col>
-                          <Form.Group controlId="formGroupEmail">
+                          <Form.Group>
                             <Form.Label>Change Email</Form.Label>
                             <Form.Control type="email" placeholder="Change Email" />
                           </Form.Group>
                         </Col>
                         <Col>
-                          <Form.Group controlId="formGroupPhoneNum">
+                          <Form.Group>
                             <Form.Label>Change Phone Number</Form.Label>
                             <Form.Control type="text" placeholder="123-456-7891" />
                           </Form.Group>
                         </Col>
                       </Row>
                       <Row>
-                      <Form.Group controlID="formGroupEmail">
+                      <Form.Group>
                             <Form.Label>Change Address</Form.Label>
                             <Form.Control type="text" placeholder="1234 Main St." />
                           </Form.Group>

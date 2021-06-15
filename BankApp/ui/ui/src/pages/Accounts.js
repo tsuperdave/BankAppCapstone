@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import NavbarMain from "../components/NavbarMain";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
@@ -6,10 +6,44 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import AccountsOverview from "../components/AccountsOverview";
 import Footer from "../components/Footer";
-import { requireAuth } from "../auth";
+import { AuthorizationContext, requireAuth } from "../auth";
 import { Row } from "react-bootstrap";
 
+
+
+
+
 function AccountsPage(props) {
+
+  const [accountInfo, setAccountInfo] = useState({
+
+  });
+ 
+
+  const [auth, setAuth] = useContext(AuthorizationContext);
+
+  async function fetchAccountInfo () {
+    return fetch("http://localhost:8080/api/auth/signin", {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ accountType, balance }),
+      })
+      .then(res => res.json())
+      .then(data => {
+        
+        
+        setAccountInfo({
+          jwt: ,
+          role: ,
+          
+        })
+        // console.log(auth.role)
+      })   
+  }
+
   return (
     <>
       <NavbarMain

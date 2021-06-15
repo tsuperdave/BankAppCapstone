@@ -8,6 +8,7 @@ export const AuthorizationProvider = (props) => {
   const [auth, setAuth] = useState({
     jwt: '',
     role: '',
+    userId: '',
     isLoggedIn: false
   })
 

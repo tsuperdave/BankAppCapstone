@@ -1,9 +1,11 @@
 package com.bankapp.BankApp.controller;
 
+import com.bankapp.BankApp.models.AccountHolder;
 import com.bankapp.BankApp.models.UserDTO;
 import com.bankapp.BankApp.security.models.AuthenticationRequest;
 import com.bankapp.BankApp.security.models.AuthenticationResponse;
 import com.bankapp.BankApp.security.models.RegisterRequest;
+import com.bankapp.BankApp.services.AccountHolderService;
 import com.bankapp.BankApp.services.AuthService;
 import com.bankapp.BankApp.services.MyUserDetailsService;
 import com.bankapp.BankApp.security.util.JwtUtil;
@@ -31,6 +33,8 @@ public class AuthController {
     @Autowired
     private MyUserDetailsService myUserDetailsService;
     @Autowired
+    private AccountHolderService accountHolderService;
+    @Autowired
     private JwtUtil jwtTokenUtil;
     @Autowired
     AuthService authService;
@@ -47,9 +51,11 @@ public class AuthController {
         }
 
         final UserDetails usernameOrEmail = myUserDetailsService.loadUserByUsername(authenticationRequest.getUsernameOrEmail());
+        //TODO add user ID to return back to front end
+//        final Integer userId = // find user ID by username
         final String jwt = jwtTokenUtil.generateToken(usernameOrEmail);
 
-        final UserDTO user = new UserDTO(jwt, usernameOrEmail.getAuthorities().toString());
+        final UserDTO user = new UserDTO(jwt, usernameOrEmail.getAuthorities().toString()); // add user ID to constructor
 
         return ResponseEntity.ok(user);
     }
