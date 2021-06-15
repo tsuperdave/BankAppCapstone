@@ -22,27 +22,27 @@ function AccountsPage(props) {
 
   const [auth, setAuth] = useContext(AuthorizationContext);
 
-  async function fetchAccountInfo () {
-    return fetch("http://localhost:8080/api/auth/signin", {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ accountType, balance }),
-      })
-      .then(res => res.json())
-      .then(data => {
+  // async function fetchAccountInfo () {
+  //   return fetch("http://localhost:8080/api/auth/signin", {
+  //       method: "GET",
+  //       headers: {
+  //         Accept: "application/json",
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({ accountType, balance }),
+  //     })
+  //     .then(res => res.json())
+  //     .then(data => {
         
         
-        setAccountInfo({
-          jwt: ,
-          role: ,
+  //       setAccountInfo({
+  //         jwt: ,
+  //         role: ,
           
-        })
-        // console.log(auth.role)
-      })   
-  }
+  //       })
+  //       // console.log(auth.role)
+  //     })   
+  // }
 
   return (
     <>

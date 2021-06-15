@@ -11,8 +11,6 @@ export default function SigninForm({ props }) {
   const [usernameOrEmail, setUsername] = useState('');
   const [password, setPassword] = useState(''); 
   const [auth, setAuth] = useContext(AuthorizationContext);
-  // const [firstName, setFirstName] = useState(''); 
-  // const [lastName, setLastName] = useState(''); 
   
   const handleSubmit = async e => {
     e.preventDefault();
@@ -20,9 +18,7 @@ export default function SigninForm({ props }) {
     signin({
       usernameOrEmail,
       password
-    })
-
-    
+    }) 
    
   };
 
@@ -47,17 +43,17 @@ export default function SigninForm({ props }) {
     })
     .then(res => res.json())
     .then(data => {
-      saveToken(data);
-      signinRedirect(decodeAndSaveRole());
+      // saveToken(data);
+      console.log(data)
       setAuth({
-        jwt: getToken(),
-        role: decodeAndSaveRole(),
-        userId: 
+        jwt: data.jwt,
+        role: data.roles,
+        // userId: 
         isLoggedIn: true
       })
+      signinRedirect(auth.role);
       // console.log(auth.role)
-    })
-    
+    })   
             
   }
   
@@ -82,26 +78,22 @@ export default function SigninForm({ props }) {
     localStorage.setItem("jwt", JSON.stringify(userToken));
   };
 
-  const decodeAndSaveRole = () => {
-    // const tokenString = localStorage.getItem('jwt');
-      console.log("Grab token from local " + tokenString) // null
-    const decoded = jwt_decode(tokenString);
-      // console.log("After decoding role " + decoded['sub'])  
-    localStorage.setItem('userRole', JSON.stringify(decoded['sub']));
+  const decodeAndSaveRole = (token) => {
+    const decoded = jwt_decode(token);
     return decoded['sub'];
   }
 
   const signinRedirect = (role) => {
     switch(role) {
-      case "admin":
+      case "[admin]":
           // console.log(auth)
         history.push('/admin')
         break;
-      case "user":
+      case "[user]":
           // console.log(auth)
         history.push('/preferences')
         break;
-      case "AccountHolder":
+      case "[AccountHolder]":
           // console.log(auth)
         history.push('/accounts')
         break;
