@@ -1,6 +1,7 @@
 import React from "react";
 import "./Section.scss";
 
+
 export default function Section(props) {
   const {
     bg,

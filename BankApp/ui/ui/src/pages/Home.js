@@ -4,7 +4,7 @@ import HeroSection from "../components/HeroSection";
 import Footer from "../components/Footer";
 import bank_logo from '../resources/bank_logo.png';
 import MA_logo from '../resources/MA_logo.png';
-import home_bg from '../resources/home_bg.png'
+import bg_city from '../resources/bg_city.jpg';
 
 export default function HomePage(props) {
     return (
@@ -16,10 +16,10 @@ export default function HomePage(props) {
           logo={bank_logo}
         />
         <HeroSection
-          bg="white"
+          bg=""
           textColor="dark"
           size="md"
-          bgImage={home_bg}
+          bgImage={bg_city}
           bgImageOpacity={0.5}
           title="Your Home page title here"
           subtitle="Sub title test here"

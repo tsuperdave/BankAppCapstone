@@ -10,7 +10,7 @@ import Image from "react-bootstrap/Image";
 import "./FeaturesSection.scss";
 import MA_logo from '../resources/MA_logo.png'
 import { AuthorizationContext } from "../auth";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, ListGroup } from "react-bootstrap";
 
 function FeaturesSection(props) {
 
@@ -28,7 +28,7 @@ function FeaturesSection(props) {
     >
       <Container className="text-center">
         <SectionHeader
-          title={`Welcome, ${auth.role}!`}
+          title={`Welcome, ${auth.username}!`}
           subtitle='Preferences'
           size={2}
           spaced={true}
@@ -77,6 +77,30 @@ function FeaturesSection(props) {
                     </Form>                  
                 </div>                             
               </Col>
+              
+                <Col>
+                  <ListGroup>
+                    
+                    <ListGroup.Item>Name</ListGroup.Item>
+                      <p>put name info here</p>
+                      
+                    <ListGroup.Item>Username</ListGroup.Item>
+                      <p>put username info here</p>
+
+                    <ListGroup.Item>Email</ListGroup.Item>
+                      <p>put emial here</p>
+
+                    <ListGroup.Item>Address</ListGroup.Item>
+                      <p>put address here</p>
+
+                    <ListGroup.Item>Phone Number</ListGroup.Item>
+                      <p>put phone num here</p>
+
+                  </ListGroup>
+                </Col>
+
+              
+
           </Row>
         </Card>
       </Container>
