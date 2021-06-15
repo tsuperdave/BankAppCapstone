@@ -14,27 +14,27 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/admin")
+@RequestMapping("/api")
 public class AccountHolderController {
 
     @Autowired
     private AccountHolderService accountHolderService;
 
-    @PostMapping(value = "/")
+    @PostMapping(value = "/accountholder")
     @ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("hasAuthority('admin')")
     public AccountHolder addAccountHolder(@RequestBody AccountHolder accountHolder) {
         return accountHolderService.addAccountHolder(accountHolder);
     }
 
-    @GetMapping(value = "/")
+    @GetMapping(value = "/accountholder")
     @ResponseStatus(HttpStatus.OK)
     @PreAuthorize("hasAuthority('admin')")
     public List<AccountHolder> getAccountHolders() {
         return accountHolderService.getAccountHolders();
     }
 
-    @GetMapping(value = "/{id}")
+    @GetMapping(value = "/accountholder/{id}")
     @ResponseStatus(HttpStatus.OK)
     @PreAuthorize("hasAuthority('admin')")
     public AccountHolder getAccountHolderById(@PathVariable Integer id) throws AccountNotFoundException {
@@ -50,7 +50,7 @@ public class AccountHolderController {
         return accountHolder;
     }
 
-    @GetMapping(value = "/{id}/contactDetails")
+    @GetMapping(value = "/accountholder/{id}/contactDetails")
     @ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("hasAuthority('admin')")
     public AccountHolderContactDetails addContactDetails(@PathVariable Integer id, @RequestBody AccountHolderContactDetails accountHolderContactDetails) {

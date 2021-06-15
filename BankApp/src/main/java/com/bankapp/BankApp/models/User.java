@@ -31,7 +31,7 @@ public class User {
     private Set<Role> roles = new HashSet<>();
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
-//    @JsonIgnore
+    @JsonIgnore
     AccountHolder accountHolder;
 
     private String username;
