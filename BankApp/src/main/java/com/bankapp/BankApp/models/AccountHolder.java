@@ -1,10 +1,8 @@
 package com.bankapp.BankApp.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -12,12 +10,12 @@ import java.util.*;
 
 @Data
 @Entity
+@Table
 @NoArgsConstructor
 public class AccountHolder {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "account_holder_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     Integer id;
 
     @NotBlank(message = "First Name cannot be blank")
@@ -32,18 +30,18 @@ public class AccountHolder {
     @Length(min = 9, max = 9)
     String ssn;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "accountHolder")
-    private List<CheckingAccount> checkingAccountList = new ArrayList<>();
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "accountHolder")
-    private List<SavingsAccount> savingsAccountsList = new ArrayList<>();
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "accountHolder")
+    @OneToOne(cascade = CascadeType.REMOVE, mappedBy = "accountHolder", fetch = FetchType.LAZY)
+    private PersonalCheckingAccount personalCheckingAccount;
+    @OneToOne(cascade = CascadeType.REMOVE, mappedBy = "accountHolder", fetch = FetchType.LAZY)
+    private SavingsAccount savingsAccount;
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "accountHolder", fetch = FetchType.LAZY)
     private List<CDAccount> cdAccountList = new ArrayList<>();
 
     @OneToOne (fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "accountHolder")
     @JoinColumn(name = "account_holder_contact_details_id")
     private AccountHolderContactDetails accountHolderContactDetails;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
 
@@ -56,44 +54,19 @@ public class AccountHolder {
         this.ssn = ssn;
     }
 
-    public double getNumberOfCheckingAccounts() {
-        if(checkingAccountList != null) {
-            return checkingAccountList.size();
-        }
-        return 0;
-    }
-
-    public double getNumberOfSavingsAccounts() {
-        if(checkingAccountList != null) {
-            return savingsAccountsList.size();
-        }
-        return 0;
-    }
-
-    public double getNumberOfCDAccounts() {
-        if(checkingAccountList != null) {
-            return cdAccountList.size();
-        }
-        return 0;
-    }
-
-    public double getCheckingBalance() {
+    public double getPersonalCheckingBalance() {
         double total = 0;
-        if(checkingAccountList != null) {
-            for(CheckingAccount ca: checkingAccountList) {
-                total += ca.getBalance();
-            }
+        if(personalCheckingAccount != null) {
+            total += personalCheckingAccount.getBalance();
             return total;
-        }
+            }
         return 0;
     }
 
     public double getSavingsBalance() {
         double total = 0;
-        if(checkingAccountList != null) {
-            for(SavingsAccount sa: savingsAccountsList) {
-                total += sa.getBalance();
-            }
+        if(savingsAccount != null) {
+            total += savingsAccount.getBalance();
             return total;
         }
         return 0;
@@ -111,7 +84,7 @@ public class AccountHolder {
     }
 
     public double getCombinedAccountBalance() {
-        combinedBal = getCheckingBalance() + getSavingsBalance() + getCDBalance();
+        combinedBal = getPersonalCheckingBalance() + getSavingsBalance() + getCDBalance();
         return combinedBal;
     }
 

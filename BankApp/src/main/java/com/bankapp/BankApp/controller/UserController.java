@@ -41,10 +41,10 @@ public class UserController {
     @PostMapping("/checkingaccounts")
     @ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("hasAuthority('AccountHolder')")
-    public CheckingAccount addCheckingAccount(@RequestBody CheckingAccount checkingAccount)
+    public PersonalCheckingAccount addCheckingAccount(@RequestBody PersonalCheckingAccount personalCheckingAccount)
             throws NoResourceFoundException, NegativeAmountException, ExceedsCombinedBalanceLimitException,
             AccountNotFoundException, InvalidArgumentException {
-        if (checkingAccount.getBalance() < 0) {
+        if (personalCheckingAccount.getBalance() < 0) {
             throw new NegativeAmountException("Must have funds to open checking account!");
         }
         String username = jwtUtil.getCurrentUserName();
@@ -53,19 +53,19 @@ public class UserController {
         if (accountHolder == null) {
             throw new NoResourceFoundException("Invalid id");
         }
-        if (accountHolder.getCombinedAccountBalance() + checkingAccount.getBalance() > 250000) {
+        if (accountHolder.getCombinedAccountBalance() + personalCheckingAccount.getBalance() > 250000) {
             throw new ExceedsCombinedBalanceLimitException("exceeds limit of amount 250,000 max");
         }
 
-        return accountsService.addCheckingAccount(accountHolder.getId(), checkingAccount);
+        return accountsService.addCheckingAccount(accountHolder.getId(), personalCheckingAccount);
     }
 
     @GetMapping("/checkingaccounts")
     @PreAuthorize("hasAuthority('AccountHolder')")
-    public List<CheckingAccount> getCheckingAccount() {
+    public PersonalCheckingAccount getCheckingAccount() {
         String username = jwtUtil.getCurrentUserName();
         User user = userService.getUserByUserName(username);
-        return user.getAccountHolder().getCheckingAccountList();
+        return user.getAccountHolder().getPersonalCheckingAccount();
     }
 
     @PostMapping("/savingsaccounts")
@@ -91,10 +91,10 @@ public class UserController {
 
     @GetMapping("/savingsaccounts")
     @PreAuthorize("hasAuthority('AccountHolder')")
-    public List<SavingsAccount> getSavingsAccount() {
+    public SavingsAccount getSavingsAccount() {
         String username = jwtUtil.getCurrentUserName();
         User user = userService.getUserByUserName(username);
-        return user.getAccountHolder().getSavingsAccountsList();
+        return user.getAccountHolder().getSavingsAccount();
     }
 
     @PostMapping("/cdaccounts")

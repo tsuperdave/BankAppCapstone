@@ -22,7 +22,8 @@ export default function SigninForm({ props }) {
       password
     })
 
-    signinRedirect(auth.role)
+    
+   
   };
 
   const history = useHistory();
@@ -45,15 +46,15 @@ export default function SigninForm({ props }) {
       body: JSON.stringify({ usernameOrEmail, password }),
     })
     .then(res => res.json())
-    .then(data => {      
-      
+    .then(data => {
+      saveToken(data);
+      signinRedirect(decodeAndSaveRole());
       setAuth({
-        jwt: data['jwt'],
-        role: data['roles'],
-        username: decodeAndSaveRole(data['jwt']),
+        jwt: getToken(),
+        role: decodeAndSaveRole(),
         isLoggedIn: true
       })
-      
+      // console.log(auth.role)
     })
     
             
@@ -70,36 +71,36 @@ export default function SigninForm({ props }) {
     }).then((data) => data.json());
   }
   
-  // const getToken = () => {
-  //   const tokenString = localStorage.getItem("jwt");
-  //   const userToken = JSON.parse(tokenString);
-  //   return userToken.jwt;
-  // };
+  const getToken = () => {
+    const tokenString = localStorage.getItem("jwt");
+    const userToken = JSON.parse(tokenString);
+    return userToken.jwt;
+  };
 
   const saveToken = (userToken) => {
     localStorage.setItem("jwt", JSON.stringify(userToken));
   };
 
-  const decodeAndSaveRole = (token) => {
-    // const tokenString = localStorage.getItem(token);
-      // console.log("Grab token from local " + tokenString) // null
-    const decoded = jwt_decode(token);
-      // console.log("After decoding role " + decoded['sub'])  
-    // localStorage.setItem('username', JSON.stringify(decoded['sub']));
+  const decodeAndSaveRole = () => {
+    const tokenString = localStorage.getItem('jwt');
+      console.log("Grab token from local " + tokenString) // null
+    const decoded = jwt_decode(tokenString);
+      console.log("After decoding role " + decoded['sub'])  
+    localStorage.setItem('userRole', JSON.stringify(decoded['sub']));
     return decoded['sub'];
   }
 
   const signinRedirect = (role) => {
     switch(role) {
-      case "[admin]":
+      case "admin":
           // console.log(auth)
         history.push('/admin')
         break;
-      case "[user]":
+      case "user":
           // console.log(auth)
         history.push('/preferences')
         break;
-      case "[AccountHolder]":
+      case "AccountHolder":
           // console.log(auth)
         history.push('/accounts')
         break;

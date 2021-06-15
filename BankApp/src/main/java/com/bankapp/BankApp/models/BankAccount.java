@@ -1,39 +1,63 @@
 package com.bankapp.BankApp.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
-import java.time.LocalDate;
+import javax.validation.constraints.Positive;
 import java.time.LocalDateTime;
 import java.util.*;
 
 @Data
-@NoArgsConstructor
-@MappedSuperclass
+@Entity(name="BankAccount")
+@Inheritance
 public abstract class BankAccount {
 	
-		@Id
-		@GeneratedValue(strategy=GenerationType.IDENTITY)
-		private Integer id;
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Integer id;
 
-		private static long nextAccountNumber = 1;
+	@ManyToOne
+	@JoinColumn(name = "accountHolder_id")
+	private AccountHolder accountHolder;
 
-		@ManyToOne
-		@JoinColumn(name = "account_holder_id")
-		@JsonIgnore
-		private AccountHolder accountHolder;
+	@Positive(message = "Balance must be above 0")
+	private double balance;
 
-		private long accountNumber;
-		private double balance;
-		private LocalDateTime openedOn;
-		private double interestRate;
+	private LocalDateTime openedOn;
+	String accountType;
 
-		public BankAccount(double balance) {
-			this.accountNumber = nextAccountNumber++;
-			this.balance = balance;
-			this.interestRate = 0.01;
-			this.openedOn = LocalDateTime.now();
-		}
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "sourceAccount", fetch = FetchType.LAZY)
+	private List<Transaction> sourceAccountTxns;
+
+	// TODO add targetAccountTxns
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "personalCheckingAccount", fetch = FetchType.LAZY)
+	private List<Transaction> personalCheckingTxns;
+
+	// TODO add TXNs list for all types of accounts
+
+
+	// ------ END INSTANCE VARS
+
+
+	public BankAccount() {
+		super();
+	}
+
+	@JsonBackReference(value = "accountHolder")
+	public AccountHolder getAccountHolder() {
+		return accountHolder;
+	}
+
+	@JsonBackReference(value = "sourceAccount")
+	public List<Transaction> getSourceTransactions() {
+		return sourceAccountTxns;
+	}
+
+	public void withdraw(double amount) {
+		this.balance -= amount;
+	}
+
+	//TODO add deposit method
+
 }

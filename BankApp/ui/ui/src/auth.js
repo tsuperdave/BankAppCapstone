@@ -27,10 +27,10 @@ export const requireAuth = (Component) => {
       // Get authenticated user
       const [auth, setAuth] = useContext(AuthorizationContext);
 
-    //   console.log('auth: ' + auth)
-    //   console.log('auth.jwt: ' + auth.jwt)
-    //   console.log('auth.role: ' + auth.role)
-    //   console.log('auth.isLoggedIn: ' + auth.isLoggedIn)
+      // console.log('auth: ' + auth)
+      // console.log('auth.jwt: ' + auth.jwt)
+      // console.log('auth.role: ' + auth.role)
+      // console.log('auth.isLoggedIn: ' + auth.isLoggedIn)
   
       useEffect(() => {
         // Redirect if not signed in
