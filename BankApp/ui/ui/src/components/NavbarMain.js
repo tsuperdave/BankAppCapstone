@@ -48,7 +48,7 @@ export default function NavbarMain(props) {
           </Nav>
           
           <Nav className="mr-1">
-            {localStorage.getItem('jwt') && (
+            {auth.jwt && (
               <NavDropdown id="dropdown" title="Account" alignRight={true}>
                 <LinkContainer to="/preferences">
                   <NavDropdown.Item active={false}>Preferences</NavDropdown.Item>
@@ -79,7 +79,7 @@ export default function NavbarMain(props) {
               </NavDropdown>
             )}
            
-            {!localStorage.getItem('jwt') && (
+            {!auth.jwt && (
               <LinkContainer to="/auth/signin">
                 <Nav.Link active={false}>Sign in</Nav.Link>
               </LinkContainer>
