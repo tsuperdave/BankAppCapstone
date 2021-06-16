@@ -7,11 +7,11 @@ public class UserDTO {
 
     private String jwt;
     private String roles;
-//    private Integer userId;
+    private Integer userId;
 
-    public UserDTO(String jwt, String roles) {
+    public UserDTO(String jwt, String roles, Integer userId) {
         this.jwt = jwt;
         this.roles = roles;
-//        this.userId = userId;
+        this.userId = userId;
     }
 }

@@ -15,6 +15,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("/api")
+@CrossOrigin
 public class AccountHolderController {
 
     @Autowired
@@ -34,9 +35,9 @@ public class AccountHolderController {
         return accountHolderService.getAccountHolders();
     }
 
-    @GetMapping(value = "/accountholder/{id}")
+    @GetMapping(value = "/Me/accountholder/{id}")
     @ResponseStatus(HttpStatus.OK)
-    @PreAuthorize("hasAuthority('admin')")
+    @PreAuthorize("hasAuthority('AccountHolder')")
     public AccountHolder getAccountHolderById(@PathVariable Integer id) throws AccountNotFoundException {
         AccountHolder accountHolder;
         try {

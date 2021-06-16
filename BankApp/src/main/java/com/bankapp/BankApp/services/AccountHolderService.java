@@ -7,6 +7,7 @@ import java.util.List;
 public interface AccountHolderService {
     public AccountHolder addAccountHolder(AccountHolder accountHolder);
     public AccountHolder getAccountHolderById(Integer id);
+    public AccountHolder getAccountHolderByUsername(String username);
     public List<AccountHolder> getAccountHolders();
     public PersonalCheckingAccount getCheckingAccounts(Integer id);
     public SavingsAccount getSavingsAccounts(Integer id);

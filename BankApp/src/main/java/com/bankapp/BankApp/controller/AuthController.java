@@ -1,6 +1,7 @@
 package com.bankapp.BankApp.controller;
 
 import com.bankapp.BankApp.models.AccountHolder;
+import com.bankapp.BankApp.models.User;
 import com.bankapp.BankApp.models.UserDTO;
 import com.bankapp.BankApp.security.models.AuthenticationRequest;
 import com.bankapp.BankApp.security.models.AuthenticationResponse;
@@ -10,6 +11,7 @@ import com.bankapp.BankApp.services.AuthService;
 import com.bankapp.BankApp.services.MyUserDetailsService;
 import com.bankapp.BankApp.security.util.JwtUtil;
 
+import com.bankapp.BankApp.services.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -33,7 +35,7 @@ public class AuthController {
     @Autowired
     private MyUserDetailsService myUserDetailsService;
     @Autowired
-    private AccountHolderService accountHolderService;
+    private UserService userService;
     @Autowired
     private JwtUtil jwtTokenUtil;
     @Autowired
@@ -51,21 +53,12 @@ public class AuthController {
         }
 
         final UserDetails usernameOrEmail = myUserDetailsService.loadUserByUsername(authenticationRequest.getUsernameOrEmail());
-        //TODO add user ID to return back to front end
-//        final Integer userId = // find user ID by username
+        final Integer userId = userService.getUserByUserName(authenticationRequest.getUsernameOrEmail()).getId();
         final String jwt = jwtTokenUtil.generateToken(usernameOrEmail);
-
-        final UserDTO user = new UserDTO(jwt, usernameOrEmail.getAuthorities().toString()); // add user ID to constructor
+        final UserDTO user = new UserDTO(jwt, usernameOrEmail.getAuthorities().toString(), userId);
 
         return ResponseEntity.ok(user);
     }
-
-//    @PostMapping(value = "/registerUser")
-//    @ResponseStatus(HttpStatus.CREATED)
-//    @PreAuthorize("hasAuthority('admin')")
-//    public User registerUser(@RequestBody User user) {
-//        return userService.registerUser(user);
-//    }
 
     @PostMapping(value = "/registerUser")
     @ResponseStatus(HttpStatus.CREATED)
