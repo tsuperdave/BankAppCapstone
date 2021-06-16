@@ -18,7 +18,8 @@ export default function SigninForm({ props }) {
     signin({
       usernameOrEmail,
       password
-    }) 
+    })
+    signinRedirect(auth.role);
    
   };
 
@@ -32,7 +33,7 @@ export default function SigninForm({ props }) {
     history.push('/home')
   }
 
-  async function signin(credentials) {
+  async function signin() {
     return fetch("http://localhost:8080/api/auth/signin", {
       method: "POST",
       headers: {
@@ -43,18 +44,17 @@ export default function SigninForm({ props }) {
     })
     .then(res => res.json())
     .then(data => {
-      // saveToken(data);
-      console.log(data)
+
       setAuth({
         jwt: data.jwt,
         role: data.roles,
-        // userId: 
+        userId: data.userId,
+        username: decodeAndSaveRole(data.jwt),
         isLoggedIn: true
       })
-      signinRedirect(auth.role);
-      // console.log(auth.role)
-    })   
-            
+      signinRedirect(data.roles)
+      
+    }) 
   }
   
   async function signup(credentials) {
@@ -67,23 +67,15 @@ export default function SigninForm({ props }) {
       body: JSON.stringify(credentials),
     }).then((data) => data.json());
   }
-  
-  const getToken = () => {
-    const tokenString = localStorage.getItem("jwt");
-    const userToken = JSON.parse(tokenString);
-    return userToken.jwt;
-  };
-
-  const saveToken = (userToken) => {
-    localStorage.setItem("jwt", JSON.stringify(userToken));
-  };
 
   const decodeAndSaveRole = (token) => {
     const decoded = jwt_decode(token);
+    
     return decoded['sub'];
   }
 
   const signinRedirect = (role) => {
+    JSON.stringify(role);
     switch(role) {
       case "[admin]":
           // console.log(auth)
@@ -97,9 +89,8 @@ export default function SigninForm({ props }) {
           // console.log(auth)
         history.push('/accounts')
         break;
-      default:
-          // console.log(auth)
-        console.log("must Log in")
+      default:         
+        console.log("Must Log in");
     }
   }
 
@@ -153,10 +144,3 @@ export default function SigninForm({ props }) {
   );
 
 }
-
-// for reference
-// setAuth({
-//   jwt: saveToken(data),
-//   role: signinRedirect(decodeAndSaveRole()),
-//   isLoggedIn: true
-// })
