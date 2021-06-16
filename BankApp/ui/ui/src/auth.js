@@ -11,6 +11,7 @@ export const AuthorizationProvider = (props) => {
     userId: '',
     isLoggedIn: false
   })
+  
 
   return (
     <AuthorizationContext.Provider value={[auth, setAuth]}>
@@ -19,20 +20,12 @@ export const AuthorizationProvider = (props) => {
   )
 }
 
-// export const useAuth = () => {
-//     return AuthorizationContext
-// };
 
 export const requireAuth = (Component) => {
     return (props) => {
       // Get authenticated user
       const [auth, setAuth] = useContext(AuthorizationContext);
-
-      // console.log('auth: ' + auth)
-      // console.log('auth.jwt: ' + auth.jwt)
-      // console.log('auth.role: ' + auth.role)
-      // console.log('auth.isLoggedIn: ' + auth.isLoggedIn)
-  
+      
       useEffect(() => {
         // Redirect if not signed in
         if (auth.isLoggedIn === false) {

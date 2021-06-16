@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class UserDTO {
 
+    // return info of all that you want to display
     private String jwt;
     private String roles;
     private Integer userId;
