@@ -46,7 +46,7 @@ public class AccountHolder {
     private User user;
 
     private double combinedBal;
-    private String username;
+//    private String username;
 
     public AccountHolder(String firstName, String middleName, String lastName, String ssn) {
         this.firstName = firstName;

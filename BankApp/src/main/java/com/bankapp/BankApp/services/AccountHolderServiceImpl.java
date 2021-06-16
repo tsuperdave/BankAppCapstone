@@ -23,13 +23,13 @@ public class AccountHolderServiceImpl implements AccountHolderService {
 
     @Override
     public AccountHolder getAccountHolderById(Integer id) {
-        return accountHolderRepository.getOne(id);
+        return accountHolderRepository.findById(id).orElse(null);
     }
 
-    @Override
-    public AccountHolder getAccountHolderByUsername(String username) {
-        return accountHolderRepository.findByUsername(username).orElse(null);
-    }
+//    @Override
+//    public AccountHolder getAccountHolderByUsername(String username) {
+//        return accountHolderRepository.findByUsername(username).orElse(null);
+//    }
 
     @Override
     public List<AccountHolder> getAccountHolders() {
@@ -40,7 +40,7 @@ public class AccountHolderServiceImpl implements AccountHolderService {
     public PersonalCheckingAccount getCheckingAccounts(Integer id) {
         // TODO add exception if Account Holder is not found
         if(accountHolderRepository.existsById(id)) {
-            AccountHolder accountHolder = accountHolderRepository.getOne(id);
+            AccountHolder accountHolder = accountHolderRepository.findById(id).orElse(null);
             return accountHolder.getPersonalCheckingAccount();
         }
         return null;
@@ -50,7 +50,7 @@ public class AccountHolderServiceImpl implements AccountHolderService {
     public SavingsAccount getSavingsAccounts(Integer id) {
         // TODO add exception if Account Holder is not found
         if(accountHolderRepository.existsById(id)) {
-            AccountHolder accountHolder = accountHolderRepository.getOne(id);
+            AccountHolder accountHolder = accountHolderRepository.findById(id).orElse(null);
             return accountHolder.getSavingsAccount();
         }
         return null;
@@ -60,7 +60,7 @@ public class AccountHolderServiceImpl implements AccountHolderService {
     public List<CDAccount> getCDAccounts(Integer id) {
         // TODO add exception if Account Holder is not found
         if(accountHolderRepository.existsById(id)) {
-            AccountHolder accountHolder = accountHolderRepository.getOne(id);
+            AccountHolder accountHolder = accountHolderRepository.findById(id).orElse(null);
             return accountHolder.getCdAccountList();
         }
         return null;

@@ -12,15 +12,15 @@ export default function SigninForm({ props }) {
   const [password, setPassword] = useState(''); 
   const [auth, setAuth] = useContext(AuthorizationContext);
   const [accountInfo, setAccountInfo] = useState({
-    firstName: '',
-    middleName: '',
-    lastName: '',
-    ssn: '',
-    personalCheckingAccount: '',
-    savingsAccount: '',
-    cdAccountList: '',
-    accountHolderContactDetails: '',
-    combinedBal: '',       
+    firstName: null,
+    middleName: null,
+    lastName: null,
+    ssn: null,
+    personalCheckingAccount: [],
+    savingsAccount: [],
+    cdAccountList: [],
+    accountHolderContactDetails: [],
+    combinedBal: [],       
   });
   
   const handleSubmit = async e => {
@@ -85,6 +85,8 @@ export default function SigninForm({ props }) {
     return decoded['sub'];
   }
 
+  //accountholder/${userId}
+
   async function fetchAccountInfo (userId) {
     return fetch(`http://localhost:8080/api/Me/accountholder/${userId}`, {
         method: "GET",
@@ -107,7 +109,7 @@ export default function SigninForm({ props }) {
           accountHolderContactDetails: data.cdAccountList,
           combinedBal: data.combinedBal
         });
-        console.log(accountInfo)
+        console.log(data)
       });     
   }
 
