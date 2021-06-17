@@ -23,26 +23,24 @@ function FeaturesSection(props) {
     ssn: null,
     personalCheckingAccount: {},
     savingsAccount:{},
-    cdAccountList: [],
+    cdAccountList: {},
     accountHolderContactDetails: {},
     combinedBal: {}       
   });
 
-  console.log("Value of Auth in Features is: " + auth.jwt)
-  console.log("Value of accountInfo in Features is: " + accountInfo)
+  console.log("User ID is + " + auth.userId)
 
   useEffect(() => {
     fetchAccountInfo();
   }, []);
 
-  async function fetchAccountInfo () {
+  async function fetchAccountInfo() {
     return fetch(`http://localhost:8080/api/Me/accountholder/${auth.userId}`, {
         method: "GET",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-        }
-        
+        }       
       })
       .then(res => res.json())
       .then(data => {
@@ -57,7 +55,7 @@ function FeaturesSection(props) {
           email: data.user['email'],
           combinedBal: data.combinedBal
         });
-        console.log(data)
+        console.log("Data after fetch: " + data)
       });     
   }
 

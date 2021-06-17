@@ -11,17 +11,6 @@ export default function SigninForm({ props }) {
   const [usernameOrEmail, setUsername] = useState('');
   const [password, setPassword] = useState(''); 
   const [auth, setAuth] = useContext(AuthorizationContext);
-  // const [accountInfo, setAccountInfo] = useState({
-  //   firstName: null,
-  //   middleName: null,
-  //   lastName: null,
-  //   ssn: null,
-  //   personalCheckingAccount: [],
-  //   savingsAccount: [],
-  //   cdAccountList: [],
-  //   accountHolderContactDetails: [],
-  //   combinedBal: [],       
-  // });
   
   const handleSubmit = async e => {
     e.preventDefault();
@@ -64,7 +53,7 @@ export default function SigninForm({ props }) {
         isLoggedIn: true
       })
       signinRedirect(data.roles)
-      // fetchAccountInfo(data.userId);
+      
     }) 
   }
   
@@ -84,32 +73,6 @@ export default function SigninForm({ props }) {
     
     return decoded['sub'];
   }
-
-  // async function fetchAccountInfo (userId) {
-  //   return fetch(`http://localhost:8080/api/Me/accountholder/${userId}`, {
-  //       method: "GET",
-  //       headers: {
-  //         Accept: "application/json",
-  //         "Content-Type": "application/json",
-  //       },
-        
-  //     })
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       setAccountInfo({
-  //         firstName: data.firstName,
-  //         middleName: data.middleName,
-  //         lastName: data.lastName,
-  //         ssn: data.ssn,
-  //         personalCheckingAccount: data.personalCheckingAccount,
-  //         savingsAccount: data.savingsAccount,
-  //         cdAccountList: data.cdAccountList,
-  //         accountHolderContactDetails: data.cdAccountList,
-  //         combinedBal: data.combinedBal
-  //       });
-  //       console.log(data)
-  //     });     
-  // }
 
   const signinRedirect = (role) => {
     JSON.stringify(role);
