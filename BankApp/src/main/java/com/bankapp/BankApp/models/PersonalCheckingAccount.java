@@ -12,11 +12,12 @@ import javax.validation.constraints.Positive;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
+@Table
 public class PersonalCheckingAccount extends BankAccount {
 
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.AUTO)
-//	private Integer id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
 
 	@Positive(message = "Interest Rate must be above 0")
 	@Max(value = 1, message = "Interest Rate must not be higher than 1%")

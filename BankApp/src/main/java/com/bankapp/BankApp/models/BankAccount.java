@@ -8,8 +8,8 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 @Data
-@Entity(name="BankAccount")
-@Inheritance
+@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class BankAccount {
 	
 	@Id
