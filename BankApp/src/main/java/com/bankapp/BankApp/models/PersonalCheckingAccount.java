@@ -12,7 +12,6 @@ import javax.validation.constraints.Positive;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
-@Table
 public class PersonalCheckingAccount extends BankAccount {
 
 //	@Id

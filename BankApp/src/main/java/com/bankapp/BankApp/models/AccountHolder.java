@@ -35,7 +35,7 @@ public class AccountHolder {
     @OneToOne(cascade = CascadeType.REMOVE, mappedBy = "accountHolder", fetch = FetchType.LAZY)
     private SavingsAccount savingsAccount;
     @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "accountHolder", fetch = FetchType.LAZY)
-    private List<CDAccount> cdAccountList = new ArrayList<>();
+    private List<CDAccount> cdAccountList;
 
     @OneToOne (fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "accountHolder")
     @JoinColumn(name = "account_holder_contact_details_id")
