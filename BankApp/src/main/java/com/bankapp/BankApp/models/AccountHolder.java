@@ -38,7 +38,7 @@ public class AccountHolder {
     private List<CDAccount> cdAccountList;
 
     @OneToOne (fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "accountHolder")
-    @JoinColumn(name = "account_holder_contact_details_id")
+    @JoinColumn(name = "accountHolderContactDetails_id")
     private AccountHolderContactDetails accountHolderContactDetails;
 
     @OneToOne(cascade = CascadeType.ALL)

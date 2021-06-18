@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import Section from "./Section";
 import Container from "react-bootstrap/Container";
 import SectionHeader from "./SectionHeader";
 import Button from "react-bootstrap/Button";
 import { LinkContainer } from "react-router-bootstrap";
-
-
+import { AuthorizationContext } from "../auth";
+import RegisterPopup from "./RegisterPopup";
 
 function HeroSection(props) {
+
+  const [auth, setAuth] = useContext(AuthorizationContext);
+  const [modalShow, setModalShow] = useState(false);
 
   return (
     <Section
@@ -25,13 +28,19 @@ function HeroSection(props) {
           spaced={true}
         />
 
-        {/* {!auth.user && ( */}
-          <LinkContainer to={props.buttonPath}>
-            <Button variant={props.buttonColor} size="lg">
+        {!auth.jwt && (
+          <>
+            <Button onClick={() => setModalShow(true)} 
+            variant={props.buttonColor} size="lg">
               {props.buttonText}
             </Button>
-          </LinkContainer>
-        {/* )} */}
+
+            <RegisterPopup
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+            />
+          </>
+        )}
       </Container>
     </Section>
   );

@@ -7,11 +7,12 @@ import javax.persistence.*;
 
 @Data
 @Entity
+@Table
 public class AccountHolderContactDetails {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "account_holder_contact_details_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column
     Integer id;
 
     String phoneNumber;
