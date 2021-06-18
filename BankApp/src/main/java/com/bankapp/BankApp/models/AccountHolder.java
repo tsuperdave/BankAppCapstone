@@ -32,10 +32,18 @@ public class AccountHolder {
 
     @OneToOne(cascade = CascadeType.REMOVE, mappedBy = "accountHolder", fetch = FetchType.LAZY)
     private PersonalCheckingAccount personalCheckingAccount;
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "accountHolder", fetch = FetchType.LAZY)
+    private List<DBACheckingAccount> dbaCheckingAccountList;
     @OneToOne(cascade = CascadeType.REMOVE, mappedBy = "accountHolder", fetch = FetchType.LAZY)
     private SavingsAccount savingsAccount;
     @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "accountHolder", fetch = FetchType.LAZY)
     private List<CDAccount> cdAccountList;
+    @OneToOne(cascade = CascadeType.REMOVE, mappedBy = "accountHolder", fetch = FetchType.LAZY)
+    private TraditionalIRA traditionalIRA;
+    @OneToOne(cascade = CascadeType.REMOVE, mappedBy = "accountHolder", fetch = FetchType.LAZY)
+    private RothIRA rothIRA;
+    @OneToOne(cascade = CascadeType.REMOVE, mappedBy = "accountHolder", fetch = FetchType.LAZY)
+    private RolloverIRA rolloverIRA;
 
     @OneToOne (fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "accountHolder")
     @JoinColumn(name = "accountHolderContactDetails_id")
