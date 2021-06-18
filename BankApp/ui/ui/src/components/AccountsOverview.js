@@ -17,7 +17,7 @@ function AccountsOverview(props) {
     ssn: null,
     personalCheckingAccount: {},
     savingsAccount:{},
-    cdAccountList: {},
+    cdAccountList: [],
     accountHolderContactDetails: {},
     combinedBal: {}       
   });
@@ -47,7 +47,7 @@ function AccountsOverview(props) {
           personalCheckingAccount: data.personalCheckingAccount,
           savingsAccount: data.savingsAccount,
           cdAccountList: data.cdAccountList,
-          email: data.user['email'],
+          accountHolderContactDetails: data.accountHolderContactDetails,
           combinedBal: data.combinedBal
         });
         // console.log("Data after fetch in AccountsOverview: " + data)
@@ -66,9 +66,9 @@ function AccountsOverview(props) {
       balance: `Balance $ ${accountInfo.personalCheckingAccount['balance']}`,
     },
     {
-      accountType: "Savings",
-      accountNum: "12345",
-      balance: "$",
+      accountType: "Savings Account",
+      accountNum: `Acct. # ${accountInfo.savingsAccount['id']}`,
+      balance: `Balance $ ${accountInfo.savingsAccount['balance']}`,
     },
   ];
 
@@ -93,10 +93,11 @@ function AccountsOverview(props) {
             <Col xs={12} md={6} lg={4} className="py-3" key={index}>
               <Card>
                 <Card.Body className="d-flex flex-center text-left p-4">
-                  <small className="text-muted">{item.accountNum}</small>
-                  <h5 className="font-weight-bold mb-0 mt-3">
+                <h5 className="font-weight-bold mb-0 mt-3">
                     {item.accountType}
                   </h5>
+                  <small className="text-muted">{item.accountNum}</small>
+                  
                   <small className="text-muted">{item.balance}</small>
                 </Card.Body>
               </Card>
