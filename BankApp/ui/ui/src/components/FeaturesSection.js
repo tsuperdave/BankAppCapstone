@@ -28,7 +28,7 @@ function FeaturesSection(props) {
     combinedBal: {}       
   });
 
-  console.log("User ID is + " + auth.userId)
+  // console.log("User ID is + " + auth.userId)
 
   useEffect(() => {
     fetchAccountInfo();
@@ -55,7 +55,7 @@ function FeaturesSection(props) {
           email: data.user['email'],
           combinedBal: data.combinedBal
         });
-        console.log("Data after fetch: " + data)
+        // console.log("Data after fetch: " + data)
       });     
   }
 

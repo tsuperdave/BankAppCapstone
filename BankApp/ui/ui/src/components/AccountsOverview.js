@@ -1,12 +1,59 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Section from "./Section";
 import Container from "react-bootstrap/Container";
 import SectionHeader from "./SectionHeader";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
+import { AuthorizationContext } from "../auth";
 
 function AccountsOverview(props) {
+
+  const [auth, setAuth] = useContext(AuthorizationContext);
+  const [accountInfo, setAccountInfo] = useState({
+    firstName: null,
+    middleName: null,
+    lastName: null,
+    ssn: null,
+    personalCheckingAccount: {},
+    savingsAccount:{},
+    cdAccountList: {},
+    accountHolderContactDetails: {},
+    combinedBal: {}       
+  });
+
+  console.log("Account info: " + accountInfo);
+
+  useEffect(() => {
+    fetchAccountInfo();
+  }, []);
+
+  async function fetchAccountInfo() {
+    return fetch(`http://localhost:8080/api/Me/accountholder/${auth.userId}`, {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        }       
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        setAccountInfo({
+          firstName: data.firstName,
+          middleName: data.middleName,
+          lastName: data.lastName,
+          ssn: data.ssn,
+          personalCheckingAccount: data.personalCheckingAccount,
+          savingsAccount: data.savingsAccount,
+          cdAccountList: data.cdAccountList,
+          email: data.user['email'],
+          combinedBal: data.combinedBal
+        });
+        // console.log("Data after fetch in AccountsOverview: " + data)
+      });     
+  }
+
   const items = [
     {
       accountType: "DBA Checking",
@@ -15,8 +62,8 @@ function AccountsOverview(props) {
     },
     {
       accountType: "Personal Checking",
-      accountNum: "12345",
-      balance: "$",
+      accountNum: `Acct. # ${accountInfo.personalCheckingAccount['id']}`,
+      balance: `Balance $ ${accountInfo.personalCheckingAccount['balance']}`,
     },
     {
       accountType: "Savings",
