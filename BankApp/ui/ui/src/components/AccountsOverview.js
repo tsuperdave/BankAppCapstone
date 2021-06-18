@@ -9,26 +9,65 @@ import { AuthorizationContext } from "../auth";
 
 function AccountsOverview(props) {
 
+  console.log("1 - load");
+
   const [auth, setAuth] = useContext(AuthorizationContext);
+  let items = [];
+
+  useEffect(() => {
+    console.log("2 - useEffect");
+    fetchAccountInfo();
+    console.log("Post FETCH")
+  }, []);
+
   const [accountInfo, setAccountInfo] = useState({
     firstName: null,
     middleName: null,
     lastName: null,
     ssn: null,
     personalCheckingAccount: {},
+    dbaCheckingAccountList: [],
     savingsAccount:{},
     cdAccountList: [],
+    ira: {},
+    rolloverIra: {},
+    rothIra: {},
     accountHolderContactDetails: {},
     combinedBal: {}       
   });
 
-  console.log("Account info: " + accountInfo);
+  // ------------------- WRAP IN FUNCTION
 
-  useEffect(() => {
-    fetchAccountInfo();
-  }, []);
+  // async function setItems () {
+    items = [
+      // {
+      //   accountType: "DBA Checking",
+      //   accountNum: `Acct. # ${accountInfo.dbaCheckingAccountList[0]["id"]}`,
+      //   balance: "$",
+      // },
+      {
+        accountType: "Personal Checking",
+        accountNum: `Acct. # ${accountInfo.personalCheckingAccount['id']}`,
+        balance: `Balance $ ${accountInfo.personalCheckingAccount['balance']}`,
+      },
+      {
+        accountType: "Savings Account",
+        accountNum: `Acct. # ${accountInfo.savingsAccount['id']}`,
+        balance: `Balance $ ${accountInfo.savingsAccount['balance']}`,
+      },
+      // {
+      //   accountType: "CD Account",
+      //   accountNum: `Acct. # ${accountInfo.cdAccountList[0]["id"]}`,
+      //   balance: `Balance $ ${accountInfo.cdAccountList[0]["balance"]}`,
+      // },
+    ]
+  // }
 
+  console.log("3 - after accountInfo");
+  console.log("--- after accountInfo: " + accountInfo.firstName);
+  
   async function fetchAccountInfo() {
+    console.log("4 - FETCH accountInfo");
     return fetch(`http://localhost:8080/api/Me/accountholder/${auth.userId}`, {
         method: "GET",
         headers: {
@@ -45,32 +84,24 @@ function AccountsOverview(props) {
           lastName: data.lastName,
           ssn: data.ssn,
           personalCheckingAccount: data.personalCheckingAccount,
+          dbaCheckingAccountList: data.dbaCheckingAccountList,
           savingsAccount: data.savingsAccount,
           cdAccountList: data.cdAccountList,
+          ira: data.traditionalIra,
+          rolloverIra: data.rolloverIra,
+          rothIra: data.rothIra,
           accountHolderContactDetails: data.accountHolderContactDetails,
           combinedBal: data.combinedBal
         });
-        // console.log("Data after fetch in AccountsOverview: " + data)
+        // setItems();
+        console.log("5 - set accountInfo from FETCH");
+        console.log("------- accountInfo from FETCH is " + accountInfo);
       });     
   }
 
-  const items = [
-    {
-      accountType: "DBA Checking",
-      accountNum: "12345",
-      balance: "$",
-    },
-    {
-      accountType: "Personal Checking",
-      accountNum: `Acct. # ${accountInfo.personalCheckingAccount['id']}`,
-      balance: `Balance $ ${accountInfo.personalCheckingAccount['balance']}`,
-    },
-    {
-      accountType: "Savings Account",
-      accountNum: `Acct. # ${accountInfo.savingsAccount['id']}`,
-      balance: `Balance $ ${accountInfo.savingsAccount['balance']}`,
-    },
-  ];
+  
+  console.log("7 - return is next");
+  // ---------------------------------------------------------
 
   return (
     <Section
@@ -89,7 +120,9 @@ function AccountsOverview(props) {
           className="text-center"
         />
         <Row className="justify-content-center">
-          {items.map((item, index) => (
+        
+          {/* {!items == null && ( */}
+            {items.map((item, index) => (
             <Col xs={12} md={6} lg={4} className="py-3" key={index}>
               <Card>
                 <Card.Body className="d-flex flex-center text-left p-4">
@@ -103,6 +136,8 @@ function AccountsOverview(props) {
               </Card>
             </Col>
           ))}
+          {/* )} */}
+
         </Row>
       </Container>
     </Section>
