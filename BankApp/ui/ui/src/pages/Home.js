@@ -25,7 +25,6 @@ export default function HomePage(props) {
           subtitle="Sub title test here"
           buttonText="Register Now!"
           buttonColor="primary"
-          buttonPath="/register"
         />
         <Footer
           bg="white"

@@ -41,6 +41,7 @@ public class AuthServiceImpl implements AuthService{
                 .orElseThrow(() -> new RuntimeException("Role not applied."));
 
         user.setRoles(Collections.singleton(userRole));
+        user.setActive(true);
         userRepository.save(user);
 
         return ResponseEntity.ok("Registration Complete!");
