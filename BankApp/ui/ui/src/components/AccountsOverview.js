@@ -26,9 +26,9 @@ function AccountsOverview(props) {
     lastName: null,
     ssn: null,
     personalCheckingAccount: {},
-    dbaCheckingAccountList: [],
+    dbaCheckingAccountList: [{}],
     savingsAccount:{},
-    cdAccountList: [],
+    cdAccountList: [{}],
     ira: {},
     rolloverIra: {},
     rothIra: {},
@@ -36,15 +36,20 @@ function AccountsOverview(props) {
     combinedBal: {}       
   });
 
+  
+  // const dbaAccounts = accountInfo.dbaCheckingAccountList;
+  // const cdAccounts = accountInfo.cdAccountList;
+  console.log("DBA checking test: " + accountInfo.dbaCheckingAccountList[0].id);
+
   // ------------------- WRAP IN FUNCTION
 
   // async function setItems () {
     items = [
-      // {
-      //   accountType: "DBA Checking",
-      //   accountNum: `Acct. # ${accountInfo.dbaCheckingAccountList[0]["id"]}`,
-      //   balance: "$",
-      // },
+      {
+        accountType: "DBA Checking",
+        accountNum: `Acct. # ${accountInfo.dbaCheckingAccountList[0].id}`,
+        balance: `Balance $ ${accountInfo.dbaCheckingAccountList[0].balance}`,
+      },
       {
         accountType: "Personal Checking",
         accountNum: `Acct. # ${accountInfo.personalCheckingAccount['id']}`,
@@ -55,11 +60,26 @@ function AccountsOverview(props) {
         accountNum: `Acct. # ${accountInfo.savingsAccount['id']}`,
         balance: `Balance $ ${accountInfo.savingsAccount['balance']}`,
       },
-      // {
-      //   accountType: "CD Account",
-      //   accountNum: `Acct. # ${accountInfo.cdAccountList[0]["id"]}`,
-      //   balance: `Balance $ ${accountInfo.cdAccountList[0]["balance"]}`,
-      // },
+      {
+        accountType: "CD Account",
+        accountNum: `Acct. # ${accountInfo.cdAccountList[0].id}`,
+        balance: `Balance $ ${accountInfo.cdAccountList[0].balance}`,
+      },
+      {
+        accountType: "IRA",
+        accountNum: `Acct. # ${accountInfo.ira['id']}`,
+        balance: `Balance $ ${accountInfo.ira['balance']}`,
+      },
+      {
+        accountType: "Roth IRA",
+        accountNum: `Acct. # ${accountInfo.rothIra['id']}`,
+        balance: `Balance $ ${accountInfo.rothIra['balance']}`,
+      },
+      {
+        accountType: "Rollover IRA",
+        accountNum: `Acct. # ${accountInfo.rolloverIra['id']}`,
+        balance: `Balance $ ${accountInfo.rolloverIra['balance']}`,
+      },
     ]
   // }
 
@@ -87,9 +107,9 @@ function AccountsOverview(props) {
           dbaCheckingAccountList: data.dbaCheckingAccountList,
           savingsAccount: data.savingsAccount,
           cdAccountList: data.cdAccountList,
-          ira: data.traditionalIra,
-          rolloverIra: data.rolloverIra,
-          rothIra: data.rothIra,
+          ira: data.traditionalIRA,
+          rolloverIra: data.rolloverIRA,
+          rothIra: data.rothIRA,
           accountHolderContactDetails: data.accountHolderContactDetails,
           combinedBal: data.combinedBal
         });
