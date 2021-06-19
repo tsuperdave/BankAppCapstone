@@ -7,32 +7,34 @@ import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Avatar from "./Avatar";
 import "./TeamSection.scss";
-import bank_logo from '../resources/bank_logo.png'
+import MA_logo from '../resources/imgs/MA_logo.png';
+import ashwin from '../resources/imgs/ashwin.png';
+import dave from '../resources/imgs/dave.png';
 import AspectRatio from "./AspectRatio";
 import Image from "react-bootstrap/esm/Image";
 
 function TeamSection(props) {
   const items = [
     {
-      headerImage: {bank_logo},
-      img: {bank_logo},
-      name: "Daved T",
+      headerImage: "https://source.unsplash.com/npxXWgQ33ZQ",
+      img: dave,
+      name: "Daved T.",
       role: "Software Engineer Team Lead",
-      bio: "Dream big, dare to fail.",
+      bio: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum consequatur numquam aliquam tenetur ad amet inventore hic beatae, quas accusantium perferendis sapiente explicabo.",
     },
     {
-      headerImage: {bank_logo},
-      img: {bank_logo},
-      name: "Ashwin N",
+      headerImage:"https://source.unsplash.com/iacpoKgpBAM",
+      img: ashwin,
+      name: "Ashwin N.",
       role: "Software Engineer",
-      bio: "Test Here",
+      bio: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum consequatur numquam aliquam tenetur ad amet inventore hic beatae, quas accusantium perferendis sapiente explicabo.",
     },
     {
-      headerImage: {bank_logo},
-      img: {bank_logo},
-      name: "Judith M",
+      headerImage: "https://source.unsplash.com/eo3Xr2yhYVw",
+      img: MA_logo,
+      name: "Judith M.",
       role: "Software Engineer",
-      bio: "Text Here",
+      bio: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum consequatur numquam aliquam tenetur ad amet inventore hic beatae, quas accusantium perferendis sapiente explicabo.",
     },
   ];
 

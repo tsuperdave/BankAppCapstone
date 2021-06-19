@@ -2,8 +2,8 @@ import React from "react";
 import NavbarMain from "./../components/NavbarMain";
 import FeaturesSection from "./../components/FeaturesSection";
 import Footer from "./../components/Footer";
-import bank_logo from '../resources/bank_logo.png';
-import MA_logo from '../resources/MA_logo.png';
+import bank_logo from '../resources/imgs/bank_logo.png';
+import MA_logo from '../resources/imgs/MA_logo.png';
 import { requireAuth } from "../auth";
 
 function PreferencesPage(props) {

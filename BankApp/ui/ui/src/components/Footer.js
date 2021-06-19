@@ -3,7 +3,7 @@ import Section from "./Section";
 import Container from "react-bootstrap/Container";
 import { Link } from "./../router";
 import "./Footer.scss";
-import MA_logo from "../resources/MA_logo.png"
+import MA_logo from "../resources/imgs/MA_logo.png"
 
 export default function Footer(props) {
   return (

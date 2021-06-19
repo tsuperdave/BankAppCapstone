@@ -6,7 +6,7 @@ import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Dropdown from "react-bootstrap/Dropdown";
 import { AuthorizationContext } from "../auth";
-import bank_logo from '../resources/bank_logo.png'
+import bank_logo from '../resources/imgs/bank_logo.png'
 
 
 export default function NavbarMain(props) {

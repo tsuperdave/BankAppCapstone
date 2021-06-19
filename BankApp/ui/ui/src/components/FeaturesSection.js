@@ -8,7 +8,7 @@ import Col from "react-bootstrap/Col";
 import AspectRatio from "./AspectRatio";
 import Image from "react-bootstrap/Image";
 import "./FeaturesSection.scss";
-import MA_logo from '../resources/MA_logo.png'
+import MA_logo from '../resources/imgs/MA_logo.png'
 import { AuthorizationContext } from "../auth";
 import { Button, Form, ListGroup } from "react-bootstrap";
 

@@ -2,9 +2,9 @@ import React from 'react'
 import NavbarMain from "../components/NavbarMain";
 import HeroSection from "../components/HeroSection";
 import Footer from "../components/Footer";
-import bank_logo from '../resources/bank_logo.png';
-import MA_logo from '../resources/MA_logo.png';
-import bg_city from '../resources/bg_city.jpg';
+import bank_logo from '../resources/imgs/bank_logo.png';
+import MA_logo from '../resources/imgs/MA_logo.png';
+import bg_city from '../resources/imgs/bg_city.jpg';
 
 export default function HomePage(props) {
     return (
