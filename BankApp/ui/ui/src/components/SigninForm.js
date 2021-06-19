@@ -5,21 +5,30 @@ import Container from "react-bootstrap/esm/Container";
 import { useHistory } from "react-router";
 import jwt_decode from 'jwt-decode'
 import { AuthorizationContext } from "../auth";
+import { FormControl } from "react-bootstrap";
 
 export default function SigninForm({ props }) {
 
   const [usernameOrEmail, setUsername] = useState('');
   const [password, setPassword] = useState(''); 
   const [auth, setAuth] = useContext(AuthorizationContext);
+
+  const [valid, setValid] = useState(false);
   
   const handleSubmit = async e => {
-    e.preventDefault();
+    const form = e.currentTarget;
+    
+    if(form.checkValidity() === false) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+
+    setValid(true);
 
     signin({
       usernameOrEmail,
       password
     })
-    
     
   };
 
@@ -97,27 +106,32 @@ export default function SigninForm({ props }) {
   return (
 
     <Container>
-      <Form onSubmit={handleSubmit}> 
+      <Form hasValidation valid={valid} onSubmit={handleSubmit}> 
         
           <Form.Group controlId="formUsernameOrEmail">
             <Form.Control
+              
               size="lg"
               name="usernameOrEmail"
               type="text"
               placeholder="Enter Username"
-              onChange={e => setUsername(e.target.value)}
-           
+              required
+              onChange={e => setUsername(e.target.value)}        
             />
+            <FormControl.Feedback type='invalid'>Please enter your user name!</FormControl.Feedback>
           </Form.Group>
-        
+
           <Form.Group controlId="formPassword">
             <Form.Control
+              
               size="lg"
               name="password"
               type="password"
               placeholder="Password" 
+              required
               onChange={e => setPassword(e.target.value)}    
             />
+            <FormControl.Feedback type='invalid'>Please enter your password!</FormControl.Feedback>
           </Form.Group>
 
         <Button

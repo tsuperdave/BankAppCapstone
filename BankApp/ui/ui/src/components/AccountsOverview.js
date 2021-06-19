@@ -9,15 +9,15 @@ import { AuthorizationContext } from "../auth";
 
 function AccountsOverview(props) {
 
-  console.log("1 - load");
+  // console.log("1 - load");
 
   const [auth, setAuth] = useContext(AuthorizationContext);
   let items = [];
 
   useEffect(() => {
-    console.log("2 - useEffect");
+    // console.log("2 - useEffect");
     fetchAccountInfo();
-    console.log("Post FETCH")
+    // console.log("Post FETCH")
   }, []);
 
   const [accountInfo, setAccountInfo] = useState({
@@ -39,7 +39,7 @@ function AccountsOverview(props) {
   
   // const dbaAccounts = accountInfo.dbaCheckingAccountList;
   // const cdAccounts = accountInfo.cdAccountList;
-  console.log("DBA checking test: " + accountInfo.dbaCheckingAccountList[0].id);
+  // console.log("DBA checking test: " + accountInfo.dbaCheckingAccountList[0].id);
 
   // ------------------- WRAP IN FUNCTION
 
@@ -83,11 +83,11 @@ function AccountsOverview(props) {
     ]
   // }
 
-  console.log("3 - after accountInfo");
-  console.log("--- after accountInfo: " + accountInfo.firstName);
+  // console.log("3 - after accountInfo");
+  // console.log("--- after accountInfo: " + accountInfo.firstName);
   
   async function fetchAccountInfo() {
-    console.log("4 - FETCH accountInfo");
+    // console.log("4 - FETCH accountInfo");
     return fetch(`http://localhost:8080/api/Me/accountholder/${auth.userId}`, {
         method: "GET",
         headers: {
@@ -97,7 +97,7 @@ function AccountsOverview(props) {
       })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
+        // console.log(data);
         setAccountInfo({
           firstName: data.firstName,
           middleName: data.middleName,
@@ -114,13 +114,13 @@ function AccountsOverview(props) {
           combinedBal: data.combinedBal
         });
         // setItems();
-        console.log("5 - set accountInfo from FETCH");
-        console.log("------- accountInfo from FETCH is " + accountInfo);
+        // console.log("5 - set accountInfo from FETCH");
+        // console.log("------- accountInfo from FETCH is " + accountInfo);
       });     
   }
 
   
-  console.log("7 - return is next");
+  // console.log("7 - return is next");
   // ---------------------------------------------------------
 
   return (

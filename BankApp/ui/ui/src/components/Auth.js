@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import FormAlert from "./FormAlert";
 import SigninForm from "./SigninForm";
-import AuthFooter from "./AuthFooter";
+// import AuthFooter from "./AuthFooter";
 import { useRouter } from "./../router.js";
 
 function Auth(props) {
@@ -28,7 +28,7 @@ function Auth(props) {
         onAuth={handleAuth}
         onFormAlert={handleFormAlert}
       />
-          <AuthFooter type={props.type} typeValues={props.typeValues} />
+          {/* <AuthFooter type={props.type} typeValues={props.typeValues} /> */}
        </> 
       )
     
