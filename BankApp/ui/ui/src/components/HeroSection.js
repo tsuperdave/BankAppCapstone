@@ -6,6 +6,8 @@ import Button from "react-bootstrap/Button";
 import { LinkContainer } from "react-router-bootstrap";
 import { AuthorizationContext } from "../auth";
 import RegisterPopup from "./RegisterPopup";
+import { Col, Image, Row } from "react-bootstrap";
+import bg_city from '../resources/imgs/bg_city.jpg'
 
 function HeroSection(props) {
 
@@ -21,13 +23,15 @@ function HeroSection(props) {
       bgImageOpacity={props.bgImageOpacity}
     >
       <Container className="text-center">
-        <SectionHeader
-          title={props.title}
-          subtitle={props.subtitle}
-          size={1}
-          spaced={true}
-        />
-
+      <Row className='align-items-center'>
+        <Col lg={5} className="text-center text-lg-left">
+          <SectionHeader
+            title={props.title}
+            subtitle={props.subtitle}
+            size={1}
+            spaced={true}
+          />
+       
         {!auth.jwt && (
           <>
             <Button onClick={() => setModalShow(true)} 
@@ -41,6 +45,15 @@ function HeroSection(props) {
             />
           </>
         )}
+        </Col>
+
+        <Col lg={5} className="offset-lg-1 mt-5 mt-lg-0 ">
+          <figure className='mx-auto'>
+            <Image src={bg_city} fluid={true} />
+          </figure>
+        </Col>
+
+      </Row>
       </Container>
     </Section>
   );

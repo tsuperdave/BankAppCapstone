@@ -4,25 +4,24 @@ import HeroSection from "../components/HeroSection";
 import Footer from "../components/Footer";
 import bank_logo from '../resources/imgs/bank_logo.png';
 import MA_logo from '../resources/imgs/MA_logo.png';
-import bg_city from '../resources/imgs/bg_city.jpg';
 
 export default function HomePage(props) {
     return (
       <>
         <NavbarMain
-          bg="light"
+          bg="white"
           variant="light"
           expand="md"
           logo={bank_logo}
         />
         <HeroSection
-          bg=""
+          bg="white"
           textColor="dark"
           size="md"
-          bgImage={bg_city}
+          bgImage={MA_logo}
           bgImageOpacity={0.5}
-          title="Your Home page title here"
-          subtitle="Sub title test here"
+          title="Welcome to Merit Bank!"
+          subtitle="Want an account? Sign up now!"
           buttonText="Register Now!"
           buttonColor="primary"
         />
