@@ -53,8 +53,7 @@ function AccountsPage(props) {
             </Col>
 
         </Container>
-        
-     
+            
       <AccountsOverview
         bg="white"
         textColor="dark"
@@ -64,13 +63,6 @@ function AccountsPage(props) {
         title="Accounts Overview"
         subtitle=""
       />
-      
-      <Card>
-        <Card.Body>
-          <Card.Title>Latest Transactions</Card.Title>
-          <Card.Text>put txn info here</Card.Text>
-        </Card.Body>
-      </Card>
 
       <Footer
         bg="white"

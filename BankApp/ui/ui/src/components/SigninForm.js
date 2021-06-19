@@ -13,17 +13,17 @@ export default function SigninForm({ props }) {
   const [password, setPassword] = useState(''); 
   const [auth, setAuth] = useContext(AuthorizationContext);
 
-  const [valid, setValid] = useState(false);
+  // const [valid, setValid] = useState(false);
   
   const handleSubmit = async e => {
-    const form = e.currentTarget;
+    // const form = e.currentTarget;
     
-    if(form.checkValidity() === false) {
+    // if(form.checkValidity() === false) {
       e.preventDefault();
-      e.stopPropagation();
-    }
+      // e.stopPropagation();
+    // }
 
-    setValid(true);
+    // setValid(true);
 
     signin({
       usernameOrEmail,
@@ -63,7 +63,9 @@ export default function SigninForm({ props }) {
       })
       signinRedirect(data.roles)
       
-    }) 
+    }).catch(e => {
+      console.log('Invalid Credentials')
+    })
   }
   
   async function signup(credentials) {
@@ -106,7 +108,7 @@ export default function SigninForm({ props }) {
   return (
 
     <Container>
-      <Form hasValidation valid={valid} onSubmit={handleSubmit}> 
+      <Form onSubmit={handleSubmit}> 
       <div className='mx-auto mt-2'>
           <Form.Group controlId="formUsernameOrEmail">
             <Form.Control
@@ -118,7 +120,7 @@ export default function SigninForm({ props }) {
               required
               onChange={e => setUsername(e.target.value)}        
             />
-            <FormControl.Feedback type='invalid'>Please enter your user name!</FormControl.Feedback>
+            {/* <FormControl.Feedback type='invalid'>Please enter your user name!</FormControl.Feedback> */}
           </Form.Group>
           </div>
           <div className='mx-auto mt-2'>
@@ -132,7 +134,7 @@ export default function SigninForm({ props }) {
                 required
                 onChange={e => setPassword(e.target.value)}    
               />
-              <FormControl.Feedback type='invalid'>Please enter your password!</FormControl.Feedback>
+              {/* <FormControl.Feedback type='invalid'>Please enter your password!</FormControl.Feedback> */}
             </Form.Group>
           </div>
         <div className='row mx-auto mt-2'>

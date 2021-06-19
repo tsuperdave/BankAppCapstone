@@ -6,6 +6,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import { AuthorizationContext } from "../auth";
+import { Table } from "react-bootstrap";
 
 function AccountsOverview(props) {
 
@@ -15,9 +16,7 @@ function AccountsOverview(props) {
   let items = [];
 
   useEffect(() => {
-    // console.log("2 - useEffect");
     fetchAccountInfo();
-    // console.log("Post FETCH")
   }, []);
 
   const [accountInfo, setAccountInfo] = useState({
@@ -33,17 +32,10 @@ function AccountsOverview(props) {
     rolloverIra: {},
     rothIra: {},
     accountHolderContactDetails: {},
-    combinedBal: {}       
+    combinedBal: {},
+    transactions: []       
   });
 
-  
-  // const dbaAccounts = accountInfo.dbaCheckingAccountList;
-  // const cdAccounts = accountInfo.cdAccountList;
-  // console.log("DBA checking test: " + accountInfo.dbaCheckingAccountList[0].id);
-
-  // ------------------- WRAP IN FUNCTION
-
-  // async function setItems () {
     items = [
       {
         accountType: "DBA Checking",
@@ -81,13 +73,9 @@ function AccountsOverview(props) {
         balance: `Balance $ ${accountInfo.rolloverIra['balance']}`,
       },
     ]
-  // }
 
-  // console.log("3 - after accountInfo");
-  // console.log("--- after accountInfo: " + accountInfo.firstName);
-  
   async function fetchAccountInfo() {
-    // console.log("4 - FETCH accountInfo");
+    
     return fetch(`http://localhost:8080/api/Me/accountholder/${auth.userId}`, {
         method: "GET",
         headers: {
@@ -112,16 +100,11 @@ function AccountsOverview(props) {
           rothIra: data.rothIRA,
           accountHolderContactDetails: data.accountHolderContactDetails,
           combinedBal: data.combinedBal
+          // add txn's here
         });
-        // setItems();
-        // console.log("5 - set accountInfo from FETCH");
-        // console.log("------- accountInfo from FETCH is " + accountInfo);
+       
       });     
   }
-
-  
-  // console.log("7 - return is next");
-  // ---------------------------------------------------------
 
   return (
     <Section
@@ -159,8 +142,55 @@ function AccountsOverview(props) {
           {/* )} */}
 
         </Row>
+
+        <Row>
+        <Col></Col>
+          <Col xs={10}>
+            <Card>
+              <Card.Body>
+                <Card.Header className="text-center">Latest Transactions</Card.Header>
+                <Row>
+                  <Table striped bordered hover>
+                    <thead>
+                      <tr>
+                        <th>TXN #</th>
+                        <th>Details</th>
+                        <th>Amount</th>
+                        <th>Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>txn # here</td>
+                        <td>txn details here</td>
+                        <td>txn amt here</td>
+                        <td>txn date</td>
+                      </tr>
+                      <tr>
+                        <td>txn # here</td>
+                        <td>txn details here</td>
+                        <td>txn amt here</td>
+                        <td>txn date</td>
+                      </tr>
+                      <tr>
+                        <td>txn # here</td>
+                        <td>txn details here</td>
+                        <td>txn amt here</td>
+                        <td>txn date</td>
+                      </tr>
+                    </tbody>
+                  </Table>
+                </Row>
+              </Card.Body>
+            </Card>
+          </Col>
+        <Col></Col>
+      </Row>
+
       </Container>
     </Section>
+
+    
   );
 }
 
