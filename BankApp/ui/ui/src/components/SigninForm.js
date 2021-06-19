@@ -107,7 +107,7 @@ export default function SigninForm({ props }) {
 
     <Container>
       <Form hasValidation valid={valid} onSubmit={handleSubmit}> 
-        
+      <div className='mx-auto mt-2'>
           <Form.Group controlId="formUsernameOrEmail">
             <Form.Control
               
@@ -120,40 +120,42 @@ export default function SigninForm({ props }) {
             />
             <FormControl.Feedback type='invalid'>Please enter your user name!</FormControl.Feedback>
           </Form.Group>
-
-          <Form.Group controlId="formPassword">
-            <Form.Control
-              
-              size="lg"
-              name="password"
-              type="password"
-              placeholder="Password" 
-              required
-              onChange={e => setPassword(e.target.value)}    
-            />
-            <FormControl.Feedback type='invalid'>Please enter your password!</FormControl.Feedback>
-          </Form.Group>
-
-        <Button
-          variant="primary"
-          block={true}
-          size="lg"
-          type="submit"
-          >
-          Sign in
-        </Button>
-         
+          </div>
+          <div className='mx-auto mt-2'>
+            <Form.Group controlId="formPassword">
+              <Form.Control
+                
+                size="lg"
+                name="password"
+                type="password"
+                placeholder="Password" 
+                required
+                onChange={e => setPassword(e.target.value)}    
+              />
+              <FormControl.Feedback type='invalid'>Please enter your password!</FormControl.Feedback>
+            </Form.Group>
+          </div>
+        <div className='row mx-auto mt-2'>
+          <Button
+            variant="primary"
+            block={true}
+            size="lg"
+            type="submit"
+            >
+            Sign in
+          </Button>
+        </div> 
       </Form>
-
-      <Button onClick={goHome}
-          variant="primary"
-          block={true}
-          size="lg"
-          type="secondary"
-          >
-          Home Page
-      </Button>
-
+      <div className='mx-auto mt-2'>
+        <Button onClick={goHome}
+            variant="primary"
+            block={true}
+            size="lg"
+            type="secondary"
+            >
+            Home Page
+        </Button>
+      </div> 
     </Container>
   );
 
