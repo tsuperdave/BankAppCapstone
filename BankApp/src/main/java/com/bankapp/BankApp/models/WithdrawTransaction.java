@@ -8,9 +8,9 @@ import javax.persistence.*;
 @Table(name = "WithdrawTransaction")
 public class WithdrawTransaction extends Transaction {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+//    private Integer id;
 
     public WithdrawTransaction() {
         super();

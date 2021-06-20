@@ -26,16 +26,15 @@ public abstract class BankAccount {
 	private LocalDateTime openedOn;
 	String accountType;
 
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "personalCheckingAccount", fetch = FetchType.LAZY)
+	private List<Transaction> personalCheckingTxns;
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "sourceAccount", fetch = FetchType.LAZY)
 	private List<Transaction> sourceAccountTxns;
 
 	// TODO add targetAccountTxns
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "personalCheckingAccount", fetch = FetchType.LAZY)
-	private List<Transaction> personalCheckingTxns;
-
 	// TODO add TXNs list for all types of accounts
-
 
 	// ------ END INSTANCE VARS
 
@@ -49,10 +48,18 @@ public abstract class BankAccount {
 		return accountHolder;
 	}
 
+//	public void setPersonalCheckingAccountTransactions(List<Transaction> personalCheckingTxns) {
+//		this.personalCheckingTxns = new ArrayList<Transaction>(personalCheckingTxns);
+//	}
+
 	@JsonBackReference(value = "sourceAccount")
 	public List<Transaction> getSourceTransactions() {
 		return sourceAccountTxns;
 	}
+
+//	public void setSourceAccountTransactions(List<Transaction> sourceAccountTxns) {
+//		this.sourceAccountTxns = new ArrayList<Transaction>(sourceAccountTxns);
+//	}
 
 	public void withdraw(double amount) {
 		this.balance -= amount;

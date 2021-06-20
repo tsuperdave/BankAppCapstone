@@ -68,7 +68,18 @@ public class AccountHolder {
         if(personalCheckingAccount != null) {
             total += personalCheckingAccount.getBalance();
             return total;
+        }
+        return 0;
+    }
+
+    public double getDbaCheckingBalance() {
+        double total = 0;
+        if(dbaCheckingAccountList != null) {
+            for(DBACheckingAccount dba: dbaCheckingAccountList) {
+                total += dba.getBalance();
             }
+            return total;
+        }
         return 0;
     }
 
@@ -92,8 +103,41 @@ public class AccountHolder {
         return 0;
     }
 
+    public double getTraditionalIraBalance() {
+        double total = 0;
+        if(traditionalIRA != null) {
+            total += traditionalIRA.getBalance();
+            return total;
+        }
+        return 0;
+    }
+
+    public double getRothIraBalance() {
+        double total = 0;
+        if(rothIRA != null) {
+            total += rothIRA.getBalance();
+            return total;
+        }
+        return 0;
+    }
+
+    public double getRolloverIraBalance() {
+        double total = 0;
+        if(rolloverIRA != null) {
+            total += rolloverIRA.getBalance();
+            return total;
+        }
+        return 0;
+    }
+
     public double getCombinedAccountBalance() {
-        combinedBal = getPersonalCheckingBalance() + getSavingsBalance() + getCDBalance();
+        this.combinedBal = getPersonalCheckingBalance() +
+                getDbaCheckingBalance() +
+                getSavingsBalance() +
+                getCDBalance() +
+                getTraditionalIraBalance() +
+                getRothIraBalance() +
+                getRolloverIraBalance();
         return combinedBal;
     }
 

@@ -3,6 +3,7 @@ package com.bankapp.BankApp.services;
 import com.bankapp.BankApp.exceptions.TransactionFailureException;
 import com.bankapp.BankApp.models.BankAccount;
 import com.bankapp.BankApp.models.PersonalCheckingAccount;
+import com.bankapp.BankApp.models.Transaction;
 import com.bankapp.BankApp.models.WithdrawTransaction;
 import com.bankapp.BankApp.repository.CheckingAccountRepository;
 import com.bankapp.BankApp.repository.TransactionRepository;
@@ -10,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -43,6 +46,11 @@ public class TransactionServiceImpl implements TransactionService {
                 throw new TransactionFailureException("Cannot process transaction at this time");
         }
 //        return null;
+    }
+
+    @Override
+    public List<Transaction> getAllTransactions() {
+        return new ArrayList<>(transactionRepository.findAll());
     }
 
 }

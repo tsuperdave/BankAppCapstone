@@ -1,12 +1,15 @@
 package com.bankapp.BankApp.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
+import java.time.LocalDate;
 
 @Data
 @Entity
@@ -20,8 +23,10 @@ public abstract class Transaction {
     String txnType;
     @Positive(message = "Amount must be above 0")
     double amount;
+
     Integer accountOrigin;
     String account;
+    LocalDate txnDate = LocalDate.now();
 
     // TODO add many-to-ones for each type of account
     // also join columns
