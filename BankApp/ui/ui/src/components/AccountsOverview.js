@@ -18,6 +18,7 @@ function AccountsOverview(props) {
   useEffect(() => {
     fetchAccountInfo();
     fetchTxnInfo();
+    mapTxns();
   }, []);
 
   const [accountInfo, setAccountInfo] = useState({
@@ -37,9 +38,9 @@ function AccountsOverview(props) {
     transactions: []       
   });
 
-  const [transactions, setTransactions] = useState({
+  const [transactions, setTransactions] = useState([]);
     
-    allTxns: [{}],
+    // allTxns: [{}],
     // pCheckTxns: [{}],
     // dbaTxns: [{}],
     // savTxns: [{}],
@@ -51,7 +52,13 @@ function AccountsOverview(props) {
     // txnType: '',
     // txnAmt: '',
     // txnDate: '',
-  })
+  // })
+
+  // const txns = [];
+
+  // console.log("TXNs array: " + txns);
+
+  // console.log("Transactions after fetch: " + transactions);
 
   const items = [
       {
@@ -90,6 +97,15 @@ function AccountsOverview(props) {
         balance: `Balance $ ${accountInfo.rolloverIra['balance']}`,
       },
     ]
+
+  const mapTxns = () => {
+    for(const val of Object.entries(transactions)) {
+      // console.log("Mapping value: " + val)
+      console.log("All vals in transaction state: " + transactions)
+      // console.log("Length of transaction state: " + transactions.length)
+      // transactions.push(val);
+    }
+  }  
 
   async function fetchAccountInfo() {
     
@@ -134,15 +150,8 @@ function AccountsOverview(props) {
       })
       .then(res => res.json())
       .then(data => {
-        console.log('TXN: ' + data[0].id);
-        setTransactions({
-          allTxns: data
-          // txnId: data.id,
-          // txnType: data.txnType,
-          // txnAmt: data.amount,
-          // txnDate: data.txnDate,
-          // add txn's here
-        });
+        console.log('TXN: ' + data);
+        setTransactions(data);
        
       });     
   }
@@ -205,16 +214,16 @@ function AccountsOverview(props) {
                     </thead>
                     <tbody>
 
-                    {/* {transactions.map((txn, index) => (
-                      <tr key={index}>
-                        <td>{txn[index].id}</td>
-                        <td>{txn[index].txnType}</td>
-                        <td>{txn[index].amount}</td>
-                        <td>{txn[index].txnDate}</td>
+                    {transactions.map(txn => (
+                      <tr key={txn.id}>
+                        <td>{txn.id}</td>
+                        <td>{txn.txnType}</td>
+                        <td>{txn.amount}</td>
+                        <td>{txn.txnDate}</td>
                       </tr>
-                      ))} */}
+                      ))}
 
-                      <tr>
+                      {/* <tr>
                         <td>txn # here</td>
                         <td>txn details here</td>
                         <td>txn amt here</td>
@@ -225,7 +234,7 @@ function AccountsOverview(props) {
                         <td>txn details here</td>
                         <td>txn amt here</td>
                         <td>txn date</td>
-                      </tr>
+                      {/* </tr> */}
                     </tbody>
                     </Table>           
 
