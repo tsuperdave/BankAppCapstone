@@ -6,7 +6,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import { AuthorizationContext } from "../auth";
-import { Table } from "react-bootstrap";
+import { Button, Table } from "react-bootstrap";
 
 function AccountsOverview(props) {
 
@@ -164,6 +164,38 @@ function AccountsOverview(props) {
       bgImage={props.bgImage}
       bgImageOpacity={props.bgImageOpacity}
     >
+
+    <Container>
+    <Row>
+      <Col>
+        <Card>
+          <Card.Body>      
+            <Row>    
+                <Col>
+                  <Card.Text>Account Nickname</Card.Text>
+                  <Card.Title>Account Name</Card.Title>
+                  <Card.Text>Accnt #</Card.Text>
+                </Col>
+              <Col>
+                <h4>Account Balance</h4>
+                <p>
+                  $$ put bal object here $$
+                </p>
+              </Col>
+            </Row>
+          </Card.Body>
+        </Card>          
+      </Col>           
+    </Row>          
+
+          <Row className="mt-2">
+              <Col>
+                <Button variant="primary" size="md">
+                  Delete Account
+                </Button>
+              </Col>
+          </Row>
+        </Container>
       <Container>
         <SectionHeader
           title={props.title}
@@ -210,6 +242,7 @@ function AccountsOverview(props) {
                         <th>Details</th>
                         <th>Amount</th>
                         <th>Date</th>
+                        <th>Account</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -218,8 +251,9 @@ function AccountsOverview(props) {
                       <tr key={txn.id}>
                         <td>{txn.id}</td>
                         <td>{txn.txnType}</td>
-                        <td>{txn.amount}</td>
+                        <td>{txn.txnType !== 'Deposit' ? '-' + txn.amount : txn.amount}</td>
                         <td>{txn.txnDate}</td>
+                        <td>{txn.account}</td>
                       </tr>
                       ))}
 
