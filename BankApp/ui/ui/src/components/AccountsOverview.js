@@ -34,7 +34,7 @@ function AccountsOverview(props) {
     rolloverIra: {},
     rothIra: {},
     accountHolderContactDetails: {},
-    combinedBal: {},
+    combinedBal: '',
     transactions: []       
   });
 
@@ -132,7 +132,7 @@ function AccountsOverview(props) {
           rolloverIra: data.rolloverIRA,
           rothIra: data.rothIRA,
           accountHolderContactDetails: data.accountHolderContactDetails,
-          combinedBal: data.combinedBal
+          combinedAccountBalance: data.combinedAccountBalance
           // add txn's here
         });
        
@@ -177,10 +177,8 @@ function AccountsOverview(props) {
                   <Card.Text>Accnt #</Card.Text>
                 </Col>
               <Col>
-                <h4>Account Balance</h4>
-                <p>
-                  $$ put bal object here $$
-                </p>
+                <h6 className='text-muted'>Combined Balance</h6>
+                <h2>$ {accountInfo.combinedAccountBalance}</h2>      
               </Col>
             </Row>
           </Card.Body>
@@ -204,25 +202,28 @@ function AccountsOverview(props) {
           spaced={true}
           className="text-center"
         />
-        <Row className="justify-content-center">
-        
-          {/* {!items == null && ( */}
-            {items.map((item, index) => (
-            <Col xs={12} md={6} lg={4} className="py-3" key={index}>
+        <Row className="justify-content-center">      
+          {items.map((item, index) => (
+            <Col xs={12} 
+                 md={6} 
+                 lg={4} 
+                 className="py-3" 
+                 key={index}>
               <Card>
-                <Card.Body className="d-flex flex-center text-left p-4">
-                <h5 className="font-weight-bold mb-0 mt-3">
-                    {item.accountType}
-                  </h5>
-                  <small className="text-muted">{item.accountNum}</small>
-                  
-                  <small className="text-muted">{item.balance}</small>
+              
+                <Card.Body>
+                  <h5 className="justify-content-center font-weight-bold">{item.accountType}</h5>
                 </Card.Body>
+                <Card.Text className="px-3">
+                <small className="text-muted">{item.accountNum}</small>
+                </Card.Text>
+                <Card.Text className="text-right px-3 mb-2">                             
+                  <small className="text-muted">{item.balance}</small>
+                </Card.Text>
+
               </Card>
             </Col>
           ))}
-          {/* )} */}
-
         </Row>
 
         <Row>
@@ -233,8 +234,6 @@ function AccountsOverview(props) {
                 <Card.Header className="text-center">Latest Transactions</Card.Header>
                 <Row>
                   
-                  {/* add way to map transactions to table below */}
-
                     <Table striped bordered hover>
                     <thead>
                       <tr>
