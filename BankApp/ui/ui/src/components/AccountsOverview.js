@@ -13,10 +13,11 @@ function AccountsOverview(props) {
   // console.log("1 - load");
 
   const [auth, setAuth] = useContext(AuthorizationContext);
-  let items = [];
+  // let items = [];
 
   useEffect(() => {
     fetchAccountInfo();
+    fetchTxnInfo();
   }, []);
 
   const [accountInfo, setAccountInfo] = useState({
@@ -36,7 +37,23 @@ function AccountsOverview(props) {
     transactions: []       
   });
 
-    items = [
+  const [transactions, setTransactions] = useState({
+    
+    allTxns: [{}],
+    // pCheckTxns: [{}],
+    // dbaTxns: [{}],
+    // savTxns: [{}],
+    // cdaTxns: [{}],
+    // iraTxns: [{}],
+    // rollIraTxns: [{}],
+    // rothIraTxn: [{}],
+    // txnId: '',
+    // txnType: '',
+    // txnAmt: '',
+    // txnDate: '',
+  })
+
+  const items = [
       {
         accountType: "DBA Checking",
         accountNum: `Acct. # ${accountInfo.dbaCheckingAccountList[0].id}`,
@@ -85,7 +102,7 @@ function AccountsOverview(props) {
       })
       .then(res => res.json())
       .then(data => {
-        // console.log(data);
+        console.log(data);
         setAccountInfo({
           firstName: data.firstName,
           middleName: data.middleName,
@@ -100,6 +117,30 @@ function AccountsOverview(props) {
           rothIra: data.rothIRA,
           accountHolderContactDetails: data.accountHolderContactDetails,
           combinedBal: data.combinedBal
+          // add txn's here
+        });
+       
+      });     
+  }
+
+  async function fetchTxnInfo() {
+    
+    return fetch('http://localhost:8080/api/Me/accounts/transactions', {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        }       
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log('TXN: ' + data[0].id);
+        setTransactions({
+          allTxns: data
+          // txnId: data.id,
+          // txnType: data.txnType,
+          // txnAmt: data.amount,
+          // txnDate: data.txnDate,
           // add txn's here
         });
        
@@ -150,7 +191,10 @@ function AccountsOverview(props) {
               <Card.Body>
                 <Card.Header className="text-center">Latest Transactions</Card.Header>
                 <Row>
-                  <Table striped bordered hover>
+                  
+                  {/* add way to map transactions to table below */}
+
+                    <Table striped bordered hover>
                     <thead>
                       <tr>
                         <th>TXN #</th>
@@ -160,12 +204,16 @@ function AccountsOverview(props) {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>txn # here</td>
-                        <td>txn details here</td>
-                        <td>txn amt here</td>
-                        <td>txn date</td>
+
+                    {/* {transactions.map((txn, index) => (
+                      <tr key={index}>
+                        <td>{txn[index].id}</td>
+                        <td>{txn[index].txnType}</td>
+                        <td>{txn[index].amount}</td>
+                        <td>{txn[index].txnDate}</td>
                       </tr>
+                      ))} */}
+
                       <tr>
                         <td>txn # here</td>
                         <td>txn details here</td>
@@ -179,7 +227,8 @@ function AccountsOverview(props) {
                         <td>txn date</td>
                       </tr>
                     </tbody>
-                  </Table>
+                    </Table>           
+
                 </Row>
               </Card.Body>
             </Card>
