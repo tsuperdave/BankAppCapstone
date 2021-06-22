@@ -12,7 +12,7 @@ async function registerUser(credentials) {
         },
         body: JSON.stringify(credentials)
     })
-    .then(data => data.json())
+    .then(res => res.json())
 }
 
 export default function RegisterPopup(props) {

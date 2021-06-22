@@ -28,10 +28,16 @@ function FeaturesSection(props) {
     combinedBal: {}       
   });
 
+  const [userInfo, setUserInfo] = useState({
+    firstName: null,
+    lastName: null,
+    email: null
+  })
+
   // console.log("User ID is + " + auth.userId)
 
   useEffect(() => {
-    fetchAccountInfo();
+    auth.role === '[AccountHolder]' ? fetchAccountInfo() : fetchUserInfo();
   }, []);
 
   async function fetchAccountInfo() {
@@ -59,6 +65,26 @@ function FeaturesSection(props) {
       });     
   }
 
+  async function fetchUserInfo() {
+    return fetch(`http://localhost:8080/api/Me/${auth.userId}`, {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        }  
+        // body: JSON.stringify(auth.userId),    
+      })
+      .then(res => res.json())
+      .then(data => {
+        setUserInfo({
+          firstName: data.firstName,
+          lastName: data.lastName,
+          email: data.email         
+        });
+        console.log("User data after fetch: " + data.firstName)
+      });     
+  }
+
   return (
     <Section
       bg={props.bg}
@@ -69,7 +95,7 @@ function FeaturesSection(props) {
     >
       <Container className="text-center">
         <SectionHeader
-          title={`Welcome, ${accountInfo.firstName}!`}
+          title={`Welcome, ${auth.role === "[AccountHolder]" ? accountInfo.firstName : userInfo.firstName}!`}
           subtitle='Preferences'
           size={2}
           spaced={true}
@@ -123,19 +149,19 @@ function FeaturesSection(props) {
                   <ListGroup>
                     
                     <ListGroup.Item>Name</ListGroup.Item>
-                      <p>{accountInfo.firstName} {accountInfo.middleName} {accountInfo.lastName}</p>
+                      <p>{auth.role === '[AccountHolder]' ? accountInfo.firstName +" "+ accountInfo.middleName +" "+ accountInfo.lastName : userInfo.firstName +" "+ userInfo.lastName}</p>
                       
                     <ListGroup.Item>Username</ListGroup.Item>
                       <p>{auth.username}</p>
 
-                    <ListGroup.Item>Email</ListGroup.Item>
-                      <p>{accountInfo.email}</p>
+                    <ListGroup.Item>Email</ListGroup.Item>                    
+                      <p>{auth.role === '[AccountHolder]' ? accountInfo.email : userInfo.email}</p>
 
                     <ListGroup.Item>Address</ListGroup.Item>
-                      <p>put address here</p>
+                      <p>1234 First St. Dallas, TX</p>
 
                     <ListGroup.Item>Phone Number</ListGroup.Item>
-                      <p>put phone num here</p>
+                      <p>111-111-1111</p>
 
                   </ListGroup>
                 </Col>
