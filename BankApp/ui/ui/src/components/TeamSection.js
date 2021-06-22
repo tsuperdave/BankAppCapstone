@@ -10,6 +10,7 @@ import "./TeamSection.scss";
 import MA_logo from '../resources/imgs/MA_logo.png';
 import ashwin from '../resources/imgs/ashwin.png';
 import dave from '../resources/imgs/dave.png';
+import judith from '../resources/imgs/judith.jpg'
 import AspectRatio from "./AspectRatio";
 import Image from "react-bootstrap/esm/Image";
 
@@ -31,7 +32,7 @@ function TeamSection(props) {
     },
     {
       headerImage: "https://source.unsplash.com/eo3Xr2yhYVw",
-      img: MA_logo,
+      img: judith,
       name: "Judith M.",
       role: "Software Engineer",
       bio: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum consequatur numquam aliquam tenetur ad amet inventore hic beatae, quas accusantium perferendis sapiente explicabo.",

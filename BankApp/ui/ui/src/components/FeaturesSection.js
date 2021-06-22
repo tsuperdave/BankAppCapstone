@@ -16,6 +16,11 @@ import { Button, Form, ListGroup } from "react-bootstrap";
 function FeaturesSection(props) {
 
   const [auth, setAuth] = useContext(AuthorizationContext);
+  const [phoneNum, setPhoneNum] = useState('');
+  const [email, setEmail] = useState('');
+  const [address, setAddress] = useState('');
+
+
   const [accountInfo, setAccountInfo] = useState({
     firstName: null,
     middleName: null,
@@ -123,20 +128,20 @@ function FeaturesSection(props) {
                         <Col>
                           <Form.Group>
                             <Form.Label>Change Email</Form.Label>
-                            <Form.Control type="email" placeholder="Change Email" />
+                            <Form.Control type="email" placeholder="Change Email" onChange={e => setEmail(e.target.value)}/>
                           </Form.Group>
                         </Col>
                         <Col>
                           <Form.Group>
                             <Form.Label>Change Phone Number</Form.Label>
-                            <Form.Control type="text" placeholder="123-456-7891" />
+                            <Form.Control type="text" placeholder="123-456-7891" onChange={e => setPhoneNum(e.target.value)}/>
                           </Form.Group>
                         </Col>
                       </Row>
                       <Row>
                       <Form.Group>
                             <Form.Label>Change Address</Form.Label>
-                            <Form.Control type="text" placeholder="1234 Main St." />
+                            <Form.Control type="text" placeholder="1234 Main St." onChange={e => setAddress(e.target.value)}/>
                           </Form.Group>
                       </Row>
 

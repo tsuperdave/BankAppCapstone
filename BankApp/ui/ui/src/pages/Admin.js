@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import NavbarMain from "../components/NavbarMain";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Footer from "../components/Footer";
-import { requireAuth } from "../auth";
+import { AuthorizationContext, requireAuth } from "../auth";
+import { Redirect } from "react-router-dom";
 
 function AdminPage(props) {
+
+  const [auth, setAuth] = useContext(AuthorizationContext);
+
+  if(auth.role !== '[admin]') {
+    return <Redirect to='/' />
+  }
+
   return (
     <>
       <NavbarMain
